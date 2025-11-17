@@ -2,9 +2,9 @@ import React from 'react';
 
 const Navbar = () => {
     return (
-        <nav className="bg-gray-800 text-white p-4">
+        <nav className="bg-gray-800 text-white p-8">
             <div className="max-w-7xl mx-auto flex justify-between items-center">
-                <h1 className="text-xl font-bold">Appointment Booking</h1>
+                <img className="text-xl font-bold" src="src\assets\roriri logo.jpg" alt=""></img>
                 <ul className="flex space-x-6">
                     <li><a href="#home" className="hover:text-gray-300 transition duration-300">Home</a></li>
                     <li><a href="#services" className="hover:text-gray-300 transition duration-300">Services</a></li>
