@@ -1,19 +1,19 @@
 import { useState } from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import './App.css'
-import Navbar from './components/Navbar/Navbar'
-import Footer from './components/Footer/Footer'
+import Landing from './User Page/Landing/Landing'
+import Signin from './User Page/signin/Signin'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <div className="flex flex-col min-h-screen">
-      <Navbar />
-      <main className="flex-grow">
-        {/* Your main content here */}
-      </main>
-      <Footer />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/signin" element={<Signin />} />
+      </Routes>
+    </Router>
   )
 }
 

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Menu, X, Info, Briefcase, Mail } from 'lucide-react';
 
 const Navbar = () => {
@@ -41,7 +42,7 @@ const Navbar = () => {
                                         className="w-8 h-8 rounded-full object-cover"
                                     />
                                     <span className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-                                        Roriri 
+                                        Roriri
                                     </span>
                                 </div>
                             </div>
@@ -65,10 +66,10 @@ const Navbar = () => {
                             ))}
 
                             {/* CTA Button */}
-                            <button className="ml-4 relative group overflow-hidden px-6 py-2.5 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                            <Link to="/signin" className="ml-4 relative group overflow-hidden px-6 py-2.5 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
                                 <span className="relative z-10">Get Started</span>
                                 <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                            </button>
+                            </Link>
                         </div>
 
                         {/* Mobile Menu Button */}
@@ -105,34 +106,6 @@ const Navbar = () => {
                     </div>
                 </div>
             </nav>
-
-            {/* Demo Content */}
-            <div className="pt-24">
-                <div className="h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex items-center justify-center">
-                    <div className="text-center text-white px-6">
-                        <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-                            Welcome to Roriri
-                        </h1>
-                        <p className="text-xl text-gray-400">Scroll to see the navbar animation</p>
-                    </div>
-                </div>
-                <div className="h-screen bg-gray-800 flex items-center justify-center">
-                    <p className="text-white text-2xl">Keep scrolling...</p>
-                </div>
-            </div>
-
-            <style>{`
-                @keyframes slideIn {
-                    from {
-                        opacity: 0;
-                        transform: translateX(-20px);
-                    }
-                    to {
-                        opacity: 1;
-                        transform: translateX(0);
-                    }
-                }
-            `}</style>
         </>
     );
 };
