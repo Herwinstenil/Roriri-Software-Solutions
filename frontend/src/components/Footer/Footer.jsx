@@ -1,22 +1,37 @@
-import { useState } from 'react';
-import { 
-    Facebook, 
-    Twitter, 
-    Instagram, 
-    Linkedin, 
-    Mail, 
-    Phone, 
-    MapPin, 
+import { useState, useEffect } from 'react';
+import {
+    Facebook,
+    Twitter,
+    Instagram,
+    Linkedin,
+    Mail,
+    Phone,
+    MapPin,
     ArrowUp,
+    ArrowDown,
     Heart
 } from 'lucide-react';
 
 const Footer = () => {
     const [email, setEmail] = useState('');
     const [hoveredSocial, setHoveredSocial] = useState(null);
+    const [isAtTop, setIsAtTop] = useState(true);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setIsAtTop(window.scrollY === 0);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     const scrollToTop = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    const scrollToBottom = () => {
+        window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     };
 
     const socialLinks = [
@@ -188,8 +203,8 @@ const Footer = () => {
                     <div className="pt-8 border-t border-gray-700">
                         <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
                             <p className="text-gray-400 text-sm flex items-center">
-                                &copy; 2025 Roriri Software Solutions. Made with 
-                                <Heart className="w-4 h-4 mx-1 text-red-500 animate-pulse" fill="currentColor" /> 
+                                &copy; 2025 Roriri Software Solutions. Made with
+                                <Heart className="w-4 h-4 mx-1 text-red-500 animate-pulse" fill="currentColor" />
                                 All rights reserved.
                             </p>
                             <div className="flex space-x-6 text-sm">
@@ -201,13 +216,17 @@ const Footer = () => {
                     </div>
                 </div>
 
-                {/* Scroll to Top Button */}
+                {/* Scroll Button */}
                 <button
-                    onClick={scrollToTop}
+                    onClick={isAtTop ? scrollToBottom : scrollToTop}
                     className="fixed bottom-8 right-8 w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300 z-50 group"
-                    aria-label="Scroll to top"
+                    aria-label={isAtTop ? "Scroll to bottom" : "Scroll to top"}
                 >
-                    <ArrowUp className="w-6 h-6 group-hover:-translate-y-1 transition-transform duration-300" />
+                    {isAtTop ? (
+                        <ArrowDown className="w-6 h-6 group-hover:translate-y-1 transition-transform duration-300" />
+                    ) : (
+                        <ArrowUp className="w-6 h-6 group-hover:-translate-y-1 transition-transform duration-300" />
+                    )}
                 </button>
             </footer>
 
