@@ -4,7 +4,7 @@ import './App.css'
 import Landing from './Content Page/Landing/Landing'
 import Signin from './User Page/signin/Signin'
 import Login from './User Page/Login/Login'
-import AppointmentBooking from './Content Page/Appointments/AppointmentBooking'
+import AppointmentBooking from './Content Page/Appointments/Appointment Booking'
 import { AuthProvider } from './Context/AuthContext'
 
 function App() {
