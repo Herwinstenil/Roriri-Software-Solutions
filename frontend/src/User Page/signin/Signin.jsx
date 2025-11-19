@@ -1,6 +1,8 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Signin = () => {
+    const navigate = useNavigate();
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -9,7 +11,8 @@ const Signin = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log('Signin attempt:', { username, email, password, confirmPassword });
-        // Add navigation logic here if needed
+        // Navigate to login page after account creation
+        navigate('/login');
     };
 
     return (
