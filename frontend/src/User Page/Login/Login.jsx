@@ -5,14 +5,20 @@ import { useAuth } from '../../Context/AuthContext';
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
     const { login } = useAuth();
     const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log('Login attempt:', { email, password });
-        login();
-        navigate('/');
+        if (email.trim() && password.trim()) {
+            setErrorMessage('');
+            login();
+            navigate('/');
+        } else {
+            setErrorMessage('Please enter both email and password to login.');
+        }
     };
 
     return (
@@ -261,6 +267,7 @@ const Login = () => {
                             Login
                         </h2>
                         <p className="text-gray-400">Access your Roriri account</p>
+                        {errorMessage && <p className="text-red-400 mt-2">{errorMessage}</p>}
                     </div>
 
                     <div className="space-y-6">

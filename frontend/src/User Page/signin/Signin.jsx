@@ -14,7 +14,7 @@ const Signin = () => {
         setError('');
 
         if (!username.trim() || !email.trim() || !password.trim() || !confirmPassword.trim()) {
-            setError('All fields are required.');
+            setError('Please fill the details to create a account.');
             return;
         }
 
