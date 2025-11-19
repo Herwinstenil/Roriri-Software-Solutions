@@ -7,9 +7,22 @@ const Signin = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    const [error, setError] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        setError('');
+
+        if (!username.trim() || !email.trim() || !password.trim() || !confirmPassword.trim()) {
+            setError('All fields are required.');
+            return;
+        }
+
+        if (password !== confirmPassword) {
+            setError('Passwords do not match.');
+            return;
+        }
+
         console.log('Signin attempt:', { username, email, password, confirmPassword });
         // Navigate to login page after account creation
         navigate('/login');
@@ -263,6 +276,7 @@ const Signin = () => {
                             Create Account
                         </h2>
                         <p className="text-gray-400">Join Roriri Software Solutions today</p>
+                        {error && <p className="text-red-400 mt-2">{error}</p>}
                     </div>
 
                     <div className="space-y-5">
