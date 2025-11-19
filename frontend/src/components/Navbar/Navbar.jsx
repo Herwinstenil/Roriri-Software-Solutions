@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, X, Info, Briefcase, Mail } from 'lucide-react';
+import { useAuth } from '../../Context/AuthContext';
 
 const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const { isLoggedIn } = useAuth();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -66,10 +68,17 @@ const Navbar = () => {
                             ))}
 
                             {/* CTA Button */}
-                            <Link to="/signin" className="ml-4 relative group overflow-hidden px-6 py-2.5 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-                                <span className="relative z-10">Get Started</span>
-                                <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                            </Link>
+                            {isLoggedIn ? (
+                                <button className="ml-4 relative group overflow-hidden px-6 py-2.5 bg-gradient-to-r from-green-600 to-blue-600 rounded-full text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                                    <span className="relative z-10">Book Appointment</span>
+                                    <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-green-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                </button>
+                            ) : (
+                                <Link to="/signin" className="ml-4 relative group overflow-hidden px-6 py-2.5 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                                    <span className="relative z-10">Get Started</span>
+                                    <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                </Link>
+                            )}
                         </div>
 
                         {/* Mobile Menu Button */}
