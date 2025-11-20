@@ -203,9 +203,7 @@ const Footer = () => {
                     <div className="pt-8 border-t border-gray-700">
                         <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
                             <p className="text-gray-400 text-sm flex items-center">
-                                &copy; 2025 Roriri Software Solutions. Made with
-                                <Heart className="w-4 h-4 mx-1 text-red-500 animate-pulse" fill="currentColor" />
-                                All rights reserved.
+                                &copy; 2025 Roriri Software Solutions. All rights reserved.
                             </p>
                             <div className="flex space-x-6 text-sm">
                                 <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300">Privacy Policy</a>
