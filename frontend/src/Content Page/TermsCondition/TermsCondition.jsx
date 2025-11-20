@@ -11,9 +11,9 @@ const TermsAndConditions = () => {
   return (
     <>
       <Navbar />
-      <div className="min-h-screen italic bg-gray-100 flex flex-col items-center pt-24 pb-12 px-4 sm:px-6 lg:px-8">
+      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex flex-col items-center pt-24 pb-12 px-4 sm:px-6 lg:px-8">
         <motion.h1
-          className="text-4xl font-medium text-gray-900 mb-8 text-center"
+          className="text-4xl font-medium text-white mb-8 text-center"
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -21,9 +21,9 @@ const TermsAndConditions = () => {
           Terms and Conditions
         </motion.h1>
 
-        <div className="max-w-4xl bg-white rounded-lg shadow-xl p-8 sm:p-10 lg:p-12">
+        <div className="max-w-4xl bg-gray-800 rounded-lg shadow-xl p-8 sm:p-10 lg:p-12">
           <motion.p
-            className="text-gray-700 mb-8 leading-relaxed"
+            className="text-gray-300 mb-8 leading-relaxed"
             initial="hidden"
             animate="visible"
             variants={sectionVariants}
@@ -37,8 +37,8 @@ const TermsAndConditions = () => {
             animate="visible"
             variants={sectionVariants}
           >
-            <h2 className="text-2xl font-medium text-gray-800 mb-4">1. Use of Website</h2>
-            <p className="text-gray-600">
+            <h2 className="text-2xl font-medium text-white mb-4">1. Use of Website</h2>
+            <p className="text-gray-400">
               You agree to use our website and services solely for lawful purposes and in compliance with these terms and conditions.
             </p>
           </motion.section>
@@ -49,8 +49,8 @@ const TermsAndConditions = () => {
             animate="visible"
             variants={sectionVariants}
           >
-            <h2 className="text-2xl font-semibold text-gray-800 mb-4">2. Intellectual Property</h2>
-            <p className="text-gray-600">
+            <h2 className="text-2xl font-semibold text-white mb-4">2. Intellectual Property</h2>
+            <p className="text-gray-400">
               All content, trademarks, and intellectual property displayed on our website are owned by RoririSoft.com or its licensors. You are not permitted to use, reproduce, modify, or distribute any content from our website without prior written consent.
             </p>
           </motion.section>
@@ -61,8 +61,8 @@ const TermsAndConditions = () => {
             animate="visible"
             variants={sectionVariants}
           >
-            <h2 className="text-2xl font-semibold text-gray-800 mb-4">3. Privacy Policy</h2>
-            <p className="text-gray-600">
+            <h2 className="text-2xl font-semibold text-white mb-4">3. Privacy Policy</h2>
+            <p className="text-gray-400">
               Your use of our website and services is subject to our Privacy Policy, which details how we collect, use, and protect your personal information.
             </p>
           </motion.section>
@@ -73,8 +73,8 @@ const TermsAndConditions = () => {
             animate="visible"
             variants={sectionVariants}
           >
-            <h2 className="text-2xl font-semibold text-gray-800 mb-4">4. Third-Party Links</h2>
-            <p className="text-gray-600">
+            <h2 className="text-2xl font-semibold text-white mb-4">4. Third-Party Links</h2>
+            <p className="text-gray-400">
               Our website may include links to third-party websites or services not controlled or owned by RoririSoft.com. We are not responsible for the content, privacy practices, or terms of use of any third-party websites or services.
             </p>
           </motion.section>
@@ -85,8 +85,8 @@ const TermsAndConditions = () => {
             animate="visible"
             variants={sectionVariants}
           >
-            <h2 className="text-2xl font-semibold text-gray-800 mb-4">5. Disclaimer of Warranties</h2>
-            <p className="text-gray-600">
+            <h2 className="text-2xl font-semibold text-white mb-4">5. Disclaimer of Warranties</h2>
+            <p className="text-gray-400">
               While we strive to provide accurate and up-to-date information, RoririSoft.com makes no guarantees about the completeness, accuracy, reliability, or availability of the information, products, or services on our website. Your use of our website and services is at your own risk. We disclaim all warranties, including but not limited to implied warranties of merchantability, fitness for a particular purpose, and non-infringement.
             </p>
           </motion.section>
@@ -97,8 +97,8 @@ const TermsAndConditions = () => {
             animate="visible"
             variants={sectionVariants}
           >
-            <h2 className="text-2xl font-semibold text-gray-800 mb-4">6. Limitation of Liability</h2>
-            <p className="text-gray-600">
+            <h2 className="text-2xl font-semibold text-white mb-4">6. Limitation of Liability</h2>
+            <p className="text-gray-400">
               RoririSoft.com shall not be liable for any direct, indirect, incidental, special, or consequential damages resulting from your use of our website or services.
             </p>
           </motion.section>
@@ -109,8 +109,8 @@ const TermsAndConditions = () => {
             animate="visible"
             variants={sectionVariants}
           >
-            <h2 className="text-2xl font-semibold text-gray-800 mb-4">7. Governing Law</h2>
-            <p className="text-gray-600">
+            <h2 className="text-2xl font-semibold text-white mb-4">7. Governing Law</h2>
+            <p className="text-gray-400">
               These terms and conditions are governed by and construed in accordance with the laws of India, without regard to its conflict of law provisions.
             </p>
           </motion.section>
@@ -121,8 +121,8 @@ const TermsAndConditions = () => {
             animate="visible"
             variants={sectionVariants}
           >
-            <h2 className="text-2xl font-semibold text-gray-800 mb-4">8. Changes to Terms</h2>
-            <p className="text-gray-600">
+            <h2 className="text-2xl font-semibold text-white mb-4">8. Changes to Terms</h2>
+            <p className="text-gray-400">
               We reserve the right to update or modify these terms and conditions at any time without prior notice. Your continued use of our website and services constitutes acceptance of the revised terms.
             </p>
           </motion.section>
@@ -132,11 +132,11 @@ const TermsAndConditions = () => {
             animate="visible"
             variants={sectionVariants}
           >
-            <h2 className="text-2xl font-semibold text-gray-800 mb-4">9. Contact Us</h2>
-            <p className="text-gray-600">
-              If you have any questions or concerns regarding these terms and conditions, please contact us at <a href="mailto:info@roririsoft.com" className="text-blue-600 hover:underline">info@roririsoft.com</a>.
+            <h2 className="text-2xl font-semibold text-white mb-4">9. Contact Us</h2>
+            <p className="text-gray-400">
+              If you have any questions or concerns regarding these terms and conditions, please contact us at <a href="mailto:info@roririsoft.com" className="text-blue-400 hover:underline">info@roririsoft.com</a>.
             </p>
-            <p className="text-gray-600 mt-2">
+            <p className="text-gray-400 mt-2">
               By using our website and services, you acknowledge that you have read, understood, and agree to be bound by these terms and conditions. If you do not agree with any part of these terms, please discontinue your use of our website and services.
             </p>
           </motion.section>
