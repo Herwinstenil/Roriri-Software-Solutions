@@ -184,15 +184,24 @@ const Footer = () => {
                             <div className="space-y-2 text-sm text-gray-400">
                                 <div className="flex items-center space-x-2 group cursor-pointer hover:text-white transition-colors duration-300">
                                     <Phone className="w-4 h-4 group-hover:scale-110 transition-transform duration-300" />
-                                    <span>+1 (555) 123-4567</span>
+                                    <span>(+91) 7338941579</span>
                                 </div>
-                                <div className="flex items-center space-x-2 group cursor-pointer hover:text-white transition-colors duration-300">
+                                <a
+                                    href="https://mail.google.com/mail/?view=cm&to=contact@roririsoft.com"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center space-x-2 group cursor-pointer hover:text-white transition-colors duration-300"
+                                >
                                     <Mail className="w-4 h-4 group-hover:scale-110 transition-transform duration-300" />
-                                    <span>hello@roriri.com</span>
-                                </div>
-                                <div className="flex items-center space-x-2 group cursor-pointer hover:text-white transition-colors duration-300">
-                                    <MapPin className="w-4 h-4 group-hover:scale-110 transition-transform duration-300" />
-                                    <span>123 Digital Street, Tech City</span>
+                                    <span>contact@roririsoft.com</span>
+                                </a>
+                                <div className="flex items-start space-x-2 group cursor-pointer hover:text-white transition-colors duration-300">
+                                    <MapPin className="w-4 h-4 mt-1 group-hover:scale-110 transition-transform duration-300 flex-shrink-0" />
+                                    <div className="text-left text-sm leading-relaxed">
+                                        <div>RORIRI IT PARK</div>
+                                        <div>Nallanthapuram, Kalakad</div>
+                                        <div>Tamil Nadu 629003</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
