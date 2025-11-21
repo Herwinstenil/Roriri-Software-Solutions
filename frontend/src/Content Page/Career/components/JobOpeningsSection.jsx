@@ -1,140 +1,152 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const JobCard = ({ job, animationDelay }) => {
+// Job Card Component
+const JobCard = ({ job, index }) => {
+  const [isHovered, setIsHovered] = React.useState(false);
+
   return (
     <motion.div
-      className="bg-white italic  rounded-xl shadow-lg p-6 md:p-8 border border-gray-200 flex flex-col items-start text-left"
-      initial={{ opacity: 0, y: 50 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: animationDelay }}
-      whileHover={{
-        boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.1)",
-        y: -5 
-      }}
+      className="relative group"
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      whileHover={{ y: -10 }}
+      onHoverStart={() => setIsHovered(true)}
+      onHoverEnd={() => setIsHovered(false)}
     >
-      <h3 className="text-xl md:text-2xl font-semibold text-gray-800 mb-3 leading-tight">
-        {job.title}
-      </h3>
+      {/* Glowing border effect */}
+      <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 rounded-2xl opacity-0 group-hover:opacity-75 blur-xl transition duration-500" />
 
-      <div className="flex flex-wrap gap-2 mb-4">
-        {job.tags.map((tag, index) => (
-          <span
-            key={index}
-            className="px-3 py-1 text-sm font-medium rounded-full bg-purple-100 text-purple-700"
+      <div className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-black border border-cyan-500/30 rounded-2xl p-6 backdrop-blur-xl overflow-hidden h-full flex flex-col">
+        {/* Animated background pattern */}
+        <motion.div
+          className="absolute inset-0 opacity-10"
+          style={{
+            backgroundImage: 'radial-gradient(circle at 50% 50%, cyan 1px, transparent 1px)',
+            backgroundSize: '20px 20px'
+          }}
+          animate={isHovered ? { scale: 1.2, rotate: 5 } : { scale: 1, rotate: 0 }}
+          transition={{ duration: 0.5 }}
+        />
+
+        {/* Corner accents */}
+        <div className="absolute top-0 left-0 w-20 h-20 border-t-2 border-l-2 border-cyan-400/50 rounded-tl-2xl" />
+        <div className="absolute bottom-0 right-0 w-20 h-20 border-b-2 border-r-2 border-purple-400/50 rounded-br-2xl" />
+
+        <div className="relative z-10 flex flex-col h-full">
+          <div className="flex items-start justify-between mb-4">
+            <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400">
+              {job.title}
+            </h3>
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+              className="w-10 h-10 rounded-full bg-gradient-to-r from-cyan-500 to-purple-500 flex items-center justify-center text-lg"
+            >
+              💼
+            </motion.div>
+          </div>
+
+          <div className="flex flex-wrap gap-2 mb-4">
+            {job.tags.map((tag, idx) => (
+              <span
+                key={idx}
+                className="px-3 py-1 text-xs font-semibold rounded-full bg-gradient-to-r from-cyan-500/20 to-purple-500/20 border border-cyan-400/30 text-cyan-300"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+
+          <div className="flex items-center gap-4 mb-4 text-sm text-gray-400">
+            <span className="flex items-center gap-1">
+              <span className="text-purple-400">📍</span> {job.location}
+            </span>
+            <span className="flex items-center gap-1">
+              <span className="text-cyan-400">⏱️</span> {job.experience}
+            </span>
+          </div>
+
+          <p className="text-gray-300 text-sm mb-6 flex-grow leading-relaxed">
+            {job.description}
+          </p>
+
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="relative group/btn overflow-hidden cursor-pointer"
           >
-            {tag}
-          </span>
-        ))}
+            <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 opacity-100 group-hover/btn:opacity-100 transition-opacity duration-300" />
+            <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 opacity-0 group-hover/btn:opacity-100 blur-xl transition-opacity duration-300" />
+            <span className="relative z-10 block px-6 py-3 text-white font-bold text-center rounded-xl border-2 border-transparent group-hover/btn:border-white/50">
+              APPLY NOW →
+            </span>
+          </motion.button>
+        </div>
       </div>
-
-      <p className="text-gray-600 text-sm mb-4">
-        <span className="font-medium">{job.experience}</span> • {job.location}
-      </p>
-
-      <p className="text-gray-600 text-sm md:text-base mb-6 flex-grow">
-        {job.description}
-      </p>
-<motion.a
-  href={`/jobs/${job.id}`} 
-  whileHover={{ scale: 1.05, y: -2, boxShadow: "0px 8px 15px rgba(0, 0, 0, 0.2)" }} 
-  whileTap={{ scale: 0.95 }}
-  className="mt-auto bg-gradient-to-r from-purple-600 to-indigo-700 text-white font-semibold py-2 px-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 flex items-center justify-center space-x-2"
->
-  <span>APPLY</span>
-  <svg
-    className="w-4 h-4"
-    fill="none"
-    stroke="currentColor"
-    viewBox="0 0 24 24"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="2"
-      d="M17 8l4 4m0 0l-4 4m4-4H3"
-    ></path>
-  </svg>
-</motion.a>
     </motion.div>
   );
 };
 
-
 const JobOpeningsSection = () => {
-  const jobPostings = [
+  const jobs = [
     {
-        id: 'fullstack-developer',
+      id: 'fullstack-developer',
       title: 'Fullstack Developer',
-      tags: ['Full time', 'Office'],
+      tags: ['Full time', 'Office', 'Remote'],
       experience: '2 Years+',
       location: 'Tirunelveli, Kalakad',
-      description: 'Strong problem-solving skills and understanding of backend technologies (e.g., Node.js, Express).',
+      description: 'Strong problem-solving skills and understanding of backend technologies (e.g., Node.js, Express). Build the future of web applications.'
     },
     {
-        id:'technical-trainer',
+      id: 'technical-trainer',
       title: 'Technical Trainer',
       tags: ['Full time', 'Office'],
       experience: '0-1 Year',
       location: 'Tirunelveli, Kalakad',
-      description: 'Strong verbal and written communication for delivering content and interacting with trainees',
+      description: 'Strong verbal and written communication for delivering content and interacting with trainees. Shape the next generation of tech talent.'
     },
     {
-        id:'network-engineer',
+      id: 'network-engineer',
       title: 'Network Engineer',
       tags: ['Full time', 'Office'],
       experience: '0-1 Year',
       location: 'Tirunelveli, Kalakad',
-      description: 'Installing Network Hardware, Set up routers, switches, firewalls, and other network devices.',
+      description: 'Installing Network Hardware, Set up routers, switches, firewalls, and other network devices. Build infrastructure that powers innovation.'
     },
     {
-        id:'business-development-executive',
+      id: 'business-development',
       title: 'Business Development Executive',
-      tags: ['Full time', 'Office'],
+      tags: ['Full time', 'Office', 'Hybrid'],
       experience: '2 Years+',
       location: 'Tirunelveli, Kalakad',
-      description: 'Research and analyze market trends, competitors, and industry developments.',
+      description: 'Research and analyze market trends, competitors, and industry developments. Drive growth and forge strategic partnerships.'
     },
     {
-        id:'python-developer',
+      id: 'python-developer',
       title: 'Python Developer',
-      tags: ['Full time', 'Office'],
+      tags: ['Full time', 'Remote'],
       experience: '2 Years+',
       location: 'Tirunelveli, Kalakad',
-      description: 'Proficiency in Python and frameworks like Django or Flask. Experience with database systems (e.g., PostgreSQL, MySQL, or MongoDB).',
+      description: 'Proficiency in Python and frameworks like Django or Flask. Create powerful backend solutions that scale.'
     },
-    
+    {
+      id: 'ai-engineer',
+      title: 'AI/ML Engineer',
+      tags: ['Full time', 'Office', 'Remote'],
+      experience: '3 Years+',
+      location: 'Tirunelveli, Kalakad',
+      description: 'Build intelligent systems using cutting-edge AI/ML technologies. Shape the future with artificial intelligence.'
+    }
   ];
 
-  const headerVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.7, delay: 0.2 } },
-  };
-
   return (
-    <div className="bg-white-50 py-16 px-4"> 
-      <div className="container mx-auto">
-        <motion.h2
-          className="text-3xl md:text-4xl font-medium text-gray-800 mb-12 text-center md:text-left"
-          initial="hidden"
-          animate="visible"
-          variants={headerVariants}
-        >
-          Currently We are Hiring for
-        </motion.h2>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {jobPostings.map((job, index) => (
-            <JobCard
-              key={job.title + index} 
-              job={job}
-              animationDelay={0.4 + index * 0.1} 
-            />
-          ))}
-        </div>
-      </div>
-    </div>
+    <>
+      {jobs.map((job, index) => (
+        <JobCard key={job.id} job={job} index={index} />
+      ))}
+    </>
   );
 };
 
