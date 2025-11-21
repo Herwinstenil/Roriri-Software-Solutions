@@ -153,27 +153,27 @@ const Career = () => {
                 embraces challenges, and celebrates success in the cutting-edge world of technology.
               </motion.p>
 
-               <a href="#JobOpeningsSection" className="mx-auto md:mx-0">
-              <motion.button
-                className="group relative overflow-hidden px-8 py-4 rounded-full cursor-pointer"
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.9 }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500" />
-                <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <span className="relative z-10 text-white font-bold text-lg flex items-center gap-2">
-                  Explore Job Opportunities
-                  <motion.span
-                    animate={{ x: [0, 5, 0] }}
-                    transition={{ duration: 1, repeat: Infinity }}
-                  >
-                    →
-                  </motion.span>
-                </span>
-              </motion.button>
+              <a href="#JobOpeningsSection" className="mx-auto md:mx-0">
+                <motion.button
+                  className="group relative overflow-hidden px-8 py-4 rounded-full cursor-pointer"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.9 }}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <span className="relative z-10 text-white font-bold text-lg flex items-center gap-2">
+                    Explore Job Opportunities
+                    <motion.span
+                      animate={{ x: [0, 5, 0] }}
+                      transition={{ duration: 1, repeat: Infinity }}
+                    >
+                      →
+                    </motion.span>
+                  </span>
+                </motion.button>
               </a>
             </motion.div>
 
@@ -241,7 +241,7 @@ const Career = () => {
             </span>
           </motion.h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <FeatureCard />
           </div>
         </div>

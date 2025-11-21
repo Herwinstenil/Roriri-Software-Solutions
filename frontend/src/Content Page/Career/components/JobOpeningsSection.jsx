@@ -1,9 +1,15 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 
 // Job Card Component
 const JobCard = ({ job, index }) => {
   const [isHovered, setIsHovered] = React.useState(false);
+  const navigate = useNavigate();
+
+  const handleApplyClick = () => {
+    navigate(`/jobs/${job.id}`);
+  };
 
   return (
     <motion.div
@@ -73,6 +79,7 @@ const JobCard = ({ job, index }) => {
           </p>
 
           <motion.button
+            onClick={handleApplyClick}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="relative group/btn overflow-hidden cursor-pointer"
