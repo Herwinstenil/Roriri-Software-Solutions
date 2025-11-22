@@ -1,16 +1,17 @@
-
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import jobData from './Job_Details/jobData';
 import JobApplicationForm from './components/JobApplicationForm';
+import Navbar from '../../components/Navbar/Navbar';
+import Footer from '../../components/Footer/Footer';
 
 const JobDescriptionPage = () => {
   const { jobId } = useParams();
   const [job, setJob] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false); 
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const fetchJobDetails = async () => {
@@ -39,7 +40,6 @@ const JobDescriptionPage = () => {
 
   if (!job) return <div className="flex items-center justify-center min-h-screen text-gray-700">Job details could not be loaded.</div>;
 
-  
   const backdropVariants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1 },
@@ -51,16 +51,16 @@ const JobDescriptionPage = () => {
     visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
     exit: { opacity: 0, y: 50 }
   };
-    const sectionVariants = {
+  const sectionVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
   };
 
   return (
     <div className="bg-gray-50 min-h-screen">
-      <div className="container mx-auto p-6 md:p-8 lg:p-12 flex flex-col lg:flex-row gap-8">
-        
-         <div className="container mx-auto p-6 md:p-8 lg:p-12 flex flex-col lg:flex-row gap-8">
+      <Navbar />
+      {/* Increased margin-top to move content further down */}
+      <div className="container mx-auto p-6 md:p-8 lg:p-12 flex flex-col lg:flex-row gap-8 mt-16 md:mt-20">
         
         <div className="flex-1 bg-white rounded-xl shadow-lg p-6 md:p-8 lg:p-10">
           <motion.h1
@@ -205,14 +205,12 @@ const JobDescriptionPage = () => {
           </motion.ul>
         </div>
 
-      </div>
-
         <div className="lg:w-96 flex-shrink-0">
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="sticky top-28 bg-white rounded-xl shadow-lg p-6 md:p-8 flex flex-col"
+            className="sticky top-32 bg-white rounded-xl shadow-lg p-6 md:p-8 flex flex-col"
           >
             <h3 className="text-xl md:text-2xl font-semibold text-gray-800 mb-4">{job.title}</h3>
             <div className="space-y-3 text-gray-700 mb-6">
@@ -234,54 +232,54 @@ const JobDescriptionPage = () => {
       </div>
 
       <AnimatePresence>
-  {isModalOpen && (
-    <motion.div
-      className="fixed inset-0 bg-gradient-to-br from-purple-900 via-black to-purple-900 bg-opacity-80 flex justify-center items-center z-50"
-      variants={backdropVariants}
-      initial="hidden"
-      animate="visible"
-      exit="exit"
-      onClick={() => setIsModalOpen(false)}
-    >
-     
-      <motion.div
-        className="absolute inset-0 pointer-events-none"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.3 }}
-        style={{
-          background: `radial-gradient(circle at center, rgba(255,255,255,0.3), rgba(0,0,0,0.8))`,
-          mixBlendMode: 'overlay',
-        }}
-      ></motion.div>
+        {isModalOpen && (
+          <motion.div
+            className="fixed inset-0 bg-gradient-to-br from-purple-900 via-black to-purple-900 bg-opacity-80 flex justify-center items-center z-50"
+            variants={backdropVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            onClick={() => setIsModalOpen(false)}
+          >
 
-      <motion.div
-        className="bg-white rounded-lg shadow-xl p-6 md:p-8 w-full max-w-md lg:max-w-lg relative max-h-[90vh] overflow-y-auto"
-        variants={modalVariants}
-        initial="hidden"
-        animate="visible"
-        exit="exit"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <button
-          onClick={() => setIsModalOpen(false)}
-          className="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-2xl"
-        >
-          &times;
-        </button>
-        <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-6 text-center">
-          Job Application Form
-        </h2>
-        <JobApplicationForm
-          isOpen={isModalOpen}   
-          onClose={() => setIsModalOpen(false)}
-          jobTitle={job.title}
-        />
-      </motion.div>
-    </motion.div>
-  )}
-</AnimatePresence>
+            <motion.div
+              className="absolute inset-0 pointer-events-none"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 0.3 }}
+              style={{
+                background: `radial-gradient(circle at center, rgba(255,255,255,0.3), rgba(0,0,0,0.8))`,
+                mixBlendMode: 'overlay',
+              }}
+            ></motion.div>
 
-    </div>
+            <motion.div
+              className="bg-white rounded-lg shadow-xl p-6 md:p-8 w-full max-w-md lg:max-w-lg relative max-h-[90vh] overflow-y-auto"
+              variants={modalVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                onClick={() => setIsModalOpen(false)}
+                className="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-2xl"
+              >
+                &times;
+              </button>
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-6 text-center">
+                Job Application Form
+              </h2>
+              <JobApplicationForm
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+                jobTitle={job.title}
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+      <Footer />
+    </div >
   );
 };
 
