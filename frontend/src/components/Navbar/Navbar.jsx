@@ -41,8 +41,8 @@ const Navbar = () => {
             icon: Info,
             path: "/about",
             submenu: [
-                { title: "Products", path: "/products" },
-                { title: "Events", path: "/events" },
+                { title: "Products", path: "/product" },
+                { title: "Events", path: "/event" },
             ]
         },
         {

@@ -18,6 +18,10 @@ import Contact from './Content Page/Contact/Contact'
 import EventsComponent from './Content Page/Event/Event'
 import Product from './Content Page/Product/Product'
 import ServicesPage from './Content Page/Services/service'
+import ERPSolutions from './Content Page/Services/components/ERP_solution'
+import MobileAppDevelopmentPage from './Content Page/Services/components/MobileApp-development'
+import WebDevelopment from './Content Page/Services/components/Web_developmentDetailsPage'
+import IT_Consulting from './Content Page/Services/components/IT_Consulting'
 import Whatwedo from './Content Page/WhatweDo/WhatweDo'
 import MarketingSection from './Content Page/MarcetingSection/MarketingSection'
 import { AuthProvider } from './Context/AuthContext'
@@ -45,7 +49,12 @@ function AppContent() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/event" element={<EventsComponent />} />
         <Route path="/product" element={<Product />} />
+        <Route path="/products/:id" element={<Product />} />
         <Route path="/services" element={<ServicesPage />} />
+        <Route path="/services/erp-solutions" element={<ERPSolutions />} />
+        <Route path="/services/mobile-app-development" element={<MobileAppDevelopmentPage />} />
+        <Route path="/services/web-app-development" element={<WebDevelopment />} />
+        <Route path="/services/it-consulting" element={<IT_Consulting />} />
         <Route path="/whatwedo" element={<Whatwedo />} />
         <Route path="/marketing" element={<MarketingSection />} />
 

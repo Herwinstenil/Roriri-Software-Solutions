@@ -42,27 +42,27 @@ const Footer = () => {
 
     const quickLinks = [
         { name: 'Home', href: '/' },
-        { name: 'About Us', href: '#about' },
+        { name: 'About Us', href: '/about' },
         { name: 'Careers', href: '/career' },
-        { name: 'Contact', href: '#contact' }
+        { name: 'Contact', href: '/contact' }
     ];
 
     const aboutUsLinks = [
-        { name: 'Our Story', href: '#about' },
-        { name: 'Events', href: '#events' },
+        { name: 'Our Story', href: '/about' },
+        { name: 'Events', href: '/event' },
     ];
 
     const services = [
-        'Mobile App Development',
-        'Web Development',
-        'All Products & Trials',
-        'IT consulting'
+        { name: 'Mobile App Development', href: '/services/mobile-app-development' },
+        { name: 'Web Development', href: '/services/web-app-development' },
+        { name: 'All Products & Trials', href: '/product' },
+        { name: 'IT consulting', href: '/services/it-consulting' }
     ];
 
     const productLinks = [
-        { name: 'ERP Solutions ', href: '#erp-solutions' },
-        { name: 'Roriri Attedence App', href: '#products' },
-        { name: 'Nexemy', href: '#products' },
+        { name: 'ERP Solutions ', href: '/services/erp-solutions' },
+        { name: 'Roriri Attedence App', href: '/products/2' },
+        { name: 'Nexemy', href: '/products/1' },
     ];
 
     const handleSubscribe = (e) => {
@@ -168,13 +168,13 @@ const Footer = () => {
                             </h3>
                             <ul className="space-y-3">
                                 {services.map((service, index) => (
-                                    <li key={service}>
+                                    <li key={service.name}>
                                         <a
-                                            href="#"
+                                            href={service.href}
                                             className="text-gray-400 hover:text-white transition-all duration-300 flex items-center group"
                                         >
                                             <span className="w-0 group-hover:w-2 h-0.5 bg-gradient-to-r from-blue-500 to-purple-600 mr-0 group-hover:mr-2 transition-all duration-300 rounded"></span>
-                                            {service}
+                                            {service.name}
                                         </a>
                                     </li>
                                 ))}
