@@ -12,19 +12,12 @@ import JobApplicationForm from "./Content Page/Career/components/JobApplicationF
 import PrivacyPolicy from './Content Page/PrivacyPolicy/PrivacyPolicy'
 import TermsCondition from './Content Page/TermsCondition/TermsCondition'
 import { AuthProvider } from './Context/AuthContext'
-import Loader from './components/Loader/Loader'
 
 function AppContent() {
-  const [isLoading, setIsLoading] = useState(true)
   const location = useLocation()
-
-  useEffect(() => {
-    setIsLoading(true)
-  }, [location.pathname])
 
   return (
     <>
-      <Loader isVisible={isLoading} onComplete={() => setIsLoading(false)} duration={3000} />
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/signin" element={<Signin />} />
