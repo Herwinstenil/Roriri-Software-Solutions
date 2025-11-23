@@ -1,10 +1,7 @@
-import Navbar from '../../components/Navbar/Navbar'
-import Footer from '../../components/Footer/Footer'
 
 const Landing = () => {
     return (
         <div className="flex flex-col min-h-screen">
-            <Navbar />
             <main className="flex-grow">
                 {/* Demo Content */}
                 <div className="pt-24">
@@ -21,7 +18,6 @@ const Landing = () => {
                     </div>
                 </div>
             </main>
-            <Footer />
         </div>
     );
 };

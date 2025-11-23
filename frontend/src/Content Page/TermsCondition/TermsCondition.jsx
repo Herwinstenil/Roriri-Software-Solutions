@@ -1,6 +1,4 @@
 import { motion } from 'framer-motion';
-import Navbar from '../../components/Navbar/Navbar';
-import Footer from '../../components/Footer/Footer';
 
 const TermsAndConditions = () => {
   const sectionVariants = {
@@ -10,7 +8,6 @@ const TermsAndConditions = () => {
 
   return (
     <>
-      <Navbar />
       <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex flex-col items-center pt-24 pb-12 px-4 sm:px-6 lg:px-8">
         <motion.h1
           className="text-4xl font-medium text-white mb-8 text-center"
@@ -142,7 +139,6 @@ const TermsAndConditions = () => {
           </motion.section>
         </div>
       </div>
-      <Footer />
     </>
   );
 };
