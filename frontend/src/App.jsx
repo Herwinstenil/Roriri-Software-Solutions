@@ -14,6 +14,12 @@ import JobDescriptionPage from "./Content Page/Career/JobDescription";
 import JobApplicationForm from "./Content Page/Career/components/JobApplicationForm";
 import PrivacyPolicy from './Content Page/PrivacyPolicy/PrivacyPolicy'
 import TermsCondition from './Content Page/TermsCondition/TermsCondition'
+import Contact from './Content Page/Contact/Contact'
+import EventsComponent from './Content Page/Event/Event'
+import Product from './Content Page/Product/Product'
+import ServicesPage from './Content Page/Services/service'
+import Whatwedo from './Content Page/WhatweDo/WhatweDo'
+import MarketingSection from './Content Page/MarcetingSection/MarketingSection'
 import { AuthProvider } from './Context/AuthContext'
 
 function AppContent() {
@@ -36,6 +42,12 @@ function AppContent() {
         <Route path="/jobapplicationform" element={<JobApplicationForm />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms-condition" element={<TermsCondition />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/event" element={<EventsComponent />} />
+        <Route path="/product" element={<Product />} />
+        <Route path="/services" element={<ServicesPage />} />
+        <Route path="/whatwedo" element={<Whatwedo />} />
+        <Route path="/marketing" element={<MarketingSection />} />
 
         {/* Auth pages */}
         <Route path="/signin" element={<Signin />} />
