@@ -29,7 +29,7 @@ function AppContent() {
   const location = useLocation()
 
   // pages that should hide navbar + footer
-  const hideLayout = ["/signin", "/login"].includes(location.pathname)
+  const hideLayout = ["/signin", "/login", "/appointment"].includes(location.pathname)
 
   return (
     <>
@@ -40,13 +40,13 @@ function AppContent() {
           {/* Auth pages */}
           <Route path="/signin" element={<Signin />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/appointment" element={<AppointmentBooking />} />
         </Routes>
       ) : (
         <div className="pt-20">
           <Routes>
             <Route path="/" element={<Landing />} />
             <Route path="/about" element={<About />} />
-            <Route path="/appointment" element={<AppointmentBooking />} />
             <Route path="/internship" element={<Internship />} />
             <Route path="/career" element={<Career />} />
             <Route path="/jobs/:jobId" element={<JobDescriptionPage />} />
