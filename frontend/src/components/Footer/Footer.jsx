@@ -65,13 +65,6 @@ const Footer = () => {
         { name: 'Nexemy', href: '/products/1' },
     ];
 
-    const handleSubscribe = (e) => {
-        e.preventDefault();
-        // Handle subscription logic
-        alert('Thanks for subscribing!');
-        setEmail('');
-    };
-
     return (
         <>
             <footer className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white overflow-hidden">
@@ -205,31 +198,9 @@ const Footer = () => {
                         {/* Newsletter */}
                         <div className="space-y-6 animate-fadeInUp" style={{ animationDelay: '0.35s' }}>
                             <h3 className="text-xl font-bold relative inline-block">
-                                Stay Updated
+                               Connect With Us
                                 <div className="absolute -bottom-2 left-0 w-12 h-1 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full"></div>
                             </h3>
-                            <p className="text-gray-400 text-sm">
-                                Subscribe to our newsletter for the latest updates and offers.
-                            </p>
-                            <div className="space-y-3">
-                                <div className="relative group">
-                                    <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-blue-500 transition-colors duration-300" />
-                                    <input
-                                        type="email"
-                                        value={email}
-                                        onChange={(e) => setEmail(e.target.value)}
-                                        placeholder="Your email"
-                                        className="w-full pl-12 pr-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300 text-white placeholder-gray-500"
-                                    />
-                                </div>
-                                <button
-                                    onClick={handleSubscribe}
-                                    className="w-full px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg font-semibold hover:shadow-lg hover:shadow-blue-500/50 transform hover:scale-105 transition-all duration-300 relative overflow-hidden group"
-                                >
-                                    <span className="relative z-10">Subscribe</span>
-                                    <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                                </button>
-                            </div>
                             <div className="space-y-2 text-sm text-gray-400">
                                 <div className="flex items-center space-x-2 group cursor-pointer hover:text-white transition-colors duration-300">
                                     <Phone className="w-4 h-4 group-hover:scale-110 transition-transform duration-300" />

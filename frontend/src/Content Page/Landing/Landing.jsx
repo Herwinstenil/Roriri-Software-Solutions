@@ -2,7 +2,6 @@ import { motion as Motion, AnimatePresence } from 'framer-motion';
 import TextType from "../../components/ui/TextType/TypeWriter";
 import SplitText from '../../components/ui/SplitText/splitText';
 import CountUp from '../../components/ui/CountUp/CountUp';
-import TargetCursor from '../../components/ui/TargetCursor/TargetCursor';
 import Marquees from '../../components/ui/Marquee/Marquee';
 import ScrollVelocity from '../../components/ui/ScrollVelocity/ScrollVelocity';
 import Whatwedo from '../WhatweDo/Whatwedo';
@@ -111,10 +110,6 @@ const Landing = () => {
           </div>
 
           <div className='mt-10'>
-            <TargetCursor
-              spinDuration={2}
-              hideDefaultCursor={true}
-            />
             <button className="cursor-target flex from-purple-500 px-3 py-2 bg-gradient-to-r text-white rounded-lg to-blue-500 hover:from-purple-600 // Keep this hover:to-blue-600 " 
             onClick={() => navigate('/contact')}>Book a free Consulting</button>
           </div>
