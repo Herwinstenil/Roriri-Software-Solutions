@@ -7,25 +7,25 @@ const servicesData = [
   {
     id: 1,
     title: 'ERP Solutions',
-    path:'erp-solutions',
+    path: 'erp-solutions',
     description: 'Provides ERP solutions for organizations to streamline processes.',
   },
   {
     id: 2,
     title: 'Mobile App Development',
-    path:'mobile-app-development',
+    path: 'mobile-app-development',
     description: 'Develops mobile apps to enhance your digital presence.',
   },
   {
     id: 3,
     title: 'Web Development',
-    path:'web-app-development',
+    path: 'web-app-development',
     description: 'Builds custom web applications tailored to your business needs.',
   },
   {
     id: 6,
     title: 'IT Consulting',
-    path:'it-consulting',
+    path: 'it-consulting',
     description: 'Offers expert IT consulting to optimize your operations.',
   },
 ];
@@ -40,24 +40,24 @@ const Whatwedo = () => {
             What we do?
           </h2>
           <h1 className="mt-2 text-xl flex flex-col items-center sm:text-xl lg:text-6xl font-medium  text-gray-900">
-            Innovative Solutions for <br className="hidden " /> 
+            Innovative Solutions for <br className="hidden " />
             <RotatingText
-  texts={['Business Success & Growth', 'Digital Excellence', 'Future-Proof Your Business']}
-  mainClassName="px-2 sm:px-2 md:px-3   overflow-hidden py-0.5 sm:py-1 md:py-2  rounded-lg "
-  staggerFrom={"last"}
-  initial={{ y: "100%" }}
-  animate={{ y: 0 }}
-  exit={{ y: "-120%" }}
-  staggerDuration={0.025}
-  splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
-  transition={{ type: "spring", damping: 30, stiffness: 400 }}
-  rotationInterval={3000}
-/>
+              texts={['Business Success & Growth', 'Digital Excellence', 'Future-Proof Your Business']}
+              mainClassName="px-2 sm:px-2 md:px-3   overflow-hidden py-0.5 sm:py-1 md:py-2  rounded-lg "
+              staggerFrom={"last"}
+              initial={{ y: "100%" }}
+              animate={{ y: 0 }}
+              exit={{ y: "-120%" }}
+              staggerDuration={0.025}
+              splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
+              transition={{ type: "spring", damping: 30, stiffness: 400 }}
+              rotationInterval={3000}
+            />
           </h1>
         </div>
         <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-8 ">
           {servicesData.map((service) => (
-            <div onClick={()=>navigate(`/services/${service?.path}`)}
+            <div onClick={() => navigate(`/services/${service?.path}`)}
               key={service.id}
               className={`
                 relative bg-white rounded-xl shadow-lg p-6 group cursor-target border-2 border-purple-600
@@ -89,9 +89,9 @@ const Whatwedo = () => {
             </div>
           ))}
         </div>
-      </div> 
+      </div>
       <div className=''>
-    <DotLottieReact
+        <DotLottieReact
           className=" sm:w-[400px] p-3 sm:h-[400px] md:w-[500px] md:h-[500px] lg:w-[500px] lg:h-[600px]"
           src={lottie2}
           loop

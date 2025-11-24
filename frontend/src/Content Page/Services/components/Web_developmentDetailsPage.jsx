@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion as Motion} from 'framer-motion';
+import { motion as Motion } from 'framer-motion';
 import { development1 } from '../../../assets/services/service';
 import { development2 } from '../../../assets/services/service';
 import { development3 } from '../../../assets/services/service';
@@ -9,7 +9,6 @@ import { dynamic2 } from '../../../assets/services/service';
 import { ec1 } from '../../../assets/services/service';
 import { multi1 } from '../../../assets/services/service';
 import ServicesContact from './ServicesContact';
-
 
 const WebDevelopment = () => {
     const sectionVariants = {
@@ -29,7 +28,6 @@ const WebDevelopment = () => {
 
     return (
         <div className="font-inter antialiased bg-gray-50">
-
             <Motion.section
                 className="relative bg-gray-900 text-white py-16 md:py-24 overflow-hidden rounded-b-lg shadow-lg"
                 initial="hidden"
@@ -51,17 +49,19 @@ const WebDevelopment = () => {
                         >
                             Web Applications
                         </Motion.h1>
+
                         <Motion.p
                             className="text-md md:text-lg mb-8 opacity-90 rounded-lg"
                             initial={{ opacity: 0, x: -50 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.8, delay: 0.4 }}
                         >
-                            At Roriri Software Solutions, we redefine the standards of website development. 
-                            As trendsetters and game changers in the industry, we specialize in crafting innovative and 
+                            At Roriri Software Solutions, we redefine the standards of website development.
+                            As trendsetters and game changers in the industry, we specialize in crafting innovative and
                             customized websites tailored to meet your business needs.
-                            
+
                         </Motion.p>
+
                         <Motion.button
                             onClick={() => window.scrollTo({ top: document.getElementById('servicescontact').offsetTop, behavior: 'smooth' })}
                             className="cursor-pointer bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:from-purple-700 hover:to-indigo-700 transition duration-300 flex items-center justify-center mx-auto md:mx-0"
@@ -72,6 +72,7 @@ const WebDevelopment = () => {
                             <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path></svg>
                         </Motion.button>
                     </div>
+
                     <div className="md:w-1/2 flex justify-center md:justify-end relative">
                         <Motion.img
                             src={development1}
@@ -94,6 +95,7 @@ const WebDevelopment = () => {
                     </div>
                 </div>
             </Motion.section>
+
             <Motion.section
                 className="py-16 md:py-24 bg-white rounded-lg shadow-md mx-auto my-12 max-w-screen-xl px-4"
                 initial="hidden"
@@ -122,6 +124,7 @@ const WebDevelopment = () => {
                             onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/400x250/B8B8F0/312E81?text=Web+Dev+Image+2'; }}
                         />
                     </div>
+
                     <div className="md:w-1/2 md:pl-16 text-center md:text-left">
                         <p className="text-sm text-gray-600 uppercase tracking-wider mb-2 rounded-lg">Trendsetter And Game Changer</p>
                         <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight rounded-lg">Roriri Website Development Services</h2>
@@ -154,6 +157,7 @@ const WebDevelopment = () => {
                     </div>
                 </div>
             </Motion.section>
+
             <Motion.section
                 className="py-16 md:py-24 bg-gray-100 rounded-lg shadow-md mx-auto my-12 max-w-screen-xl px-4"
                 viewport={{ once: true, amount: 0.3 }}
@@ -161,7 +165,6 @@ const WebDevelopment = () => {
             >
                 <div className="container mx-auto text-center">
                     <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12 leading-tight rounded-lg text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">Our Web Development Services</h2>
-
                     <Motion.div
                         className="flex flex-col md:flex-row items-center justify-between mb-16 md:mb-24 bg-white p-8 rounded-xl shadow-lg"
                         variants={sectionVariants}
@@ -180,6 +183,7 @@ const WebDevelopment = () => {
                                 These websites focus on delivering static content that provides essential information about businesses, individuals, or organizations. They are straightforward, lightweight, and ideal for creating a professional or informative online presence without frequent updates.
                             </p>
                         </div>
+
                         <div className="md:w-1/2 flex justify-center md:justify-end">
                             <Motion.img
                                 src={static1}
@@ -193,6 +197,7 @@ const WebDevelopment = () => {
                             />
                         </div>
                     </Motion.div>
+
                     <Motion.div
                         className="flex flex-col md:flex-row-reverse items-center justify-between mb-16 md:mb-24 bg-white p-8 rounded-xl shadow-lg"
                         variants={sectionVariants}
@@ -210,6 +215,7 @@ const WebDevelopment = () => {
                                 Dynamic websites are designed to update content in real-time or based on user interactions. They include features like blogs, social connections, multimedia content, and learning resources. These websites prioritize user engagement and regular updates.
                             </p>
                         </div>
+
                         <div className="md:w-1/2 flex justify-center md:justify-start">
                             <Motion.img
                                 src={dynamic2}
@@ -241,6 +247,7 @@ const WebDevelopment = () => {
                                 These websites enable online transactions, provide interactive tools, or offer exclusive access to members. They are built to manage user data, integrate payment systems, and handle dynamic content for seamless interaction and commerce.
                             </p>
                         </div>
+
                         <div className="md:w-1/2 flex justify-center md:justify-end">
                             <Motion.img
                                 src={ec1}
@@ -272,6 +279,7 @@ const WebDevelopment = () => {
                                 Focused on specific purposes like entertainment, proMotions, or marketing campaigns, these websites use multimedia elements, clear calls-to-action, and interactive features to captivate users and achieve specific goals.
                             </p>
                         </div>
+
                         <div className="md:w-1/2 flex justify-center md:justify-start">
                             <Motion.img
                                 src={multi1}
@@ -287,71 +295,68 @@ const WebDevelopment = () => {
                     </Motion.div>
                 </div>
             </Motion.section>
-          <Motion.section
-    className="py-16 md:py-24 bg-white text-black rounded-lg shadow-md mx-auto my-12 max-w-screen-xl px-4"
-    initial="hidden"
-    whileInView="visible"
-    viewport={{ once: true, amount: 0.3 }}
-    variants={sectionVariants}
->
-    <div className="container mx-auto text-center">
-        <h2 className="text-3xl md:text-4xl font-bold mb-12 leading-tight text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
-            Our Process
-        </h2>
 
-        <div className="relative flex flex-col items-center">
-            
-            <Motion.div
-                className="absolute left-1/2 transform -translate-x-1/2 w-1 bg-gradient-to-b from-purple-500 to-indigo-500 rounded-full z-0"
+            <Motion.section
+                className="py-16 md:py-24 bg-white text-black rounded-lg shadow-md mx-auto my-12 max-w-screen-xl px-4"
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, amount: 0.5 }}
-                variants={processLineVariants}
-            ></Motion.div>
-
-            {[
-                { title: "Strategy", description: "At Roriri Software Solutions, we understand your goals, plan strategically, and ensure successful project execution." },
-                { title: "Design", description: "Roriri Software Solutions designs intuitive, visually appealing websites ensuring seamless experiences aligned with your brand." },
-                { title: "Development", description: "This stage transforms designs into functional websites, enhancing user experience and ensuring seamless functionality and performance." },
-                { title: "Testing", description: "After development, testing ensures bug fixes, smooth usability, and compatibility across platforms and screen sizes." },
-                { title: "Deployment", description: "After testing and approval, the website is deployed live, becoming accessible for users to explore." },
-                { title: "Maintenance", description: "After launch, ongoing maintenance ensures issue resolution, updates, and enhanced functionality for optimal performance." }
-            ].map((item, index) => (
-                <Motion.div
-                    key={index}
-                    className={`flex flex-col md:flex-row items-center w-full my-6 md:my-8 z-10 ${index % 2 === 0 ? '' : 'md:flex-row-reverse'}`}
-                    variants={cardVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.2 }}
-                    transition={{ delay: index * 0.15 + 0.5 }}
-                >
-                    
-                    <div className={`w-full md:w-1/2 ${index % 2 === 0 ? 'md:pr-12' : 'md:pl-12'} text-center md:text-left`}>
+                viewport={{ once: true, amount: 0.3 }}
+                variants={sectionVariants}
+            >
+                <div className="container mx-auto text-center">
+                    <h2 className="text-3xl md:text-4xl font-bold mb-12 leading-tight text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
+                        Our Process
+                    </h2>
+                    <div className="relative flex flex-col items-center">
                         <Motion.div
-                            className="bg-white text-black p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1 border border-gray-200"
-                            whileHover={{ scale: 1.02 }}
-                        >
-                            <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-                            <p className="text-gray-700">{item.description}</p>
-                        </Motion.div>
-                    </div>
-                    <div className="hidden md:flex w-1/12 justify-center">
-                        <div className="w-6 h-6 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full shadow-md flex items-center justify-center">
-                            <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
-                            </svg>
-                        </div>
-                    </div>
+                            className="absolute left-1/2 transform -translate-x-1/2 w-1 bg-gradient-to-b from-purple-500 to-indigo-500 rounded-full z-0"
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, amount: 0.5 }}
+                            variants={processLineVariants}
+                        ></Motion.div>
 
-                    
-                    <div className={`w-full md:w-1/2 ${index % 2 === 0 ? 'md:pl-12' : 'md:pr-12'} md:text-right`}>
+                        {[
+                            { title: "Strategy", description: "At Roriri Software Solutions, we understand your goals, plan strategically, and ensure successful project execution." },
+                            { title: "Design", description: "Roriri Software Solutions designs intuitive, visually appealing websites ensuring seamless experiences aligned with your brand." },
+                            { title: "Development", description: "This stage transforms designs into functional websites, enhancing user experience and ensuring seamless functionality and performance." },
+                            { title: "Testing", description: "After development, testing ensures bug fixes, smooth usability, and compatibility across platforms and screen sizes." },
+                            { title: "Deployment", description: "After testing and approval, the website is deployed live, becoming accessible for users to explore." },
+                            { title: "Maintenance", description: "After launch, ongoing maintenance ensures issue resolution, updates, and enhanced functionality for optimal performance." }
+                        ].map((item, index) => (
+                            <Motion.div
+                                key={index}
+                                className={`flex flex-col md:flex-row items-center w-full my-6 md:my-8 z-10 ${index % 2 === 0 ? '' : 'md:flex-row-reverse'}`}
+                                variants={cardVariants}
+                                initial="hidden"
+                                whileInView="visible"
+                                viewport={{ once: true, amount: 0.2 }}
+                                transition={{ delay: index * 0.15 + 0.5 }}
+                            >
+                                <div className={`w-full md:w-1/2 ${index % 2 === 0 ? 'md:pr-12' : 'md:pl-12'} text-center md:text-left`}>
+                                    <Motion.div
+                                        className="bg-white text-black p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1 border border-gray-200"
+                                        whileHover={{ scale: 1.02 }}
+                                    >
+                                        <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
+                                        <p className="text-gray-700">{item.description}</p>
+                                    </Motion.div>
+                                </div>
+                                <div className="hidden md:flex w-1/12 justify-center">
+                                    <div className="w-6 h-6 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full shadow-md flex items-center justify-center">
+                                        <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div className={`w-full md:w-1/2 ${index % 2 === 0 ? 'md:pl-12' : 'md:pr-12'} md:text-right`}>
+                                </div>
+                            </Motion.div>
+                        ))}
                     </div>
-                </Motion.div>
-            ))}
-        </div>
-    </div>
-</Motion.section>
+                </div>
+            </Motion.section>
+
             <Motion.section
                 className="py-16 md:py-24 bg-white rounded-lg shadow-md mx-auto my-12 max-w-screen-xl px-4"
                 initial="hidden"
@@ -364,9 +369,7 @@ const WebDevelopment = () => {
                     <p className="text-gray-700 text-lg mb-12 max-w-3xl mx-auto rounded-lg">
                         We are committed to delivering innovative solutions.
                     </p>
-
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                       
                         <Motion.div
                             className="bg-gray-50 p-8 rounded-xl shadow-lg text-left relative overflow-hidden group"
                             variants={cardVariants}
@@ -381,6 +384,7 @@ const WebDevelopment = () => {
                                 We leverage the latest tools and technologies to create websites that stand out and keep you ahead of the competition.
                             </p>
                         </Motion.div>
+
                         <Motion.div
                             className="bg-gray-50 p-8 rounded-xl shadow-lg text-left relative overflow-hidden group"
                             variants={cardVariants}
@@ -395,6 +399,7 @@ const WebDevelopment = () => {
                                 Every business is unique, and so is every website we build. We ensure your website reflects your brand's identity and values.
                             </p>
                         </Motion.div>
+
                         <Motion.div
                             className="bg-gray-50 p-8 rounded-xl shadow-lg text-left relative overflow-hidden group"
                             variants={cardVariants}
@@ -409,6 +414,7 @@ const WebDevelopment = () => {
                                 Our designs focus on delivering seamless user experiences, ensuring your customers stay engaged and satisfied.
                             </p>
                         </Motion.div>
+
                         <Motion.div
                             className="bg-gray-50 p-8 rounded-xl shadow-lg text-left relative overflow-hidden group col-span-1 md:col-span-1 lg:col-span-1"
                             variants={cardVariants}
@@ -423,6 +429,7 @@ const WebDevelopment = () => {
                                 We build websites that work perfectly across all devices and are scalable for your future growth.
                             </p>
                         </Motion.div>
+
                         <Motion.div
                             className="bg-gray-50 p-8 rounded-xl shadow-lg text-left relative overflow-hidden group col-span-1 md:col-span-1 lg:col-span-1"
                             variants={cardVariants}
@@ -440,8 +447,7 @@ const WebDevelopment = () => {
                     </div>
                 </div>
             </Motion.section>
-          <ServicesContact/>
-            
+            <ServicesContact />
         </div>
     );
 };

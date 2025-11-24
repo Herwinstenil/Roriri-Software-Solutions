@@ -14,10 +14,10 @@ const ERPSolutions = () => {
         subject: '',
         message: ''
     });
+    
     const [errors, setErrors] = useState({});
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitStatus, setSubmitStatus] = useState(null);
-
     const validateForm = () => {
         const newErrors = {};
 
@@ -46,7 +46,6 @@ const ERPSolutions = () => {
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData(prev => ({ ...prev, [name]: value }));
-
         if (errors[name]) {
             setErrors(prev => ({ ...prev, [name]: '' }));
         }
@@ -54,12 +53,9 @@ const ERPSolutions = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         if (!validateForm()) return;
-
         setIsSubmitting(true);
         setSubmitStatus(null);
-
         try {
             const response = await fetch('https://api.web3forms.com/submit', {
                 method: 'POST',
@@ -78,9 +74,7 @@ const ERPSolutions = () => {
                     to: "roririsoftpvtltd@gmail.com"
                 })
             });
-
             const result = await response.json();
-
             if (result.success) {
                 setSubmitStatus('success');
                 setFormData({ name: '', phone: '', email: '', subject: '', message: '' });
@@ -89,7 +83,6 @@ const ERPSolutions = () => {
             }
         } catch (error) {
             console.error('Error:', error);
-
             const subject = encodeURIComponent(formData.subject);
             const body = encodeURIComponent(
                 `Name: ${formData.name}\n` +
@@ -97,7 +90,6 @@ const ERPSolutions = () => {
                 `Phone: ${formData.phone || 'Not provided'}\n\n` +
                 `Message:\n${formData.message}`
             );
-
             window.open(`mailto:roririsoftpvtltd@gmail.com?subject=${subject}&body=${body}`, '_blank');
             setSubmitStatus('fallback');
             setFormData({ name: '', phone: '', email: '', subject: '', message: '' });
@@ -105,6 +97,7 @@ const ERPSolutions = () => {
             setIsSubmitting(false);
         }
     };
+
     const sectionVariants = {
         hidden: { opacity: 0, y: 50 },
         visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
@@ -114,6 +107,7 @@ const ERPSolutions = () => {
         hidden: { opacity: 0, scale: 0.9 },
         visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: "easeOut" } }
     };
+
     const lineVariants = {
         hidden: { height: 0 },
         visible: { height: "100%", transition: { duration: 1.5, ease: "easeInOut" } }
@@ -138,6 +132,7 @@ const ERPSolutions = () => {
                         >
                             ERP Solutions
                         </Motion.h1>
+
                         <Motion.p
                             className="text-lg md:text-xl mb-8 opacity-90 rounded-lg"
                             initial={{ opacity: 0, x: -50 }}
@@ -146,6 +141,7 @@ const ERPSolutions = () => {
                         >
                             Running a business involves managing a lot – finance, inventory, HR, sales, and more. That's where our Enterprise Resource Planning (ERP) solutions come in. We simplify the chaos by bringing everything into one system, so you can focus on growing your business.
                         </Motion.p>
+
                         <Motion.a
                             className=" bg-gradient-to-r  from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white py-3 px-8 rounded-full text-lg font-semibold shadow-lg transition-colors duration-300"
                             whileHover={{ scale: 1.05 }}
@@ -170,6 +166,7 @@ const ERPSolutions = () => {
                         </Motion.a>
 
                     </div>
+
                     <div className="md:w-1/2 flex justify-center md:justify-end relative">
                         <Motion.img
                             src={erp1}
@@ -212,6 +209,7 @@ const ERPSolutions = () => {
                             onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/300x200/B8B8F0/312E81?text=Code+Snippet'; }}
                         />
                     </div>
+
                     <div className="md:w-1/2 md:pl-16 text-center md:text-left">
                         <p className="text-sm text-gray-600 uppercase tracking-wider mb-2 rounded-lg">Enterprise Resource Planning (ERP) Solutions</p>
                         <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight rounded-lg">Empower Your Business with Seamless Integration</h2>
@@ -255,7 +253,6 @@ const ERPSolutions = () => {
                 <div className="container mx-auto text-center">
                     <p className="text-sm text-gray-600 uppercase tracking-wider mb-2 rounded-lg">How ERP Transforms</p>
                     <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12 leading-tight rounded-lg">Your Business Solutions</h2>
-
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <Motion.div
                             className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-2"
@@ -318,9 +315,7 @@ const ERPSolutions = () => {
                     <p className="text-gray-700 text-lg mb-12 max-w-3xl mx-auto rounded-lg">
                         In today's competitive landscape, managing multiple business functions with precision is vital for growth. Our ERP solutions are designed to unify processes, enhance productivity, and deliver real-time insights, enabling your organization to stay ahead.
                     </p>
-
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
                         <Motion.div
                             className="bg-gray-50 p-8 rounded-xl shadow-lg text-left relative overflow-hidden group"
                             variants={cardVariants}
@@ -350,6 +345,7 @@ const ERPSolutions = () => {
                                 Automate repetitive processes, reduce manual entry, and eliminate costly errors. Free up your team to focus on strategic growth while ensuring operational accuracy.
                             </p>
                         </Motion.div>
+
                         <Motion.div
                             className="bg-gray-50 p-8 rounded-xl shadow-lg text-left relative overflow-hidden group"
                             variants={cardVariants}
@@ -397,84 +393,83 @@ const ERPSolutions = () => {
                     </div>
                 </div>
             </Motion.section>
-          <Motion.section
-  className="py-16 md:py-24 bg-gray-100 rounded-lg shadow-md mx-auto my-12 max-w-screen-xl px-4"
-  initial="hidden"
-  whileInView="visible"
-  viewport={{ once: true, amount: 0.3 }}
-  variants={sectionVariants}
->
-  <div className="container mx-auto text-center">
-    <p className="text-sm text-gray-600 uppercase tracking-wider mb-2">
-      What We Do in ERP
-    </p>
-    <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12 leading-tight">
-      Our Progress
-    </h2>
 
-    <div className="relative flex flex-col items-center">
-      {/* Vertical line */}
-      <Motion.div
-        className="absolute left-1/2 transform -translate-x-1/2 w-1 bg-gradient-to-b from-purple-500 to-indigo-500 rounded-full z-0"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.5 }}
-        variants={lineVariants}
-      />
-
-      {[
-        { title: "ERP Consulting and Strategy", description: "Analyze your operations to define the best-fit ERP strategy." },
-        { title: "Custom ERP Development", description: "Build modular, scalable systems to suit your workflows." },
-        { title: "Integration and Migration", description: "Ensure seamless data flow across existing tools and systems." },
-        { title: "Cloud and On-Premise Deployment", description: "Flexible hosting options tailored to your security and budget needs." },
-        { title: "Ongoing Support and Upgrades", description: "Keep your ERP systems updated and optimized for peak performance." }
-      ].map((item, index) => (
-        <Motion.div
-          key={index}
-          className={`flex flex-col md:flex-row items-center w-full my-6 md:my-8 z-10 ${
-            index % 2 !== 0 ? "md:flex-row-reverse" : ""
-          }`}
-          variants={cardVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ delay: index * 0.15 + 0.5 }}
-        >
-          {/* Content box */}
-          <div className={`w-full md:w-1/2 ${index % 2 === 0 ? "md:pr-12" : "md:pl-12"} text-center md:text-left`}>
-            <Motion.div
-              className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1"
-              whileHover={{ scale: 1.02 }}
+            <Motion.section
+                className="py-16 md:py-24 bg-gray-100 rounded-lg shadow-md mx-auto my-12 max-w-screen-xl px-4"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
+                variants={sectionVariants}
             >
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">{item.title}</h3>
-              <p className="text-gray-700">{item.description}</p>
-            </Motion.div>
-          </div>
+                <div className="container mx-auto text-center">
+                    <p className="text-sm text-gray-600 uppercase tracking-wider mb-2">
+                        What We Do in ERP
+                    </p>
+                    <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12 leading-tight">
+                        Our Progress
+                    </h2>
+                    <div className="relative flex flex-col items-center">
+                        {/* Vertical line */}
+                        <Motion.div
+                            className="absolute left-1/2 transform -translate-x-1/2 w-1 bg-gradient-to-b from-purple-500 to-indigo-500 rounded-full z-0"
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, amount: 0.5 }}
+                            variants={lineVariants}
+                        />
+                        {[
+                            { title: "ERP Consulting and Strategy", description: "Analyze your operations to define the best-fit ERP strategy." },
+                            { title: "Custom ERP Development", description: "Build modular, scalable systems to suit your workflows." },
+                            { title: "Integration and Migration", description: "Ensure seamless data flow across existing tools and systems." },
+                            { title: "Cloud and On-Premise Deployment", description: "Flexible hosting options tailored to your security and budget needs." },
+                            { title: "Ongoing Support and Upgrades", description: "Keep your ERP systems updated and optimized for peak performance." }
+                        ].map((item, index) => (
+                            <Motion.div
+                                key={index}
+                                className={`flex flex-col md:flex-row items-center w-full my-6 md:my-8 z-10 ${index % 2 !== 0 ? "md:flex-row-reverse" : ""
+                                    }`}
+                                variants={cardVariants}
+                                initial="hidden"
+                                whileInView="visible"
+                                viewport={{ once: true, amount: 0.2 }}
+                                transition={{ delay: index * 0.15 + 0.5 }}
+                            >
+                                {/* Content box */}
+                                <div className={`w-full md:w-1/2 ${index % 2 === 0 ? "md:pr-12" : "md:pl-12"} text-center md:text-left`}>
+                                    <Motion.div
+                                        className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1"
+                                        whileHover={{ scale: 1.02 }}
+                                    >
+                                        <h3 className="text-xl font-semibold text-gray-900 mb-2">{item.title}</h3>
+                                        <p className="text-gray-700">{item.description}</p>
+                                    </Motion.div>
+                                </div>
 
-          {/* Middle icon */}
-          <div className="flex md:w-1/12 justify-center my-4 md:my-0">
-            <div className="w-6 h-6 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full shadow-md flex items-center justify-center">
-              <svg
-                className="w-4 h-4 text-white"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </div>
-          </div>
+                                {/* Middle icon */}
+                                <div className="flex md:w-1/12 justify-center my-4 md:my-0">
+                                    <div className="w-6 h-6 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full shadow-md flex items-center justify-center">
+                                        <svg
+                                            className="w-4 h-4 text-white"
+                                            fill="currentColor"
+                                            viewBox="0 0 20 20"
+                                        >
+                                            <path
+                                                fillRule="evenodd"
+                                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                                clipRule="evenodd"
+                                            />
+                                        </svg>
+                                    </div>
+                                </div>
 
-          {/* Empty space for alignment (desktop only) */}
-          <div className={`hidden md:block w-full md:w-1/2 ${index % 2 === 0 ? "md:pl-12" : "md:pr-12"}`} />
-        </Motion.div>
-      ))}
-    </div>
-  </div>
-</Motion.section>
+                                {/* Empty space for alignment (desktop only) */}
+                                <div className={`hidden md:block w-full md:w-1/2 ${index % 2 === 0 ? "md:pl-12" : "md:pr-12"}`} />
+                            </Motion.div>
+                        ))}
+                    </div>
+                </div>
+            </Motion.section>
+
             <Motion.section id="contact"
                 className="py-16 md:py-24 bg-gray-50 rounded-lg mx-auto my-12 max-w-screen-xl px-4"
                 initial="hidden"
@@ -509,9 +504,9 @@ const ERPSolutions = () => {
                             </a>
                         </Motion.div>
                     </div>
+
                     <div className="bg-white rounded-3xl shadow-xl p-8">
                         <h2 className="text-2xl font-bold text-gray-800 mb-6">Send Message</h2>
-
 
                         {submitStatus === 'success' && (
                             <div className="mb-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded-xl">

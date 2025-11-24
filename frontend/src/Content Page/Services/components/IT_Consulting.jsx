@@ -1,24 +1,25 @@
 import React from 'react';
 import { motion as Motion } from 'framer-motion';
-import { java1, dataanalyt1, testing1, node1, ui1, flutter1, angular1, react1,itcon } from '../../../assets/services/service';
+import { java1, dataanalyt1, testing1, node1, ui1, flutter1, angular1, react1, itcon } from '../../../assets/services/service';
 import ServicesContact from './ServicesContact';
 import { useNavigate } from 'react-router-dom';
 
 const IT_Consulting = () => {
-
-    const navigate=useNavigate();
-    const gocontact = () =>
-    {
+    const navigate = useNavigate();
+    const gocontact = () => {
         navigate("/contact")
     }
+
     const sectionVariants = {
         hidden: { opacity: 0, y: 50 },
         visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
     };
+
     const cardVariants = {
         hidden: { opacity: 0, scale: 0.9 },
         visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: "easeOut" } }
     };
+
     const processStepVariants = {
         hidden: { opacity: 0, x: -20 },
         visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" } }
@@ -26,7 +27,6 @@ const IT_Consulting = () => {
 
     return (
         <div className="font-inter antialiased bg-gray-50 italic ">
-
             <Motion.section
                 className="relative bg-gray-900 text-white py-16 md:py-24 overflow-hidden rounded-b-lg shadow-lg"
                 initial="hidden"
@@ -34,8 +34,9 @@ const IT_Consulting = () => {
                 variants={sectionVariants}
             >
                 <div className="absolute inset-0 z-0">
-                    <img src={itcon} alt="IT Consulting Background" className="w-full h-full object-cover opacity-30" onError={(e) => { e.target.onerror = null; e.target.src = {itcon}; }} />
+                    <img src={itcon} alt="IT Consulting Background" className="w-full h-full object-cover opacity-30" onError={(e) => { e.target.onerror = null; e.target.src = { itcon }; }} />
                 </div>
+
                 <div className="container mx-auto px-4 flex flex-col items-center justify-center text-center relative z-10">
                     <p className="text-sm text-gray-400 uppercase tracking-wider mb-2 rounded-lg">IT Consulting</p>
                     <Motion.h1
@@ -46,6 +47,7 @@ const IT_Consulting = () => {
                     >
                         Transforming challenges into opportunities with dynamic IT consulting services
                     </Motion.h1>
+
                     <Motion.p
                         className="text-lg md:text-xl mb-8 opacity-90 max-w-4xl rounded-lg"
                         initial={{ opacity: 0, y: -50 }}
@@ -54,6 +56,7 @@ const IT_Consulting = () => {
                     >
                         At Roriri Software Solutions, our IT consulting services offer invaluable support in navigating dynamic tech environments. Efficient IT consulting Solutions tailored to your needs.
                     </Motion.p>
+
                     <Motion.button onClick={() => window.scrollTo({ top: document.getElementById('servicescontact').offsetTop, behavior: 'smooth' })}
                         className="cursor-pointer bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-blue-600 transition duration-300"
                         whileHover={{ scale: 1.05 }}
@@ -63,6 +66,7 @@ const IT_Consulting = () => {
                     </Motion.button>
                 </div>
             </Motion.section>
+
             <Motion.section
                 className="py-16 md:py-24 bg-white rounded-lg shadow-md mx-auto my-12 max-w-screen-xl px-4"
                 viewport={{ once: true, amount: 0.3 }}
@@ -95,6 +99,7 @@ const IT_Consulting = () => {
                                 Get Quot
                             </Motion.button> */}
                         </Motion.div>
+
                         <Motion.div
                             className="bg-gray-100 p-8 rounded-xl shadow-lg text-left relative overflow-hidden group border border-gray-200"
                             variants={cardVariants}
@@ -115,6 +120,7 @@ const IT_Consulting = () => {
                                 <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                             </Motion.button> */}
                         </Motion.div>
+
                         <Motion.div
                             className="bg-gray-100 p-8 rounded-xl shadow-lg text-left relative overflow-hidden group border border-gray-200"
                             variants={cardVariants}
@@ -135,6 +141,7 @@ const IT_Consulting = () => {
                                 <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                             </Motion.button> */}
                         </Motion.div>
+
                         <Motion.div
                             className="bg-gray-100 p-8 rounded-xl shadow-lg text-left relative overflow-hidden group border border-gray-200"
                             variants={cardVariants}
@@ -146,8 +153,8 @@ const IT_Consulting = () => {
                             <img src={ui1} alt="UI/UX Designer" className="rounded-2xl absolute top-4 right-4 w-15 h-15 opacity-55" onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/100x100/E0E7FF/312E81?text=UI/UX'; }} />
                             <h3 className="text-xl font-semibold text-gray-900 mb-3 rounded-lg">UI/UX Designer</h3>
                             <p className="text-gray-700 mb-6 rounded-lg">
-                                At Roriri Software Solutions, our creative UI/UX designers craft exceptional digital experiences that captivate users and drive engagement. We combine aesthetic excellence with user-centered design principles to create intuitive interfaces. 
-                             </p>
+                                At Roriri Software Solutions, our creative UI/UX designers craft exceptional digital experiences that captivate users and drive engagement. We combine aesthetic excellence with user-centered design principles to create intuitive interfaces.
+                            </p>
                             {/* <Motion.button
                                 className="cursor-pointer inline-flex items-center bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent font-semibold hover:text-blue-800 transition duration-300"
                                 whileHover={{ x: 5 }}
@@ -156,6 +163,7 @@ const IT_Consulting = () => {
                                 <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                             </Motion.button> */}
                         </Motion.div>
+
                         <Motion.div
                             className="bg-gray-100 p-8 rounded-xl shadow-lg text-left relative overflow-hidden group border border-gray-200"
                             variants={cardVariants}
@@ -176,6 +184,7 @@ const IT_Consulting = () => {
                                 <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                             </Motion.button> */}
                         </Motion.div>
+
                         <Motion.div
                             className="bg-gray-100 p-8 rounded-xl shadow-lg text-left relative overflow-hidden group border border-gray-200"
                             variants={cardVariants}
@@ -187,7 +196,7 @@ const IT_Consulting = () => {
                             <img src={dataanalyt1} alt="Data Analyst" className="rounded-2xl absolute top-4 right-4 w-15 h-15 opacity-55" onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/100x100/E0E7FF/312E81?text=Data'; }} />
                             <h3 className="text-xl font-semibold text-gray-900 mb-3 rounded-lg">Data Analyst</h3>
                             <p className="text-gray-700 mb-6 rounded-lg">
-                                Unlock the power of your data with Roriri Software Solutions' expert data analysts. Our professionals transform raw data into actionable insights that drive strategic business decisions. Using advanced analytics tools and statistical methods. 
+                                Unlock the power of your data with Roriri Software Solutions' expert data analysts. Our professionals transform raw data into actionable insights that drive strategic business decisions. Using advanced analytics tools and statistical methods.
                             </p>
                             {/* <Motion.button
                                 className="cursor-pointer inline-flex items-center bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent font-semibold hover:text-blue-800 transition duration-300"
@@ -197,6 +206,7 @@ const IT_Consulting = () => {
                                 <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                             </Motion.button> */}
                         </Motion.div>
+
                         <Motion.div
                             className="bg-gray-100 p-8 rounded-xl shadow-lg text-left relative overflow-hidden group border border-gray-200"
                             variants={cardVariants}
@@ -208,8 +218,8 @@ const IT_Consulting = () => {
                             <img src={testing1} alt="Software Tester" className="rounded-2xl absolute top-4 right-4 w-15 h-15 opacity-55" onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/100x100/E0E7FF/312E81?text=Tester'; }} />
                             <h3 className="text-xl font-semibold text-gray-900 mb-3 rounded-lg">Software Tester</h3>
                             <p className="text-gray-700 mb-6 rounded-lg">
-                         Ensure flawless software quality with Roriri Software Solutions' dedicated testing professionals. Our experienced software testers employ comprehensive testing methodologies including manual, automated, and performance testing to identify and eliminate bugs before deployment. 
-                         </p>
+                                Ensure flawless software quality with Roriri Software Solutions' dedicated testing professionals. Our experienced software testers employ comprehensive testing methodologies including manual, automated, and performance testing to identify and eliminate bugs before deployment.
+                            </p>
                             {/* <Motion.button
                                 className="cursor-pointer inline-flex items-center bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent font-semibold hover:text-blue-800 transition duration-300"
                                 whileHover={{ x: 5 }}
@@ -218,7 +228,6 @@ const IT_Consulting = () => {
                                 <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                             </Motion.button> */}
                         </Motion.div>
-
 
                         <Motion.div
                             className="bg-gray-100 p-8 rounded-xl shadow-lg text-left relative overflow-hidden group border border-gray-200"
@@ -232,8 +241,8 @@ const IT_Consulting = () => {
                             <h3 className="text-xl font-semibold text-gray-900 mb-3 rounded-lg">Java Developer</h3>
                             <p className="text-gray-700 mb-6 rounded-lg">
 
-                             Roriri Software Solutions provides enterprise-grade Java development services with our seasoned Java developers. Our experts build robust, scalable applications using Java's powerful ecosystem, including Spring Framework, microservices architecture, and cloud-native solutions.
-                             </p>
+                                Roriri Software Solutions provides enterprise-grade Java development services with our seasoned Java developers. Our experts build robust, scalable applications using Java's powerful ecosystem, including Spring Framework, microservices architecture, and cloud-native solutions.
+                            </p>
                             {/* <Motion.button
                                 className="cursor-pointer inline-flex items-center bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent font-semibold hover:text-blue-800 transition duration-300"
                                 whileHover={{ x: 5 }}
@@ -283,11 +292,10 @@ const IT_Consulting = () => {
                     <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12 leading-tight rounded-lg">Our IT Consulting process</h2>
                     <p className="text-gray-700 text-lg mb-12 max-w-4xl mx-auto rounded-lg">
                         Our IT Consulting process at Roriri Software Solutions involves a meticulous approach tailored to your needs.
-                        We begin by thoroughly assessing your requirements and challenges. 
+                        We begin by thoroughly assessing your requirements and challenges.
                     </p>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-
                         <Motion.div
                             className="bg-white p-8 rounded-xl shadow-lg text-left relative overflow-hidden group border border-gray-200"
                             variants={processStepVariants}
@@ -350,8 +358,7 @@ const IT_Consulting = () => {
                     </div>
                 </div>
             </Motion.section>
-            <ServicesContact/>
-
+            <ServicesContact />
         </div>
     );
 };
