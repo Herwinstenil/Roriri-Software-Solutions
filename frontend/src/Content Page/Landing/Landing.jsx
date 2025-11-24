@@ -111,7 +111,7 @@ const Landing = () => {
 
           <div className='mt-10'>
             <button className="cursor-target flex from-purple-500 px-3 py-2 bg-gradient-to-r text-white rounded-lg to-blue-500 hover:from-purple-600 // Keep this hover:to-blue-600 " 
-            onClick={() => navigate('/appointment')}>Book a free Consulting</button>
+            onClick={() => navigate('/appointment')}>Book an Appointment</button>
           </div>
         </div>
 
