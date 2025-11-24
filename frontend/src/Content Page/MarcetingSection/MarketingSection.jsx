@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { motion as Motion, useMotionValue } from 'framer-motion';
 import { client1, client2, client3, client4, client5 } from '../../assets/clients/clients';
 import { MailCheck, CircleUserRound, MapPin, Loader2, Send } from "lucide-react";
-
 import emailjs from "@emailjs/browser";
 
 const originalTestimonials = [
@@ -59,13 +58,13 @@ const MarketingSection = () => {
     email: '',
 
   });
+
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
 
   const validateForm = () => {
     const newErrors = {};
-
     if (!formData.email.trim()) {
       newErrors.email = 'Email is required';
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
@@ -78,7 +77,6 @@ const MarketingSection = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
-
     if (errors[name]) {
       setErrors(prev => ({ ...prev, [name]: '' }));
     }
@@ -86,14 +84,10 @@ const MarketingSection = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (!validateForm()) return;
-
     setIsSubmitting(true);
     setSubmitStatus(null);
-
     try {
-      
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
@@ -101,17 +95,14 @@ const MarketingSection = () => {
           'Accept': 'application/json'
         },
         body: JSON.stringify({
-          access_key: "510e84f9-6c6a-4bf5-85fb-8a6bba4b6b45", 
-
+          access_key: "510e84f9-6c6a-4bf5-85fb-8a6bba4b6b45",
           email: formData.email,
-           from_name: formData.name,
-
+          from_name: formData.name,
           to: "roririsoftpvtltd@gmail.com"
         })
       });
 
       const result = await response.json();
-
       if (result.success) {
         setSubmitStatus('success');
         setFormData({ email: '' });
@@ -120,15 +111,9 @@ const MarketingSection = () => {
       }
     } catch (error) {
       console.error('Error:', error);
-
-      
-      
       const body = encodeURIComponent(
-
         `Email: ${formData.email}\n`
-
       );
-
       window.open(`mailto:roririsoftpvtltd@gmail.com?subject=${subject}&body=${body}`, '_blank');
       setSubmitStatus('fallback');
       setFormData({ email: '' });
@@ -140,7 +125,6 @@ const MarketingSection = () => {
   const [currentIndex, setCurrentIndex] = useState(buffer);
   const carouselRef = useRef(null);
   const x = useMotionValue(0);
-
   const [cardUnitWidth, setCardUnitWidth] = useState(350);
   const [carouselWidth, setCarouselWidth] = useState(0);
 
@@ -148,7 +132,6 @@ const MarketingSection = () => {
     if (carouselRef.current) {
       const currentCarouselWidth = carouselRef.current.offsetWidth;
       setCarouselWidth(currentCarouselWidth);
-
       const cardElement = carouselRef.current.querySelector('.card-item');
       if (cardElement) {
         const cardActualWidth = cardElement.offsetWidth;
@@ -156,13 +139,10 @@ const MarketingSection = () => {
         const marginLeft = parseFloat(computedStyle.marginLeft);
         const marginRight = parseFloat(computedStyle.marginRight);
         const marginTotal = marginLeft + marginRight;
-
         const calculatedCardUnitWidth = cardActualWidth + marginTotal;
         setCardUnitWidth(calculatedCardUnitWidth);
-
         const totalContentWidth = testimonials.length * calculatedCardUnitWidth;
         const maxNegativeTranslate = -(totalContentWidth - currentCarouselWidth);
-
         return {
           left: maxNegativeTranslate,
           right: 0,
@@ -173,26 +153,20 @@ const MarketingSection = () => {
   }, [testimonials.length]);
 
   const [constraints, setConstraints] = useState(calculateConstraints);
-
   useEffect(() => {
     const updateDimensions = () => {
       setConstraints(calculateConstraints());
     };
-
     updateDimensions();
-
     window.addEventListener('resize', updateDimensions);
     return () => window.removeEventListener('resize', updateDimensions);
   }, [calculateConstraints]);
 
-
   const handleDragEnd = (event, info) => {
     const offset = info.offset.x;
     const velocity = info.velocity.x;
-
     const threshold = 50;
     const velocityThreshold = 300;
-
     let newIndex = currentIndex;
     if (offset < -threshold || velocity < -velocityThreshold) {
       newIndex = Math.min(currentIndex + 1, testimonials.length - 1);
@@ -204,18 +178,13 @@ const MarketingSection = () => {
 
   const getTargetX = useCallback(() => {
     if (!carouselRef.current || testimonials.length === 0 || cardUnitWidth === 0) return 0;
-
     const cardActualWidth = cardUnitWidth - (parseFloat(window.getComputedStyle(carouselRef.current.querySelector('.card-item')).marginLeft) * 2);
     const offsetToCenterCard = (carouselWidth / 2) - (cardActualWidth / 2) - parseFloat(window.getComputedStyle(carouselRef.current.querySelector('.card-item')).marginLeft);
-
     let targetX = -(currentIndex * cardUnitWidth) + offsetToCenterCard;
-
     targetX = Math.max(targetX, constraints.left);
     targetX = Math.min(targetX, constraints.right);
-
     return targetX;
   }, [currentIndex, cardUnitWidth, carouselWidth, constraints, testimonials.length]);
-
 
   useEffect(() => {
     if (currentIndex >= testimonials.length - buffer) {
@@ -234,26 +203,21 @@ const MarketingSection = () => {
     }
   }, [currentIndex, x, getTargetX, originalTestimonials.length, testimonials.length, buffer, cardUnitWidth]);
 
-
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => {
-
         if (prevIndex === testimonials.length - buffer - 1) {
           return buffer;
         }
         return prevIndex + 1;
       });
     }, 2000);
-
     return () => clearInterval(interval);
   }, [testimonials.length, buffer]);
-
 
   return (
     <div className="min-h-screen bg-white flex items-center justify-center p-4 sm:p-8 italic">
       <div className="flex flex-col lg:flex-row max-w-7xl mx-auto bg-white rounded-lg shadow-xl overflow-hidden w-full">
-
         <div className="flex-1 p-8 sm:p-12 lg:p-16 flex flex-col justify-center text-center lg:text-left">
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-4">
             You don't know marketing ?
@@ -267,50 +231,48 @@ const MarketingSection = () => {
                 ✅ Message sent successfully! I'll get back to you soon.
               </div>
             )}
-
             {submitStatus === 'error' && (
               <div className="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded-xl">
                 ❌ Failed to send message. Please try again or contact me directly.
               </div>
             )}
-          <div className="space-y-6">
-            <div className="grid md:grid-cols-2 gap-4">
-            <div>
-              
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                placeholder="Enter your email"
-                disabled={isSubmitting}
-                className={` w-60 px-4 py-3 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors disabled:opacity-50 ${errors.email ? 'border-red-500' : 'border-gray-300'
-                  }`}
-              />
-              {errors.email && (
-                <p className="mt-1 text-sm text-red-500">{errors.email}</p>
-              )}
-            </div>
-            <button
-              onClick={handleSubmit}
-              disabled={isSubmitting}
-              className=" w-50 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold py-3 px-6 rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              {isSubmitting ? (
-                <>
-                  <Loader2 size={20} className="animate-spin" />
-                  <span>Sending...</span>
-                </>
-              ) : (
-                <>
-                  <Send size={20} />
-                  <span>Join NewsLetter</span>
-                </>
-              )}
-            </button>
+            <div className="space-y-6">
+              <div className="grid md:grid-cols-2 gap-4">
+                <div>
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="Enter your email"
+                    disabled={isSubmitting}
+                    className={` w-60 px-4 py-3 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors disabled:opacity-50 ${errors.email ? 'border-red-500' : 'border-gray-300'
+                      }`}
+                  />
+                  {errors.email && (
+                    <p className="mt-1 text-sm text-red-500">{errors.email}</p>
+                  )}
+                </div>
+                <button
+                  onClick={handleSubmit}
+                  disabled={isSubmitting}
+                  className=" w-50 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold py-3 px-6 rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 size={20} className="animate-spin" />
+                      <span>Sending...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Send size={20} />
+                      <span>Join NewsLetter</span>
+                    </>
+                  )}
+                </button>
+              </div>
             </div>
           </div>
-        </div>
         </div>
 
         <div className="flex-1 relative overflow-hidden flex items-center justify-center p-4 sm:p-8 lg:p-12 min-h-[350px] lg:min-h-0">

@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { facebook, instagram, linkedin, youtube } from '../../../assets/icons/icon';
 import { MailCheck, CircleUserRound, MapPin, Loader2, Send } from "lucide-react";
 
-
 const InternshipRegistrationForm = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -20,17 +19,14 @@ const InternshipRegistrationForm = () => {
 
   const validateForm = () => {
     const newErrors = {};
-
     if (!formData.name.trim()) {
       newErrors.name = 'Full name is required';
     }
-
     if (!formData.email.trim()) {
       newErrors.email = 'Email is required';
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
       newErrors.email = 'Invalid email address';
     }
-
     if (!formData.program.trim()) {
       newErrors.program = 'program is required';
     }
@@ -43,11 +39,9 @@ const InternshipRegistrationForm = () => {
     if (!formData.year.trim()) {
       newErrors.year = 'year is required';
     }
-
     if (!formData.message.trim()) {
       newErrors.message = 'Message is required';
     }
-
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -55,7 +49,6 @@ const InternshipRegistrationForm = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
-
     if (errors[name]) {
       setErrors(prev => ({ ...prev, [name]: '' }));
     }
@@ -63,14 +56,11 @@ const InternshipRegistrationForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (!validateForm()) return;
-
     setIsSubmitting(true);
     setSubmitStatus(null);
 
     try {
-      
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
@@ -78,7 +68,7 @@ const InternshipRegistrationForm = () => {
           'Accept': 'application/json'
         },
         body: JSON.stringify({
-          access_key: "510e84f9-6c6a-4bf5-85fb-8a6bba4b6b45", 
+          access_key: "510e84f9-6c6a-4bf5-85fb-8a6bba4b6b45",
           name: formData.name,
           phone: formData.phone,
           email: formData.email,
@@ -93,7 +83,6 @@ const InternshipRegistrationForm = () => {
       });
 
       const result = await response.json();
-
       if (result.success) {
         setSubmitStatus('success');
         setFormData({ name: '', phone: '', email: '', program: '', qualification: '', college: '', year: '', message: '' });
@@ -102,8 +91,6 @@ const InternshipRegistrationForm = () => {
       }
     } catch (error) {
       console.error('Error:', error);
-
-     
       const subject = encodeURIComponent(formData.subject);
       const body = encodeURIComponent(
         `Name: ${formData.name}\n` +
@@ -115,7 +102,6 @@ const InternshipRegistrationForm = () => {
         `Year ${formData.year}\n` +
         `Message:\n${formData.message}`
       );
-
       window.open(`mailto:roririsoftpvtltd@gmail.com?subject=${subject}&body=${body}`, '_blank');
       setSubmitStatus('fallback');
       setFormData({ name: '', phone: '', email: '', program: '', qualification: '', college: '', year: '', message: '' });
@@ -123,6 +109,7 @@ const InternshipRegistrationForm = () => {
       setIsSubmitting(false);
     }
   };
+
   return (
     <div className="italic min-h-screen  flex items-center lg:p-10 p-5 justify-center font-sans mb-5" id='contact'>
       <div className=" w-full flex flex-col lg:flex-row  rounded-xl  overflow-hidden lg:p-5">
@@ -153,14 +140,11 @@ const InternshipRegistrationForm = () => {
 
         <div className="bg-green-100 rounded-3xl shadow-xl p-8">
           <h2 className="text-2xl font-bold text-gray-800 mb-6">Send Message</h2>
-
-          
           {submitStatus === 'success' && (
             <div className="mb-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded-xl">
               ✅ Message sent successfully! I'll get back to you soon.
             </div>
           )}
-
           {submitStatus === 'error' && (
             <div className="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded-xl">
               ❌ Failed to send message. Please try again or contact me directly.
@@ -186,6 +170,7 @@ const InternshipRegistrationForm = () => {
                 <p className="mt-1 text-sm text-red-500">{errors.name}</p>
               )}
             </div>
+
             <div className="grid md:grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -243,6 +228,7 @@ const InternshipRegistrationForm = () => {
                   <p className="mt-1 text-sm text-red-500">{errors.program}</p>
                 )}
               </div>
+
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   Qualification
@@ -261,6 +247,7 @@ const InternshipRegistrationForm = () => {
                   <p className="mt-1 text-sm text-red-500">{errors.qualification}</p>
                 )}
               </div>
+
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   College Name
@@ -279,6 +266,7 @@ const InternshipRegistrationForm = () => {
                   <p className="mt-1 text-sm text-red-500">{errors.college}</p>
                 )}
               </div>
+
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   Year
@@ -298,6 +286,7 @@ const InternshipRegistrationForm = () => {
                 )}
               </div>
             </div>
+
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 Your Message

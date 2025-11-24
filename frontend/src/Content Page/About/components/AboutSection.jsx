@@ -1,25 +1,24 @@
-
 import React from 'react';
 import { motion as Motion } from 'framer-motion';
 import './About.css'
 import { Send } from 'lucide-react';
 const cardData = [
   {
-    id: 1, 
+    id: 1,
     number: '01',
     title: 'Over 7+ Years of',
     subtitle: 'Driving Innovation Excellence',
     description: 'Pioneering transformative solutions for over 7 years, delivering innovation, quality, and success across industries with cutting-edge technology expertise.',
   },
   {
-    id: 2, 
+    id: 2,
     number: '02',
     title: '80+ Clients',
     subtitle: 'Trusting Us',
     description: 'Our diverse client base spans across industries, each benefiting from our innovative solutions and dedication to success.',
   },
   {
-    id: 3, 
+    id: 3,
     number: '03',
     title: 'Global Reach',
     subtitle: 'Expanding Our Footprint',
@@ -33,14 +32,14 @@ const cardData = [
     description: 'Our team comprises dedicated professionals and innovators, constantly pushing boundaries to deliver exceptional results.',
   },
   {
-    id: 5, 
+    id: 5,
     number: '05',
     title: 'Customer Satisfaction',
     subtitle: 'Our Top Priority',
     description: 'We pride ourselves on exceeding client expectations, ensuring every project delivers tangible value and fosters long-term partnerships.',
   },
   {
-    id: 6, 
+    id: 6,
     number: '06',
     title: 'Future-Ready Solutions',
     subtitle: 'Embracing Tomorrow Today',
@@ -50,9 +49,9 @@ const cardData = [
 
 const cardVariants = {
   offscreen: {
-    y: 100, 
+    y: 100,
     opacity: 0,
-    scale: 0.9 
+    scale: 0.9
   },
   onscreen: {
     y: 0,
@@ -62,7 +61,7 @@ const cardVariants = {
       type: "spring",
       bounce: 0.4,
       duration: 1,
-      staggerChildren: 0.1 
+      staggerChildren: 0.1
     }
   }
 };
@@ -71,7 +70,6 @@ const AboutSection = () => {
   return (
     <div className='min-h-screen italic flex flex-col justify-center items-center py-16 px-4 bg-gray-50'> {/* Changed background to slightly off-white */}
       <div className='flex flex-col md:flex-row w-full max-w-7xl items-center md:items-start space-y-12 md:space-y-0 md:space-x-12'> {/* Increased max-w and space-x */}
-        
         <Motion.div
           initial={{ x: -100, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
@@ -81,7 +79,6 @@ const AboutSection = () => {
           <h1 className='text-purple-600 text-lg font-medium mb-2  tracking-wide'>AboutUs</h1> {/* Added uppercase and tracking */}
           <h2 className='text-4xl sm:text-4xl lg:text-5xl font-medium mb-4 leading-tight text-gray-900'>The Story of <span className='text-purple-700'>Roriri Soft</span></h2> {/* Increased font size and weight */}
           <p className='text-lg sm:text-xl text-gray-600 mb-8 max-w-md'>A Growing Company with Clear Vision, dedicated to innovative solutions and client success.</p> {/* Adjusted text color and max-width */}
-
           <div className='w-full bg-gray-200 h-64 sm:h-80 lg:h-[450px] rounded-xl mb-8 flex justify-center items-center overflow-hidden shadow-lg'> {/* Increased height and added shadow/rounded */}
             <img
               src="https://images.unsplash.com/photo-1552581234-26160f608093?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" // More professional placeholder image
@@ -99,17 +96,17 @@ const AboutSection = () => {
           </Motion.a>
         </Motion.div>
 
-       <div className="flex flex-col md:w-1/2 p-4 md:mt-40 space-y-8 max-h-[80vh] md:max-h-[80vh] overflow-y-auto hide-scrollbar pr-2  snap-y snap-mandatory scroll-py-8">{/* Increased max-h, added pr-2 for scrollbar room */}
+        <div className="flex flex-col md:w-1/2 p-4 md:mt-40 space-y-8 max-h-[80vh] md:max-h-[80vh] overflow-y-auto hide-scrollbar pr-2  snap-y snap-mandatory scroll-py-8">{/* Increased max-h, added pr-2 for scrollbar room */}
           {cardData.map((card) => (
             <Motion.div
               key={card.id}
               initial="offscreen"
               whileInView="onscreen"
-              viewport={{ once: true, amount: 0.3 }} 
+              viewport={{ once: true, amount: 0.3 }}
               variants={cardVariants}
-              whileHover={{ scale: 1.03, boxShadow: "0px 15px 25px rgba(0, 0, 0, 0.15)" }} 
-              transition={{ type: "spring", stiffness: 300, damping: 20 }} 
-              className='relative cursor-target bg-white p-8 rounded-xl shadow-xl  border border-gray-100 ' 
+              whileHover={{ scale: 1.03, boxShadow: "0px 15px 25px rgba(0, 0, 0, 0.15)" }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              className='relative cursor-target bg-white p-8 rounded-xl shadow-xl  border border-gray-100 '
             >
               <span className='absolute -top-6 -right-6 text-[12rem] sm:text-[14rem] lg:text-[16rem] font-extrabold text-purple-100 opacity-50 z-0 select-none pointer-events-none'>
                 {card.number}

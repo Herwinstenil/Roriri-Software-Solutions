@@ -1,6 +1,5 @@
 import { product1, product2, product3, product4 } from "../../../../assets/product/product";
 
-
 const products = [
   {
     id: 1,

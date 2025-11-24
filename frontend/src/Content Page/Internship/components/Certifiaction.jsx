@@ -32,7 +32,6 @@ const Certification = () => {
   const [isPlaying, setIsPlaying] = useState(true);
   const intervalRef = useRef(null);
 
-
   useEffect(() => {
     if (isPlaying) {
       intervalRef.current = setInterval(() => {
@@ -43,11 +42,8 @@ const Certification = () => {
     } else {
       clearInterval(intervalRef.current);
     }
-
     return () => clearInterval(intervalRef.current);
   }, [isPlaying, certificateData.length, cardsToShow]);
-
-
 
   const handleNext = () => {
     setStartIndex((prevIndex) =>
@@ -60,8 +56,6 @@ const Certification = () => {
       (prevIndex - cardsToShow + certificateData.length) % certificateData.length
     );
   };
-
-
 
   useEffect(() => {
     const handleResize = () => {
@@ -81,7 +75,6 @@ const Certification = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-
   const displayedCards = Array.from({ length: cardsToShow }, (_, i) => {
     const index = (startIndex + i) % certificateData.length;
     return certificateData[index];
@@ -97,13 +90,10 @@ const Certification = () => {
           >
             Certificate Gallery
           </h1>
-
           <p className="text-gray-400 text-lg">Showcasing achievements and accomplishments</p>
         </div>
 
-
         <div className="relative">
-
           <button
             onClick={handlePrev}
             className="absolute left-0 top-1/2 -translate-y-1/2 p-4 bg-white backdrop-blur-md text-black rounded-full shadow-xl hover:bg-white/20 transition-all duration-300 z-10 hidden md:block hover:scale-110"
@@ -113,7 +103,6 @@ const Certification = () => {
               <path d="m15 18-6-6 6-6" />
             </svg>
           </button>
-
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4 lg:px-16 md:px-20">
             {displayedCards.map((card, index) => (
@@ -142,7 +131,6 @@ const Certification = () => {
             ))}
           </div>
 
-
           <button
             onClick={handleNext}
             className="absolute right-0 top-1/2 -translate-y-1/2 p-4 bg-white backdrop-blur-md text-black rounded-full shadow-xl hover:bg-white/20 transition-all duration-300 z-10 hidden md:block hover:scale-110"
@@ -153,10 +141,7 @@ const Certification = () => {
             </svg>
           </button>
         </div>
-
         <div className="flex justify-center items-center mt-12 space-x-6">
-
-
         </div>
       </div>
     </div>

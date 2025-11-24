@@ -1,9 +1,8 @@
-import React, {useState } from 'react';
+import React, { useState } from 'react';
 import { motion as Motion } from 'framer-motion';
 import { Facebook, Instagram, Linkedin, Youtube, Send } from 'lucide-react';
 import { facebook, instagram, linkedin, youtube } from '../../../assets/icons/icon';
-import { MailCheck, CircleUserRound, MapPin,  Loader2 } from "lucide-react";
-
+import { MailCheck, CircleUserRound, MapPin, Loader2 } from "lucide-react";
 
 const ContactUsPage = () => {
   const [formData, setFormData] = useState({
@@ -37,7 +36,6 @@ const ContactUsPage = () => {
     if (!formData.message.trim()) {
       newErrors.message = 'Message is required';
     }
-
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -45,7 +43,6 @@ const ContactUsPage = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
-
     if (errors[name]) {
       setErrors(prev => ({ ...prev, [name]: '' }));
     }
@@ -53,14 +50,11 @@ const ContactUsPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (!validateForm()) return;
-
     setIsSubmitting(true);
     setSubmitStatus(null);
 
     try {
-      
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
@@ -68,7 +62,7 @@ const ContactUsPage = () => {
           'Accept': 'application/json'
         },
         body: JSON.stringify({
-          access_key: "510e84f9-6c6a-4bf5-85fb-8a6bba4b6b45", 
+          access_key: "510e84f9-6c6a-4bf5-85fb-8a6bba4b6b45",
           name: formData.name,
           phone: formData.phone,
           email: formData.email,
@@ -80,7 +74,6 @@ const ContactUsPage = () => {
       });
 
       const result = await response.json();
-
       if (result.success) {
         setSubmitStatus('success');
         setFormData({ name: '', phone: '', email: '', subject: '', message: '' });
@@ -89,8 +82,6 @@ const ContactUsPage = () => {
       }
     } catch (error) {
       console.error('Error:', error);
-
-      
       const subject = encodeURIComponent(formData.subject);
       const body = encodeURIComponent(
         `Name: ${formData.name}\n` +
@@ -98,7 +89,6 @@ const ContactUsPage = () => {
         `Phone: ${formData.phone || 'Not provided'}\n\n` +
         `Message:\n${formData.message}`
       );
-
       window.open(`mailto:roririsoftpvtltd@gmail.com?subject=${subject}&body=${body}`, '_blank');
       setSubmitStatus('fallback');
       setFormData({ name: '', phone: '', email: '', subject: '', message: '' });
@@ -161,27 +151,24 @@ const ContactUsPage = () => {
             </Motion.div>
           </Motion.div>
 
-         
           <div className="bg-white rounded-3xl shadow-xl p-8">
             <h2 className="text-2xl font-bold text-gray-800 mb-6">Send Message</h2>
-
-            
             {submitStatus === 'success' && (
               <div className="mb-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded-xl">
                 ✅ Message sent successfully! I'll get back to you soon.
               </div>
             )}
-
             {submitStatus === 'error' && (
               <div className="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded-xl">
                 ❌ Failed to send message. Please try again or contact me directly.
               </div>
             )}
+
             <div className="space-y-6">
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Full Name 
+                    Full Name
                   </label>
                   <input
                     type="text"
@@ -197,9 +184,10 @@ const ContactUsPage = () => {
                     <p className="mt-1 text-sm text-red-500">{errors.name}</p>
                   )}
                 </div>
-                                <div>
+
+                <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Phone Number 
+                    Phone Number
                   </label>
                   <input
                     type="number"
@@ -218,7 +206,7 @@ const ContactUsPage = () => {
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Email Address 
+                    Email Address
                   </label>
                   <input
                     type="email"
@@ -235,28 +223,29 @@ const ContactUsPage = () => {
                   )}
                 </div>
               </div>
-                              <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Subject 
-                  </label>
-                  <input
-                    type="text"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    placeholder="Enter your name"
-                    disabled={isSubmitting}
-                    className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors disabled:opacity-50 ${errors.subject ? 'border-red-500' : 'border-gray-300'
-                      }`}
-                  />
-                  {errors.subject && (
-                    <p className="mt-1 text-sm text-red-500">{errors.subject}</p>
-                  )}
-                </div>
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Your Message 
+                  Subject
+                </label>
+                <input
+                  type="text"
+                  name="subject"
+                  value={formData.subject}
+                  onChange={handleChange}
+                  placeholder="Enter your name"
+                  disabled={isSubmitting}
+                  className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors disabled:opacity-50 ${errors.subject ? 'border-red-500' : 'border-gray-300'
+                    }`}
+                />
+                {errors.subject && (
+                  <p className="mt-1 text-sm text-red-500">{errors.subject}</p>
+                )}
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Your Message
                 </label>
                 <textarea
                   name="message"
@@ -294,8 +283,8 @@ const ContactUsPage = () => {
           </div>
         </div>
       </div>
-      </>
-      );
+    </>
+  );
 };
 
-      export default ContactUsPage;
+export default ContactUsPage;

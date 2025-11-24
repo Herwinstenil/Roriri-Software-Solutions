@@ -1,15 +1,12 @@
-
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Star } from 'lucide-react';
-import products  from './productData';
+import products from './productData';
 import TextType from '../../../../components/ui/TextType/TypeWriter';
-import {motion as Motion } from 'framer-motion';
-
+import { motion as Motion } from 'framer-motion';
 
 const ProductsList = () => {
   const navigate = useNavigate();
-
   const cardVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
@@ -17,16 +14,17 @@ const ProductsList = () => {
 
   return (
     <div className="min-h-screen italic bg-gray-50 font-inter text-center text-gray-900">
-         <header className=" py-12 px-4">
-    <h1 className="text-4xl sm:text-5xl font-medium mb-4 text-purple-500">Our Products</h1>
-    <div className="text-2xl sm:text-3xl md:text-6xl font-semibold text-gray-800 flex flex-wrap justify-center items-center gap-2">
-      <span>Exploring Excellence in</span>
-      <TextType
-        text={[' every creation', ' every solution']}
-        className="bg-gradient-to-r from-blue-600 via-purple-500 to-pink-500 bg-clip-text  text-transparent"
-      />
-    </div>
-  </header>
+      <header className=" py-12 px-4">
+        <h1 className="text-4xl sm:text-5xl font-medium mb-4 text-purple-500">Our Products</h1>
+        <div className="text-2xl sm:text-3xl md:text-6xl font-semibold text-gray-800 flex flex-wrap justify-center items-center gap-2">
+          <span>Exploring Excellence in</span>
+          <TextType
+            text={[' every creation', ' every solution']}
+            className="bg-gradient-to-r from-blue-600 via-purple-500 to-pink-500 bg-clip-text  text-transparent"
+          />
+        </div>
+      </header>
+
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-10 lg:gap-16">

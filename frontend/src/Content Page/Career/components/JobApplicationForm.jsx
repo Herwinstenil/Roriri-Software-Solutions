@@ -2,10 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MailCheck, CircleUserRound, MapPin, Loader2, Send } from "lucide-react";
 
-
 const JobApplicationForm = ({ isOpen, onClose, jobTitle = '', allJobTitles = [] }) => {
   const [submissionSuccess, setSubmissionSuccess] = useState(false);
-
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -33,8 +31,8 @@ const JobApplicationForm = ({ isOpen, onClose, jobTitle = '', allJobTitles = [] 
     }
 
     if (!formData.applyingFor.trim()) {
-  newErrors.applyingFor = 'Job title is required';
-}
+      newErrors.applyingFor = 'Job title is required';
+    }
     if (!formData.currentLocation.trim()) {
       newErrors.currentLocation = 'currentLocation is required';
     }
@@ -42,7 +40,6 @@ const JobApplicationForm = ({ isOpen, onClose, jobTitle = '', allJobTitles = [] 
     if (!formData.experience.trim()) {
       newErrors.experience = 'experience is required';
     }
-
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -50,7 +47,6 @@ const JobApplicationForm = ({ isOpen, onClose, jobTitle = '', allJobTitles = [] 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
-
     if (errors[name]) {
       setErrors(prev => ({ ...prev, [name]: '' }));
     }
@@ -58,14 +54,11 @@ const JobApplicationForm = ({ isOpen, onClose, jobTitle = '', allJobTitles = [] 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (!validateForm()) return;
-
     setIsSubmitting(true);
     setSubmitStatus(null);
 
     try {
-      
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
@@ -73,21 +66,19 @@ const JobApplicationForm = ({ isOpen, onClose, jobTitle = '', allJobTitles = [] 
           'Accept': 'application/json'
         },
         body: JSON.stringify({
-          access_key: "510e84f9-6c6a-4bf5-85fb-8a6bba4b6b45", 
+          access_key: "510e84f9-6c6a-4bf5-85fb-8a6bba4b6b45",
           name: formData.name,
           phone: formData.phone,
           email: formData.email,
           applyingFor: jobTitle,
           currentLocation: formData.currentLocation,
           experience: formData.experience,
-
           from_name: formData.name,
           to: "roririsoftpvtltd@gmail.com"
         })
       });
 
       const result = await response.json();
-
       if (result.success) {
         setSubmitStatus('success');
         setFormData({ name: '', phone: '', email: '', applyingFor: jobTitle, currentLocation: '', experience: '' });
@@ -96,8 +87,6 @@ const JobApplicationForm = ({ isOpen, onClose, jobTitle = '', allJobTitles = [] 
       }
     } catch (error) {
       console.error('Error:', error);
-
-      
       const subject = encodeURIComponent(formData.subject);
       const body = encodeURIComponent(
         `Name: ${formData.name}\n` +
@@ -116,15 +105,12 @@ const JobApplicationForm = ({ isOpen, onClose, jobTitle = '', allJobTitles = [] 
     }
   };
 
-
-
   useEffect(() => {
-    
     if (isOpen) {
       setFormData(prev => ({
         ...prev,
         applyingFor: jobTitle,
-        resume: null, 
+        resume: null,
         fullName: '',
         email: '',
         phoneNumber: '',
@@ -137,8 +123,6 @@ const JobApplicationForm = ({ isOpen, onClose, jobTitle = '', allJobTitles = [] 
     }
   }, [isOpen, jobTitle]);
 
-
-
   const validate = () => {
     let newErrors = {};
     if (!formData.fullName.trim()) newErrors.fullName = 'Full Name is required';
@@ -149,7 +133,7 @@ const JobApplicationForm = ({ isOpen, onClose, jobTitle = '', allJobTitles = [] 
     }
     if (!formData.phoneNumber.trim()) {
       newErrors.phoneNumber = 'Phone Number is required';
-    } else if (!/^\d{10}$/.test(formData.phoneNumber)) { 
+    } else if (!/^\d{10}$/.test(formData.phoneNumber)) {
       newErrors.phoneNumber = 'Phone number is invalid (10 digits required)';
     }
     if (!formData.resume) newErrors.resume = 'Resume is required';
@@ -159,12 +143,9 @@ const JobApplicationForm = ({ isOpen, onClose, jobTitle = '', allJobTitles = [] 
       newErrors.experience = 'Experience must be a positive number';
     }
     if (!formData.applyingFor.trim()) newErrors.applyingFor = 'Applying For field is required';
-
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
-
-  
 
   const modalVariants = {
     hidden: { opacity: 0, scale: 0.9, y: -50 },
@@ -220,10 +201,8 @@ const JobApplicationForm = ({ isOpen, onClose, jobTitle = '', allJobTitles = [] 
                 </button>
               </motion.div>
             ) : (
-
-
               <div className="bg-white rounded-3xl shadow-xl p-8">
-                                  <div>
+                <div>
                   <label htmlFor="resume" className="block text-gray-700 text-sm font-semibold mb-2">
                     Upload Resume
                   </label>
@@ -243,13 +222,11 @@ const JobApplicationForm = ({ isOpen, onClose, jobTitle = '', allJobTitles = [] 
                   <p className="mt-1 text-xs text-gray-500">Supported formats: PDF, DOC, DOCX</p>
                   {errors.resume && <p className="text-red-500 text-xs mt-1">{errors.resume}</p>}
                 </div>
-               
                 {submitStatus === 'success' && (
                   <div className="mb-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded-xl">
                     ✅ Message sent successfully! I'll get back to you soon.
                   </div>
                 )}
-
                 {submitStatus === 'error' && (
                   <div className="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded-xl">
                     ❌ Failed to send message. Please try again or contact me directly.
@@ -259,7 +236,7 @@ const JobApplicationForm = ({ isOpen, onClose, jobTitle = '', allJobTitles = [] 
                   <div>
                     <div>
                       <label className=" mt-5 block text-sm font-medium text-gray-700 mb-2">
-                        Full Name 
+                        Full Name
                       </label>
                       <input
                         type="text"
@@ -275,9 +252,10 @@ const JobApplicationForm = ({ isOpen, onClose, jobTitle = '', allJobTitles = [] 
                         <p className="mt-1 text-sm text-red-500">{errors.name}</p>
                       )}
                     </div>
+
                     <div>
                       <label className=" mt-5 block text-sm font-medium text-gray-700 mb-2">
-                        Phone Number 
+                        Phone Number
                       </label>
                       <input
                         type="number"
@@ -296,7 +274,7 @@ const JobApplicationForm = ({ isOpen, onClose, jobTitle = '', allJobTitles = [] 
 
                     <div>
                       <label className="mt-5 block text-sm font-medium text-gray-700 mb-2">
-                        Email Address 
+                        Email Address
                       </label>
                       <input
                         type="email"
@@ -313,6 +291,7 @@ const JobApplicationForm = ({ isOpen, onClose, jobTitle = '', allJobTitles = [] 
                       )}
                     </div>
                   </div>
+
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       Applying JopTitle
@@ -337,7 +316,7 @@ const JobApplicationForm = ({ isOpen, onClose, jobTitle = '', allJobTitles = [] 
                       Current Location
                     </label>
                     <input
-                    type="text"
+                      type="text"
                       name="currentLocation"
                       value={formData.currentLocation}
                       onChange={handleChange}
@@ -351,12 +330,13 @@ const JobApplicationForm = ({ isOpen, onClose, jobTitle = '', allJobTitles = [] 
                       <p className="mt-1 text-sm text-red-500">{errors.currentLocation}</p>
                     )}
                   </div>
+
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       Experience
                     </label>
                     <input
-                    type="text"
+                      type="text"
                       name="experience"
                       value={formData.experience}
                       onChange={handleChange}

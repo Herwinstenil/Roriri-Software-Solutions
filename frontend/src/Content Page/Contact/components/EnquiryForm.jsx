@@ -6,7 +6,6 @@ import { useParams } from 'react-router-dom';
 
 const EnquiryForm = () => {
   const { type } = useParams();
-
   // Define headings and default subjects for each type
   const headings = {
     partner: { title: 'Partner Enquiry', subject: 'Partnership Request' },
@@ -17,7 +16,6 @@ const EnquiryForm = () => {
   // Use fallback if type is invalid
   const { title: heading, subject: defaultSubject } =
     headings[type] || { title: 'Contact Us', subject: '' };
-
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -29,7 +27,6 @@ const EnquiryForm = () => {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
-
   const validateForm = () => {
     const newErrors = {};
     if (!formData.name.trim()) newErrors.name = 'Full name is required';
@@ -52,7 +49,6 @@ const EnquiryForm = () => {
     if (!validateForm()) return;
     setIsSubmitting(true);
     setSubmitStatus(null);
-
     try {
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
@@ -102,7 +98,6 @@ const EnquiryForm = () => {
   return (
     <div className="min-h-screen italic  bg-white flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
-
         {/* Left Content */}
         <Motion.div
           className="flex flex-col justify-center text-center lg:text-left p-4"
@@ -114,9 +109,11 @@ const EnquiryForm = () => {
           <Motion.p className="text-purple-700 font-semibold text-lg mb-2" variants={itemVariants}>
             {heading}
           </Motion.p>
+
           <Motion.h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-gray-900" variants={itemVariants}>
             Get in touch with <br /> us today
           </Motion.h1>
+
           <Motion.p className="text-gray-600 text-base sm:text-lg mb-10 max-w-prose" variants={itemVariants}>
             We’re here to help with {heading.toLowerCase()}!
           </Motion.p>
@@ -124,6 +121,7 @@ const EnquiryForm = () => {
           <Motion.h2 className="text-2xl font-bold text-gray-800 mb-6" variants={itemVariants}>
             Follow Us:
           </Motion.h2>
+
           <Motion.div className="flex justify-center lg:justify-start space-x-4" variants={itemVariants}>
             {[facebook, instagram, linkedin, youtube].map((icon, i) => (
               <a key={i} href=" " target="_blank" rel="noopener noreferrer"

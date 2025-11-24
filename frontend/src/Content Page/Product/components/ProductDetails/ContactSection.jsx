@@ -11,7 +11,6 @@ const ContactSection = ({ productName }) => {
     inquiryType: 'demo'
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
-
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -88,8 +87,6 @@ const ContactSection = ({ productName }) => {
                 <p className="text-xs md:text-lg text-gray-600">roririsoftpvtltd@gmail.com</p>
               </div>
             </div>
-
-            
           </div>
 
           {/* Response Time */}
@@ -107,7 +104,6 @@ const ContactSection = ({ productName }) => {
         {/* Right side - Contact Form */}
         <div className="bg-white rounded-xl shadow-sm p-6">
           <h3 className="text-xl font-bold text-gray-900 mb-4">Send us a Message</h3>
-          
           <div className="space-y-4">
             {/* Inquiry Type */}
             <div>
@@ -144,6 +140,7 @@ const ContactSection = ({ productName }) => {
                   placeholder="John Smith"
                 />
               </div>
+
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   Email Address *
@@ -175,6 +172,7 @@ const ContactSection = ({ productName }) => {
                   placeholder="Your Company"
                 />
               </div>
+
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   Phone Number
@@ -213,7 +211,6 @@ const ContactSection = ({ productName }) => {
               Send Message
             </button>
           </div>
-
           <p className="text-xs text-gray-500 mt-4 text-center">
             By submitting this form, you agree to our privacy policy and terms of service.
           </p>

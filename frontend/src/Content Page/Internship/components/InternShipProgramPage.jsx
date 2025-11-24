@@ -1,7 +1,6 @@
 import React from 'react';
 
 const InternshipProgramsPage = () => {
-
   const programs = [
     {
       name: 'React Js Developer',
@@ -21,7 +20,7 @@ const InternshipProgramsPage = () => {
           <line x1="12" y1="8" x2="12" y2="8" />
           <path d="M16.24 7.76l-2.12 2.12M7.76 16.24l2.12-2.12M16.24 16.24l-2.12-2.12M7.76 7.76l2.12 2.12" />
         </svg>
-      ), 
+      ),
     },
     {
       name: 'Mobile App Developer',
@@ -39,7 +38,7 @@ const InternshipProgramsPage = () => {
           <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
           <line x1="12" y1="18" x2="12" y2="18" />
         </svg>
-      ), 
+      ),
     },
     {
       name: 'UI/UX Designer',
@@ -57,7 +56,7 @@ const InternshipProgramsPage = () => {
           <path d="M15 18l-6-6 6-6" />
           <path d="M6 12h12" />
         </svg>
-      ), 
+      ),
     },
     {
       name: 'Data Analyst',
@@ -75,7 +74,7 @@ const InternshipProgramsPage = () => {
           <path d="M3 3v18h18" />
           <path d="M18 17l-5-5-4 4-2-2" />
         </svg>
-      ), 
+      ),
     },
     {
       name: 'Digital Marketing',
@@ -92,7 +91,7 @@ const InternshipProgramsPage = () => {
         >
           <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
         </svg>
-      ), 
+      ),
     },
     {
       name: 'HR Management',
@@ -112,7 +111,7 @@ const InternshipProgramsPage = () => {
           <path d="M23 21v-2a4 4 0 00-3-3.87m-3-1.13a4 4 0 01-1 3.87" />
           <path d="M16 3.13a4 4 0 010 7.75" />
         </svg>
-      ), 
+      ),
     },
   ];
 
@@ -121,7 +120,6 @@ const InternshipProgramsPage = () => {
       <h1 className="text-4xl sm:text-5xl lg:text-6xl font-normal leading-tight mb-12 text-gray-800 text-center">
         Our <span className="text-green-600">Internship</span> Programs
       </h1>
-
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl w-full">
         {programs.map((program, index) => (
           <div

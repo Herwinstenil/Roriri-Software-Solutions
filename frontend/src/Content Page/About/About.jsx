@@ -10,6 +10,7 @@ import { officeimg } from '../../assets/office/office.js';
 import garden1 from '../../assets/roriri/Garden.jpg'
 import { saleslottie } from '../../assets/lottiefiles/lettie.js';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+
 const solutions = [
   {
     title: "Solution made Simple",
@@ -71,6 +72,7 @@ const About = () => {
           </Motion.div>
         </div>
         <WeBelieveInSection />
+
         <Motion.section
           initial={{ opacity: 0, y: -50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -79,7 +81,6 @@ const About = () => {
           className="bg-white rounded-xl shadow-xl overflow-hidden max-w-6xl mx-auto mt-10"
         >
           <div className="grid grid-cols-1 md:grid-cols-2">
-
             <div className="p-4 flex flex-col gap-4">
               <img
                 src={garden1}
@@ -95,7 +96,6 @@ const About = () => {
               />
             </div>
 
-
             <div className="p-8 flex flex-col justify-center">
               <Motion.h1
                 initial={{ opacity: 0, x: 50 }}
@@ -106,6 +106,7 @@ const About = () => {
               >
                 South India's First Farm-Based IT Company
               </Motion.h1>
+
               <Motion.p
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
@@ -115,6 +116,7 @@ const About = () => {
               >
                 A Harmony of Technology and Nature
               </Motion.p>
+
               <Motion.p
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
@@ -130,6 +132,7 @@ const About = () => {
             </div>
           </div>
         </Motion.section>
+
         <section className="py-5 md:py-10  px-4">
           <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12">
             <Motion.div
@@ -150,6 +153,7 @@ const About = () => {
                 </Motion.div>
               ))}
             </Motion.div>
+
             <Motion.div
               whileInView={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -162,11 +166,11 @@ const About = () => {
                 loop
                 autoplay
               />
-
             </Motion.div>
           </div>
         </section>
       </section>
+
       <Motion.section
         className="relative bg-white py-16 md:py-24 overflow-hidden rounded-b-lg shadow-lg"
         initial="hidden"
@@ -192,7 +196,6 @@ const About = () => {
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-
             />
             <Motion.img
               src={team4}
@@ -243,9 +246,7 @@ const About = () => {
       >
         <div className="container mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-medium text-gray-900 mb-12 leading-tight rounded-lg">Our Culture</h2>
-
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-
             <Motion.div
               className="bg-white p-6 rounded-xl shadow-lg text-left"
               variants={cardVariants}
@@ -281,11 +282,9 @@ const About = () => {
               <img src={garden} alt="Culture Image 2" className="w-full h-48 object-cover rounded-lg mb-4" onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/400x250/E0E7FF/312E81?text=Culture+Image+2'; }} />
               <h3 className="text-xl font-semibold text-gray-900 rounded-lg">Relaxation Zones</h3>
             </Motion.div>
-
           </div>
         </div>
       </Motion.section>
-
       <FounderProfileSection />
     </>
   )

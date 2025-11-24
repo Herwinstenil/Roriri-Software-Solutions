@@ -1,8 +1,6 @@
-
-
 const jobData = [
   {
-    id: 'fullstack-developer', 
+    id: 'fullstack-developer',
     title: 'Fullstack Developer',
     workplace: 'Office',
     location: 'Tirunelveli, Kalakad',
@@ -150,18 +148,18 @@ const jobData = [
     ],
   },
   {
-    id: 'python-developer', 
-    title: 'Python Developer', 
-    workplace: 'Office', 
-    location: 'Tirunelveli, Kalakad', 
-    jobType: 'Full time', 
-    experience: '2 Years+', 
+    id: 'python-developer',
+    title: 'Python Developer',
+    workplace: 'Office',
+    location: 'Tirunelveli, Kalakad',
+    jobType: 'Full time',
+    experience: '2 Years+',
     roleDescription: `The Python Developer at Roriri Software Solutions will be responsible for developing and maintaining
       backend systems. This role requires proficiency in Python and experience with frameworks like Django or Flask,
       along with strong database management skills.`,
     qualifications: [
-      'Proficiency in Python and frameworks like Django or Flask.', 
-      'Experience with database systems (e.g., PostgreSQL, MySQL, or MongoDB).', 
+      'Proficiency in Python and frameworks like Django or Flask.',
+      'Experience with database systems (e.g., PostgreSQL, MySQL, or MongoDB).',
     ],
     skillsRequired: [
       'Python programming',

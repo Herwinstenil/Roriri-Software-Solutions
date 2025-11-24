@@ -5,13 +5,11 @@ import products from './productData';
 import ContactSection from './ContactSection';
 
 const ProductDetails = () => {
-   const { id } = useParams();
+  const { id } = useParams();
   const navigate = useNavigate();
-
   const product = products.find((p) => p.id === parseInt(id));
   const [selectedImage, setSelectedImage] = useState(product ? product.imageUrl : '');
   const [activeTab, setActiveTab] = useState('overview');
-
   if (!product) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center text-center">
@@ -25,17 +23,14 @@ const ProductDetails = () => {
       </div>
     );
   }
-
   const handleContactUs = () => {
     navigate('/contact')
   };
 
   return (
     <div className="italic min-h-screen bg-gray-50">
-     
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          
           <div className="space-y-4">
             <div className="rounded-2xl overflow-hidden shadow-lg">
               <img src={selectedImage} alt={product.name} className="w-full h-96 object-cover" />
@@ -45,9 +40,8 @@ const ProductDetails = () => {
                 <button
                   key={index}
                   onClick={() => setSelectedImage(img)}
-                  className={`rounded-lg overflow-hidden border-2 transition-all ${
-                    selectedImage === img ? 'border-purple-500 shadow-md' : 'border-gray-200 hover:border-gray-300'
-                  }`}
+                  className={`rounded-lg overflow-hidden border-2 transition-all ${selectedImage === img ? 'border-purple-500 shadow-md' : 'border-gray-200 hover:border-gray-300'
+                    }`}
                 >
                   <img src={img} alt={`${product.name} ${index + 1}`} className="w-full h-20 object-cover rounded" />
                 </button>
@@ -61,7 +55,6 @@ const ProductDetails = () => {
                 <span className="text-sm font-medium text-purple-600 bg-purple-100 px-3 py-1 rounded-full">
                   {product.category}
                 </span>
-               
               </div>
               <h1 className="text-4xl font-bold text-indigo-700 mb-3">{product.name}</h1>
               <p className="text-xl text-purple-600 font-semibold mb-4">{product.tagline}</p>
@@ -85,13 +78,13 @@ const ProductDetails = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <a
-                 href='#contact'
+                  href='#contact'
                   className=" text-center cursor-pointer flex-1 px-6 py-3 rounded-full font-semibold bg-gradient-to-r from-purple-600 to-pink-500 text-white"
                 >
                   Get Quote & Demo
                 </a>
                 <button
-                  onClick={handleContactUs} 
+                  onClick={handleContactUs}
                   className="cursor-pointer flex-1 px-6 py-3 rounded-full font-semibold border-2 border-purple-600 text-purple-600 hover:bg-purple-50"
                 >
                   Contact Sales
@@ -101,18 +94,16 @@ const ProductDetails = () => {
           </div>
         </div>
 
-       
         <div className="mt-16">
           <div className="border-b border-gray-200 flex space-x-8">
             {['overview', 'features', 'specifications'].map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className={`py-4 px-1 border-b-2 font-medium ${
-                  activeTab === tab
+                className={`py-4 px-1 border-b-2 font-medium ${activeTab === tab
                     ? 'border-purple-500 text-purple-600'
                     : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-                }`}
+                  }`}
               >
                 {tab.charAt(0).toUpperCase() + tab.slice(1)}
               </button>
@@ -145,7 +136,7 @@ const ProductDetails = () => {
           </div>
         </div>
         <div id='contact'>
-          <ContactSection/>
+          <ContactSection />
         </div>
       </div>
     </div>

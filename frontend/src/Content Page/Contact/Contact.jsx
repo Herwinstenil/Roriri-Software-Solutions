@@ -36,7 +36,8 @@ const Contact = () => {
       iconTextColor: 'text-purple-500',
     },
   ];
-  const handlePage = ()=>{
+  
+  const handlePage = () => {
     window.location.href = '#contact';
   }
   return (
@@ -61,9 +62,8 @@ const Contact = () => {
                   </span>
                 </p>
 
-                <motion.button 
-                
-                onClick={handlePage}
+                <motion.button
+                  onClick={handlePage}
                   className="mt-6 px-6 py-3 cursor-pointer bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-full shadow-lg hover:bg-blue-300 transition"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -71,7 +71,8 @@ const Contact = () => {
                   Get in Touch
                 </motion.button>
               </motion.div>
-  <motion.div
+
+              <motion.div
                 className="flex-1 flex justify-center"
                 initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -85,13 +86,11 @@ const Contact = () => {
                   autoplay
                 />
               </motion.div>
-
-
             </div>
           </section>
+
           <div className="italic top-7/12 left-25  flex items-center justify-center  px-4 sm:px-6  font-inter">
             <div className="max-w-7xl mx-auto w-full bg-white rounded-3xl  p-8 sm:p-12 relative overflow-hidden">
-
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {enquiryTypes.map((item, index) => (
                   <div
@@ -108,19 +107,19 @@ const Contact = () => {
                       {item.description}
                     </p>
                     <Link
-              to={item.buttonLink}
-              className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-lg font-medium hover:from-blue-700 hover:to-purple-700 transition-all"
-            >
-              {item.buttonText}
-            </Link>
+                      to={item.buttonLink}
+                      className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-lg font-medium hover:from-blue-700 hover:to-purple-700 transition-all"
+                    >
+                      {item.buttonText}
+                    </Link>
                   </div>
                 ))}
               </div>
             </div>
           </div>
-
         </div>
         <ContactUsPage />
+
         <div className=" bg-white italic  text-gray-900 font-inter py-8 px-4 sm:px-6  flex flex-col items-center">
           <div className="max-w-4xl mx-auto text-center mb-12">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
