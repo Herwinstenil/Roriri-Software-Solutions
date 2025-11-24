@@ -35,31 +35,37 @@ function AppContent() {
     <>
       {!hideLayout && <Navbar />}
 
-      <Routes>
-        <Route path="/" element={<Landing />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/appointment" element={<AppointmentBooking />} />
-        <Route path="/internship" element={<Internship />} />
-        <Route path="/career" element={<Career />} />
-        <Route path="/jobs/:jobId" element={<JobDescriptionPage />} />
-        <Route path="/jobapplicationform" element={<JobApplicationForm />} />
-        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-        <Route path="/terms-condition" element={<TermsCondition />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/event" element={<EventsComponent />} />
-        <Route path="/product" element={<Product />} />
-        <Route path="/products/:id" element={<Product />} />
-        <Route path="/services" element={<ServicesPage />} />
-        <Route path="/services/erp-solutions" element={<ERPSolutions />} />
-        <Route path="/services/mobile-app-development" element={<MobileAppDevelopmentPage />} />
-        <Route path="/services/web-app-development" element={<WebDevelopment />} />
-        <Route path="/services/it-consulting" element={<IT_Consulting />} />
-        <Route path="/whatwedo" element={<Whatwedo />} />
-
-        {/* Auth pages */}
-        <Route path="/signin" element={<Signin />} />
-        <Route path="/login" element={<Login />} />
-      </Routes>
+      {hideLayout ? (
+        <Routes>
+          {/* Auth pages */}
+          <Route path="/signin" element={<Signin />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      ) : (
+        <div className="pt-20">
+          <Routes>
+            <Route path="/" element={<Landing />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/appointment" element={<AppointmentBooking />} />
+            <Route path="/internship" element={<Internship />} />
+            <Route path="/career" element={<Career />} />
+            <Route path="/jobs/:jobId" element={<JobDescriptionPage />} />
+            <Route path="/jobapplicationform" element={<JobApplicationForm />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/terms-condition" element={<TermsCondition />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/event" element={<EventsComponent />} />
+            <Route path="/product" element={<Product />} />
+            <Route path="/products/:id" element={<Product />} />
+            <Route path="/services" element={<ServicesPage />} />
+            <Route path="/services/erp-solutions" element={<ERPSolutions />} />
+            <Route path="/services/mobile-app-development" element={<MobileAppDevelopmentPage />} />
+            <Route path="/services/web-app-development" element={<WebDevelopment />} />
+            <Route path="/services/it-consulting" element={<IT_Consulting />} />
+            <Route path="/whatwedo" element={<Whatwedo />} />
+          </Routes>
+        </div>
+      )}
 
       {!hideLayout && <Footer />}
     </>
