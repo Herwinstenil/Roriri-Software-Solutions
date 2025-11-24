@@ -17,6 +17,7 @@ import TermsCondition from './Content Page/TermsCondition/TermsCondition'
 import Contact from './Content Page/Contact/Contact'
 import EventsComponent from './Content Page/Event/Event'
 import Product from './Content Page/Product/Product'
+import ProductDetails from './Content Page/Product/components/ProductDetails/ProductDetails';
 import ServicesPage from './Content Page/Services/service'
 import ERPSolutions from './Content Page/Services/components/ERP_solution'
 import MobileAppDevelopmentPage from './Content Page/Services/components/MobileApp-development'
@@ -57,14 +58,14 @@ function AppContent() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/event" element={<EventsComponent />} />
             <Route path="/product" element={<Product />} />
-            <Route path="/products/:id" element={<Product />} />
+            <Route path="/products/:id" element={<ProductDetails />} />
             <Route path="/services" element={<ServicesPage />} />
             <Route path="/services/erp-solutions" element={<ERPSolutions />} />
             <Route path="/services/mobile-app-development" element={<MobileAppDevelopmentPage />} />
             <Route path="/services/web-app-development" element={<WebDevelopment />} />
             <Route path="/services/it-consulting" element={<IT_Consulting />} />
             <Route path="/whatwedo" element={<Whatwedo />} />
-            <Route path="/contact/enquiry/:type" element={<EnquiryForm />} />
+            <Route path="/contact/:type" element={<EnquiryForm />} />
           </Routes>
         </div>
       )}
