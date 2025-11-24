@@ -228,7 +228,7 @@ const MobileAppDevelopmentPage = () => {
             services in Kalakad. As a dynamic software company, we specialize in transforming your
             ideas and plans into innovative applications that resonate with the latest industry trends.
           </p>
-          <button onClick={() => navigate('/contact')} className="cursor-pointer bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 shadow-lg hover:shadow-blue-500/25">
+          <button onClick={() => navigate('/appointment')} className="cursor-pointer bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 shadow-lg hover:shadow-blue-500/25">
             Book a free consulting
           </button>
         </div>
