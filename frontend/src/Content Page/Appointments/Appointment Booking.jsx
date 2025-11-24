@@ -6,6 +6,8 @@ const AppointmentBooking = () => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
+        phone: '',
+        person: '',
         date: new Date(),
         time: '',
         message: ''
@@ -37,6 +39,8 @@ const AppointmentBooking = () => {
             setFormData({
                 name: '',
                 email: '',
+                phone: '',
+                person: '',
                 date: new Date(),
                 time: '',
                 message: ''
@@ -137,7 +141,57 @@ const AppointmentBooking = () => {
                                 </div>
 
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div className="animate-slide-in" style={{ animationDelay: '0.25s' }}>
+                                        <label htmlFor="phone" className="block text-sm font-semibold text-gray-300 mb-3 flex items-center">
+                                            <svg className="w-5 h-5 mr-2 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                                            </svg>
+                                            Phone Number
+                                        </label>
+                                        <div className="relative group">
+                                            <input
+                                                type="tel"
+                                                id="phone"
+                                                name="phone"
+                                                value={formData.phone}
+                                                onChange={handleChange}
+                                                onFocus={() => setFocusedField('phone')}
+                                                onBlur={() => setFocusedField(null)}
+                                                required
+                                                className="w-full px-5 py-4 bg-gray-700/50 border-2 border-gray-600 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-red-500 input-glow transition-all duration-300 backdrop-blur-sm"
+                                                placeholder="Enter your phone number"
+                                            />
+                                            <div className="absolute inset-0 bg-gradient-to-r from-red-500 to-pink-500 rounded-xl opacity-0 group-hover:opacity-10 transition-opacity duration-300 pointer-events-none"></div>
+                                        </div>
+                                    </div>
+
                                     <div className="animate-slide-in" style={{ animationDelay: '0.3s' }}>
+                                        <label htmlFor="person" className="block text-sm font-semibold text-gray-300 mb-3 flex items-center">
+                                            <svg className="w-5 h-5 mr-2 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                                            </svg>
+                                            Person to Meet
+                                        </label>
+                                        <div className="relative group">
+                                            <input
+                                                type="text"
+                                                id="person"
+                                                name="person"
+                                                value={formData.person}
+                                                onChange={handleChange}
+                                                onFocus={() => setFocusedField('person')}
+                                                onBlur={() => setFocusedField(null)}
+                                                required
+                                                className="w-full px-5 py-4 bg-gray-700/50 border-2 border-gray-600 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 input-glow transition-all duration-300 backdrop-blur-sm"
+                                                placeholder="Enter the person you want to meet"
+                                            />
+                                            <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-xl opacity-0 group-hover:opacity-10 transition-opacity duration-300 pointer-events-none"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div className="animate-slide-in" style={{ animationDelay: '0.35s' }}>
                                         <label htmlFor="date" className="block text-sm font-semibold text-gray-300 mb-3 flex items-center">
                                             <svg className="w-5 h-5 mr-2 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
