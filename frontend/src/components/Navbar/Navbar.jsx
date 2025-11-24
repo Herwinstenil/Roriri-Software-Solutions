@@ -182,10 +182,10 @@ const Navbar = () => {
                     <div className="hidden lg:flex items-center flex-shrink-0 -mr-2">
                         {isLoggedIn ? (
                             <Link
-                                to="/appointment"
+                                to="#"
                                 className="relative group overflow-hidden px-8 py-3 bg-gradient-to-r from-green-600 to-blue-600 rounded-full text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
                             >
-                                <span className="relative z-10 text-lg">Book Appointment</span>
+                                <span className="relative z-10 text-lg">My Dashboard</span>
                                 <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-green-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                             </Link>
                         ) : (
