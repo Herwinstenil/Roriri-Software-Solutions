@@ -24,6 +24,7 @@ import WebDevelopment from './Content Page/Services/components/Web_developmentDe
 import IT_Consulting from './Content Page/Services/components/IT_Consulting'
 import Whatwedo from './Content Page/WhatweDo/Whatwedo'
 import { AuthProvider } from './Context/AuthContext'
+import EnquiryForm from './Content Page/Contact/components/EnquiryForm'
 
 function AppContent() {
   const location = useLocation()
@@ -63,6 +64,7 @@ function AppContent() {
             <Route path="/services/web-app-development" element={<WebDevelopment />} />
             <Route path="/services/it-consulting" element={<IT_Consulting />} />
             <Route path="/whatwedo" element={<Whatwedo />} />
+            <Route path="/contact/enquiry/:type" element={<EnquiryForm />} />
           </Routes>
         </div>
       )}
