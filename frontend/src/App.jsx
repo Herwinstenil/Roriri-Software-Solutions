@@ -22,8 +22,7 @@ import ERPSolutions from './Content Page/Services/components/ERP_solution'
 import MobileAppDevelopmentPage from './Content Page/Services/components/MobileApp-development'
 import WebDevelopment from './Content Page/Services/components/Web_developmentDetailsPage'
 import IT_Consulting from './Content Page/Services/components/IT_Consulting'
-import Whatwedo from './Content Page/WhatweDo/WhatweDo'
-import MarketingSection from './Content Page/MarcetingSection/MarketingSection'
+import Whatwedo from './Content Page/WhatweDo/Whatwedo'
 import { AuthProvider } from './Context/AuthContext'
 
 function AppContent() {
@@ -56,7 +55,6 @@ function AppContent() {
         <Route path="/services/web-app-development" element={<WebDevelopment />} />
         <Route path="/services/it-consulting" element={<IT_Consulting />} />
         <Route path="/whatwedo" element={<Whatwedo />} />
-        <Route path="/marketing" element={<MarketingSection />} />
 
         {/* Auth pages */}
         <Route path="/signin" element={<Signin />} />
