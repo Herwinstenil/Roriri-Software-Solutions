@@ -81,13 +81,11 @@ const Certification = () => {
   });
 
   return (
-    <div className="italic  font-sans p-4 flex items-center justify-center">
+    <div className="italic font-sans p-4 flex items-center justify-center">
       <div className="relative w-full max-w-7xl mx-auto py-12 px-4 md:px-8">
         <div className="text-center mb-12">
           <h1
-            className="text-4xl md:text-6xl font-medium mb-4  text-green-500
-    "
-          >
+            className="text-4xl md:text-6xl font-medium mb-4  text-green-500">
             Certificate Gallery
           </h1>
           <p className="text-gray-400 text-lg">Showcasing achievements and accomplishments</p>

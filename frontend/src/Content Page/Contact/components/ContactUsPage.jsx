@@ -113,7 +113,7 @@ const ContactUsPage = () => {
 
   return (
     <>
-      <div className="italic min-h-screen bg-white flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8" id='contact'>
+      <div className="italic min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8" id='contact'>
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
 
           <Motion.div
@@ -126,14 +126,14 @@ const ContactUsPage = () => {
             <Motion.p className="text-purple-700 font-semibold text-lg mb-2" variants={itemVariants}>
               Contact Us
             </Motion.p>
-            <Motion.h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-gray-900" variants={itemVariants}>
+            <Motion.h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-white" variants={itemVariants}>
               Get in touch with <br /> us today
             </Motion.h1>
-            <Motion.p className="text-gray-600 text-base sm:text-lg mb-10 max-w-prose" variants={itemVariants}>
+            <Motion.p className="text-gray-400 text-base sm:text-lg mb-10 max-w-prose" variants={itemVariants}>
               Reach out to explore endless possibilities with Roniri Software Solutions!
             </Motion.p>
 
-            <Motion.h2 className="text-2xl font-bold text-gray-800 mb-6" variants={itemVariants}>
+            <Motion.h2 className="text-2xl font-bold text-white mb-6" variants={itemVariants}>
               Follow Us:
             </Motion.h2>
             <Motion.div className="flex justify-center lg:justify-start space-x-4" variants={itemVariants}>

@@ -42,9 +42,9 @@ const Contact = () => {
   }
   return (
     <>
-      <div id="contactpage">
+      <div id="contactpage" className='bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900'>
         <div>
-          <section className="italic bg-gradient-to-br  flex items-center justify-center px-6">
+          <section className="italic bg-gradient-to-br flex items-center justify-center px-6 ">
             <div className="container mx-auto flex flex-col-reverse md:flex-row items-center gap-8 md:gap-8">
               <motion.div
                 className="flex-1 text-center md:text-left mt-10"
@@ -52,10 +52,10 @@ const Contact = () => {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8 }}
               >
-                <h1 className="text-3xl sm:text-4xl md:text-5xl font-medium drop-shadow-lg leading-tight">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl font-medium drop-shadow-lg leading-tight text-white">
                   What can we help you with?
                 </h1>
-                <p className="mt-4 sm:mt-6 text-base sm:text-lgmax-w-lg">
+                <p className="mt-4 sm:mt-6 text-base sm:text-lgmax-w-lg text-gray-300">
                   Reach out to explore endless possibilities with{" "}
                   <span className="text-blue-400 font-semibold">
                     Roriri Software Solutions!
@@ -120,9 +120,9 @@ const Contact = () => {
         </div>
         <ContactUsPage />
 
-        <div className=" bg-white italic  text-gray-900 font-inter py-8 px-4 sm:px-6  flex flex-col items-center">
+        <div className=" bg-white italic text-gray-900 font-inter py-8 px-4 sm:px-6 flex flex-col items-center bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
           <div className="max-w-4xl mx-auto text-center mb-12">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-white">
               Lost? Don't worry, we're not <br />
               <span className="text-red-600">hiding</span>! Find us here!
             </h1>
