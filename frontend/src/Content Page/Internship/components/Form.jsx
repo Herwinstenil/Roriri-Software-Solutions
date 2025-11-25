@@ -179,7 +179,7 @@ const InternshipRegistrationForm = () => {
 
                     <div className="space-y-6">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
+                        <div className="animate-slide-in" style={{ animationDelay: '0.1s' }}>
                           <label htmlFor="name" className="block text-sm font-semibold text-gray-300 mb-3 flex items-center">
                             <svg className="w-5 h-5 mr-2 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
@@ -196,9 +196,10 @@ const InternshipRegistrationForm = () => {
                               onFocus={() => setFocusedField('name')}
                               onBlur={() => setFocusedField(null)}
                               required
-                              className="w-full px-5 py-4 bg-gray-700/50 border-2 border-gray-600 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-green-500 transition-all duration-300 backdrop-blur-sm"
+                              className="w-full px-5 py-4 bg-gray-700/50 border-2 border-gray-600 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-green-500 input-glow transition-all duration-300 backdrop-blur-sm"
                               placeholder="Enter your full name"
                             />
+                            <div className="absolute inset-0 bg-gradient-to-r from-green-500 to-blue-500 rounded-xl opacity-0 group-hover:opacity-10 transition-opacity duration-300 pointer-events-none"></div>
                           </div>
                           {errors.name && <p className="mt-1 text-sm text-red-400">{errors.name}</p>}
                         </div>
@@ -396,6 +397,132 @@ const InternshipRegistrationForm = () => {
                             )}
                           </span>
                         </button>
+                        <style>{`
+                @keyframes fade-in {
+                    from {
+                        opacity: 0;
+                        transform: translateY(-10px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+
+                @keyframes slide-in {
+                    from {
+                        opacity: 0;
+                        transform: translateX(-20px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateX(0);
+                    }
+                }
+
+                @keyframes slide-down {
+                    from {
+                        opacity: 0;
+                        transform: translateY(-20px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+
+                @keyframes bounce-slow {
+                    0%, 100% {
+                        transform: translateY(0);
+                    }
+                    50% {
+                        transform: translateY(-10px);
+                    }
+                }
+
+                @keyframes gradient {
+                    0% {
+                        background-position: 0% 50%;
+                    }
+                    50% {
+                        background-position: 100% 50%;
+                    }
+                    100% {
+                        background-position: 0% 50%;
+                    }
+                }
+
+                @keyframes check {
+                    0% {
+                        transform: scale(0);
+                    }
+                    50% {
+                        transform: scale(1.2);
+                    }
+                    100% {
+                        transform: scale(1);
+                    }
+                }
+
+                .input-glow {
+                    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+                    transition: all 0.3s ease;
+                }
+
+                .input-glow:focus {
+                    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.3),
+                                0 0 20px rgba(59, 130, 246, 0.4);
+                    transform: translateY(-2px);
+                }
+
+                .button-hover {
+                    position: relative;
+                    overflow: hidden;
+                }
+
+                .button-hover::before {
+                    content: '';
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    width: 0;
+                    height: 0;
+                    border-radius: 50%;
+                    background: rgba(255, 255, 255, 0.3);
+                    transform: translate(-50%, -50%);
+                    transition: width 0.6s, height 0.6s;
+                }
+
+                .button-hover:hover::before {
+                    width: 300px;
+                    height: 300px;
+                }
+
+                .animate-fade-in {
+                    animation: fade-in 0.6s ease-out;
+                }
+
+                .animate-slide-in {
+                    animation: slide-in 0.6s ease-out backwards;
+                }
+
+                .animate-slide-down {
+                    animation: slide-down 0.4s ease-out;
+                }
+
+                .animate-bounce-slow {
+                    animation: bounce-slow 3s ease-in-out infinite;
+                }
+
+                .animate-gradient {
+                    background-size: 200% auto;
+                    animation: gradient 3s ease infinite;
+                }
+
+                .animate-check {
+                    animation: check 0.4s ease-out;
+                }
+            `}</style>
                       </div>
                     </div>
                   </div>
@@ -405,7 +532,7 @@ const InternshipRegistrationForm = () => {
           </div>
         </div>
       </div>
-    </div>
+    </div >
   );
 };
 
