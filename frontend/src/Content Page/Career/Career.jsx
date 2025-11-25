@@ -7,7 +7,7 @@ import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 
 const Career = () => {
   return (
-    <div className="min-h-screen bg-white flex flex-col items-center justify-center p-4 ">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex flex-col items-center justify-center p-4 ">
       <motion.div
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
@@ -40,7 +40,7 @@ const Career = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 0.7 }}
-            className="text-xl sm:text-2xl md:text-3xl text-gray-700 mb-6"
+            className="text-xl sm:text-2xl md:text-3xl text-gray-400 mb-6"
           >
             Discover, Innovate, and Grow Together
           </motion.p>
@@ -49,7 +49,7 @@ const Career = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.2, duration: 0.7 }}
-            className="text-sm sm:text-base md:text-lg text-gray-600 max-w-xl mx-auto md:mx-0 mb-10 leading-relaxed"
+            className="text-sm sm:text-base md:text-lg text-gray-400 max-w-xl mx-auto md:mx-0 mb-10 leading-relaxed"
           >
             At RORIRI Soft, we believe in building not just careers, but futures. Join a team that fosters creativity,
             embraces challenges, and celebrates success. Whether you're a seasoned professional or just starting out,

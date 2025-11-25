@@ -52,7 +52,7 @@ const JobDescriptionPage = () => {
   };
 
   return (
-    <div className="bg-gray-50 min-h-screen">
+    <div className="bg-gray-50 min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
       <div className="container mx-auto p-6 md:p-8 lg:p-12 flex flex-col lg:flex-row gap-8">
         <div className="container mx-auto p-6 md:p-8 lg:p-12 flex flex-col lg:flex-row gap-8">
           <div className="flex-1 bg-white rounded-xl shadow-lg p-6 md:p-8 lg:p-10">
