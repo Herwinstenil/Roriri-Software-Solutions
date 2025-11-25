@@ -43,7 +43,7 @@ const Product = () => {
   };
 
   return (
-    <div className="min-h-screen italic bg-gray-50 font-inter text-gray-900">
+    <div className="min-h-screen italic bg-gray-50 font-inter text-gray-900 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
       <RoririProductsPage />
       <header className="py-16 bg-gradient-to-r from-purple-700 to-indigo-800 text-white text-center rounded-b-3xl shadow-lg">
         <div className="container mx-auto px-6">
