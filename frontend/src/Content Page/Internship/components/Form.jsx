@@ -270,7 +270,7 @@ const InternshipRegistrationForm = () => {
                               type="text"
                               id="program"
                               name="program"
-                              value={formData.person}
+                              value={formData.program}
                               onChange={handleChange}
                               onFocus={() => setFocusedField('program')}
                               onBlur={() => setFocusedField(null)}
@@ -285,7 +285,7 @@ const InternshipRegistrationForm = () => {
                       </div>
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
+                        <div className="animate-slide-in" style={{ animationDelay: '0.35s' }}>
                           <label htmlFor="qualification" className="block text-sm font-semibold text-gray-300 mb-3 flex items-center">
                             <svg className="w-5 h-5 mr-2 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5z" />
@@ -303,14 +303,15 @@ const InternshipRegistrationForm = () => {
                               onFocus={() => setFocusedField('qualification')}
                               onBlur={() => setFocusedField(null)}
                               required
-                              className="w-full px-5 py-4 bg-gray-700/50 border-2 border-gray-600 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 transition-all duration-300 backdrop-blur-sm"
+                              className="w-full px-5 py-4 bg-gray-700/50 border-2 border-gray-600 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 input-glow transition-all duration-300 backdrop-blur-sm"
                               placeholder="Enter your qualification"
                             />
+                            <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-blue-500 rounded-xl opacity-0 group-hover:opacity-10 transition-opacity duration-300 pointer-events-none"></div>
                           </div>
                           {errors.qualification && <p className="mt-1 text-sm text-red-400">{errors.qualification}</p>}
                         </div>
 
-                        <div>
+                        <div className="animate-slide-in" style={{ animationDelay: '0.4s' }}>
                           <label htmlFor="college" className="block text-sm font-semibold text-gray-300 mb-3 flex items-center">
                             <svg className="w-5 h-5 mr-2 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
@@ -327,15 +328,16 @@ const InternshipRegistrationForm = () => {
                               onFocus={() => setFocusedField('college')}
                               onBlur={() => setFocusedField(null)}
                               required
-                              className="w-full px-5 py-4 bg-gray-700/50 border-2 border-gray-600 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-yellow-500 transition-all duration-300 backdrop-blur-sm"
+                              className="w-full px-5 py-4 bg-gray-700/50 border-2 border-gray-600 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-yellow-500 input-glow transition-all duration-300 backdrop-blur-sm"
                               placeholder="Enter your college"
                             />
+                            <div className="absolute inset-0 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-xl opacity-0 group-hover:opacity-10 transition-opacity duration-300 pointer-events-none"></div>
                           </div>
                           {errors.college && <p className="mt-1 text-sm text-red-400">{errors.college}</p>}
                         </div>
                       </div>
 
-                      <div>
+                      <div className="animate-slide-in" style={{ animationDelay: '0.45s' }}>
                         <label htmlFor="year" className="block text-sm font-semibold text-gray-300 mb-3 flex items-center">
                           <svg className="w-5 h-5 mr-2 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -352,14 +354,15 @@ const InternshipRegistrationForm = () => {
                             onFocus={() => setFocusedField('year')}
                             onBlur={() => setFocusedField(null)}
                             required
-                            className="w-full px-5 py-4 bg-gray-700/50 border-2 border-gray-600 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-pink-500 transition-all duration-300 backdrop-blur-sm"
+                            className="w-full px-5 py-4 bg-gray-700/50 border-2 border-gray-600 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-pink-500 input-glow transition-all duration-300 backdrop-blur-sm"
                             placeholder="Enter your academic year"
                           />
+                          <div className="absolute inset-0 bg-gradient-to-r from-pink-500 to-purple-500 rounded-xl opacity-0 group-hover:opacity-10 transition-opacity duration-300 pointer-events-none"></div>
                         </div>
                         {errors.year && <p className="mt-1 text-sm text-red-400">{errors.year}</p>}
                       </div>
 
-                      <div>
+                      <div className="animate-slide-in" style={{ animationDelay: '0.5s' }}>
                         <label htmlFor="message" className="block text-sm font-semibold text-gray-300 mb-3 flex items-center">
                           <svg className="w-5 h-5 mr-2 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
@@ -376,18 +379,19 @@ const InternshipRegistrationForm = () => {
                             onBlur={() => setFocusedField(null)}
                             rows="4"
                             required
-                            className="w-full px-5 py-4 bg-gray-700/50 border-2 border-gray-600 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-orange-500 transition-all duration-300 resize-none backdrop-blur-sm"
+                            className="w-full px-5 py-4 bg-gray-700/50 border-2 border-gray-600 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-orange-500 input-glow transition-all duration-300 resize-none backdrop-blur-sm"
                             placeholder="Tell us about your interests and goals..."
                           ></textarea>
+                          <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-red-500 rounded-xl opacity-0 group-hover:opacity-10 transition-opacity duration-300 pointer-events-none"></div>
                         </div>
                         {errors.message && <p className="mt-1 text-sm text-red-400">{errors.message}</p>}
                       </div>
 
-                      <div className="text-center">
+                      <div className="text-center animate-slide-in" style={{ animationDelay: '0.6s' }}>
                         <button
                           onClick={handleSubmit}
                           disabled={isSubmitting}
-                          className="group relative w-full px-8 py-4 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 hover:from-blue-700 hover:via-purple-700 hover:to-pink-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-gray-800 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none overflow-hidden"
+                          className="group relative w-full px-8 py-4 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 hover:from-blue-700 hover:via-purple-700 hover:to-pink-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-gray-800 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none overflow-hidden button-hover"
                         >
                           <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-blue-400 to-pink-400 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
                           <span className="relative flex items-center justify-center space-x-2">
@@ -399,137 +403,11 @@ const InternshipRegistrationForm = () => {
                             ) : (
                               <>
                                 <Send size={20} />
-                                <span>Book Appointment</span>
+                                <span>Submit Application</span>
                               </>
                             )}
                           </span>
                         </button>
-                        <style>{`
-                @keyframes fade-in {
-                    from {
-                        opacity: 0;
-                        transform: translateY(-10px);
-                    }
-                    to {
-                        opacity: 1;
-                        transform: translateY(0);
-                    }
-                }
-
-                @keyframes slide-in {
-                    from {
-                        opacity: 0;
-                        transform: translateX(-20px);
-                    }
-                    to {
-                        opacity: 1;
-                        transform: translateX(0);
-                    }
-                }
-
-                @keyframes slide-down {
-                    from {
-                        opacity: 0;
-                        transform: translateY(-20px);
-                    }
-                    to {
-                        opacity: 1;
-                        transform: translateY(0);
-                    }
-                }
-
-                @keyframes bounce-slow {
-                    0%, 100% {
-                        transform: translateY(0);
-                    }
-                    50% {
-                        transform: translateY(-10px);
-                    }
-                }
-
-                @keyframes gradient {
-                    0% {
-                        background-position: 0% 50%;
-                    }
-                    50% {
-                        background-position: 100% 50%;
-                    }
-                    100% {
-                        background-position: 0% 50%;
-                    }
-                }
-
-                @keyframes check {
-                    0% {
-                        transform: scale(0);
-                    }
-                    50% {
-                        transform: scale(1.2);
-                    }
-                    100% {
-                        transform: scale(1);
-                    }
-                }
-
-                .input-glow {
-                    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
-                    transition: all 0.3s ease;
-                }
-
-                .input-glow:focus {
-                    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.3),
-                                0 0 20px rgba(59, 130, 246, 0.4);
-                    transform: translateY(-2px);
-                }
-
-                .button-hover {
-                    position: relative;
-                    overflow: hidden;
-                }
-
-                .button-hover::before {
-                    content: '';
-                    position: absolute;
-                    top: 50%;
-                    left: 50%;
-                    width: 0;
-                    height: 0;
-                    border-radius: 50%;
-                    background: rgba(255, 255, 255, 0.3);
-                    transform: translate(-50%, -50%);
-                    transition: width 0.6s, height 0.6s;
-                }
-
-                .button-hover:hover::before {
-                    width: 300px;
-                    height: 300px;
-                }
-
-                .animate-fade-in {
-                    animation: fade-in 0.6s ease-out;
-                }
-
-                .animate-slide-in {
-                    animation: slide-in 0.6s ease-out backwards;
-                }
-
-                .animate-slide-down {
-                    animation: slide-down 0.4s ease-out;
-                }
-
-                .animate-bounce-slow {
-                    animation: bounce-slow 3s ease-in-out infinite;
-                }
-
-                .animate-gradient {
-                    background-size: 200% auto;
-                    animation: gradient 3s ease infinite;
-                }
-
-                .animate-check {
-                    animation: check 0.4s ease-out;
-                }
-            `}</style>
                       </div>
                     </div>
                   </div>
@@ -539,8 +417,135 @@ const InternshipRegistrationForm = () => {
           </div>
         </div>
       </div>
-    </div >
+
+      <style>{`
+        @keyframes fade-in {
+          from {
+            opacity: 0;
+            transform: translateY(-10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes slide-in {
+          from {
+            opacity: 0;
+            transform: translateX(-20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+
+        @keyframes slide-down {
+          from {
+            opacity: 0;
+            transform: translateY(-20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes bounce-slow {
+          0%, 100% {
+            transform: translateY(0);
+          }
+          50% {
+            transform: translateY(-10px);
+          }
+        }
+
+        @keyframes gradient {
+          0% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+          100% {
+            background-position: 0% 50%;
+          }
+        }
+
+        @keyframes check {
+          0% {
+            transform: scale(0);
+          }
+          50% {
+            transform: scale(1.2);
+          }
+          100% {
+            transform: scale(1);
+          }
+        }
+
+        .input-glow {
+          box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+          transition: all 0.3s ease;
+        }
+
+        .input-glow:focus {
+          box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.3),
+                      0 0 20px rgba(59, 130, 246, 0.4);
+          transform: translateY(-2px);
+        }
+
+        .button-hover {
+          position: relative;
+          overflow: hidden;
+        }
+
+        .button-hover::before {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 0;
+          height: 0;
+          border-radius: 50%;
+          background: rgba(255, 255, 255, 0.3);
+          transform: translate(-50%, -50%);
+          transition: width 0.6s, height 0.6s;
+        }
+
+        .button-hover:hover::before {
+          width: 300px;
+          height: 300px;
+        }
+
+        .animate-fade-in {
+          animation: fade-in 0.6s ease-out;
+        }
+
+        .animate-slide-in {
+          animation: slide-in 0.6s ease-out backwards;
+        }
+
+        .animate-slide-down {
+          animation: slide-down 0.4s ease-out;
+        }
+
+        .animate-bounce-slow {
+          animation: bounce-slow 3s ease-in-out infinite;
+        }
+
+        .animate-gradient {
+          background-size: 200% auto;
+          animation: gradient 3s ease infinite;
+        }
+
+        .animate-check {
+          animation: check 0.4s ease-out;
+        }
+      `}</style>
+    </div>
   );
 };
 
-export default InternshipRegistrationForm
+export default InternshipRegistrationForm;
