@@ -204,10 +204,13 @@ const InternshipRegistrationForm = () => {
                           {errors.name && <p className="mt-1 text-sm text-red-400">{errors.name}</p>}
                         </div>
 
-                        <div>
+                        <div className="animate-slide-in" style={{ animationDelay: '0.2s' }}>
                           <label htmlFor="email" className="block text-sm font-semibold text-gray-300 mb-3 flex items-center">
-                            <svg className="w-5 h-5 mr-2 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            <svg className="w-5 h-5 mr-2 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                                d="M3 8.5v7A2.5 2.5 0 0 0 5.5 18h13A2.5 2.5 0 0 0 21 15.5v-7A2.5 2.5 0 0 0 18.5 6h-13A2.5 2.5 0 0 0 3 8.5z" />
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                                d="M21 8.5l-9 6-9-6" />
                             </svg>
                             Email Address
                           </label>
@@ -221,16 +224,17 @@ const InternshipRegistrationForm = () => {
                               onFocus={() => setFocusedField('email')}
                               onBlur={() => setFocusedField(null)}
                               required
-                              className="w-full px-5 py-4 bg-gray-700/50 border-2 border-gray-600 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 transition-all duration-300 backdrop-blur-sm"
+                              className="w-full px-5 py-4 bg-gray-700/50 border-2 border-gray-600 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 input-glow transition-all duration-300 backdrop-blur-sm"
                               placeholder="your@email.com"
                             />
+                            <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl opacity-0 group-hover:opacity-10 transition-opacity duration-300 pointer-events-none"></div>
                           </div>
                           {errors.email && <p className="mt-1 text-sm text-red-400">{errors.email}</p>}
                         </div>
                       </div>
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
+                        <div className="animate-slide-in" style={{ animationDelay: '0.25s' }}>
                           <label htmlFor="phone" className="block text-sm font-semibold text-gray-300 mb-3 flex items-center">
                             <svg className="w-5 h-5 mr-2 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -246,13 +250,15 @@ const InternshipRegistrationForm = () => {
                               onChange={handleChange}
                               onFocus={() => setFocusedField('phone')}
                               onBlur={() => setFocusedField(null)}
-                              className="w-full px-5 py-4 bg-gray-700/50 border-2 border-gray-600 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-red-500 transition-all duration-300 backdrop-blur-sm"
+                              required
+                              className="w-full px-5 py-4 bg-gray-700/50 border-2 border-gray-600 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-red-500 input-glow transition-all duration-300 backdrop-blur-sm"
                               placeholder="Enter your phone number"
                             />
+                            <div className="absolute inset-0 bg-gradient-to-r from-red-500 to-pink-500 rounded-xl opacity-0 group-hover:opacity-10 transition-opacity duration-300 pointer-events-none"></div>
                           </div>
                         </div>
 
-                        <div>
+                        <div className="animate-slide-in" style={{ animationDelay: '0.3s' }}>
                           <label htmlFor="program" className="block text-sm font-semibold text-gray-300 mb-3 flex items-center">
                             <svg className="w-5 h-5 mr-2 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
@@ -264,14 +270,15 @@ const InternshipRegistrationForm = () => {
                               type="text"
                               id="program"
                               name="program"
-                              value={formData.program}
+                              value={formData.person}
                               onChange={handleChange}
                               onFocus={() => setFocusedField('program')}
                               onBlur={() => setFocusedField(null)}
                               required
-                              className="w-full px-5 py-4 bg-gray-700/50 border-2 border-gray-600 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 transition-all duration-300 backdrop-blur-sm"
+                              className="w-full px-5 py-4 bg-gray-700/50 border-2 border-gray-600 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 input-glow transition-all duration-300 backdrop-blur-sm"
                               placeholder="Enter your program"
                             />
+                            <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-xl opacity-0 group-hover:opacity-10 transition-opacity duration-300 pointer-events-none"></div>
                           </div>
                           {errors.program && <p className="mt-1 text-sm text-red-400">{errors.program}</p>}
                         </div>
