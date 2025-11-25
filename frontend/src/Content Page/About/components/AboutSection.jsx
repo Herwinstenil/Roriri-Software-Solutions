@@ -68,7 +68,7 @@ const cardVariants = {
 
 const AboutSection = () => {
   return (
-    <div className='min-h-screen italic flex flex-col justify-center items-center py-16 px-4 bg-gray-50'> {/* Changed background to slightly off-white */}
+    <div className='min-h-screen italic bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex flex-col justify-center items-center py-16 px-4'> {/* Changed background to slightly off-white */}
       <div className='flex flex-col md:flex-row w-full max-w-7xl items-center md:items-start space-y-12 md:space-y-0 md:space-x-12'> {/* Increased max-w and space-x */}
         <Motion.div
           initial={{ x: -100, opacity: 0 }}
@@ -77,8 +77,8 @@ const AboutSection = () => {
           className='flex flex-col items-center md:items-start md:w-1/2 p-4 text-center md:text-left'
         >
           <h1 className='text-purple-600 text-lg font-medium mb-2  tracking-wide'>AboutUs</h1> {/* Added uppercase and tracking */}
-          <h2 className='text-4xl sm:text-4xl lg:text-5xl font-medium mb-4 leading-tight text-gray-900'>The Story of <span className='text-purple-700'>Roriri Soft</span></h2> {/* Increased font size and weight */}
-          <p className='text-lg sm:text-xl text-gray-600 mb-8 max-w-md'>A Growing Company with Clear Vision, dedicated to innovative solutions and client success.</p> {/* Adjusted text color and max-width */}
+          <h2 className='text-4xl sm:text-4xl lg:text-5xl font-medium mb-4 leading-tight text-white'>The Story of <span className='text-purple-700'>Roriri Soft</span></h2> {/* Increased font size and weight */}
+          <p className='text-lg sm:text-xl text-gray-400 mb-8 max-w-md'>A Growing Company with Clear Vision, dedicated to innovative solutions and client success.</p> {/* Adjusted text color and max-width */}
           <div className='w-full bg-gray-200 h-64 sm:h-80 lg:h-[450px] rounded-xl mb-8 flex justify-center items-center overflow-hidden shadow-lg'> {/* Increased height and added shadow/rounded */}
             <img
               src="https://images.unsplash.com/photo-1552581234-26160f608093?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" // More professional placeholder image

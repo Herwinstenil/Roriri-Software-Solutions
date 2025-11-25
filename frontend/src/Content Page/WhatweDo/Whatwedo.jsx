@@ -33,13 +33,13 @@ const servicesData = [
 const Whatwedo = () => {
   const navigate = useNavigate();
   return (
-    <div className="min-h-screen italic flex xl:flex-row justify-evenly items-center flex-col-reverse gap-5 bg-white text-gray-800 font-inter  py-16 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen  bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 italic flex xl:flex-row justify-evenly items-center flex-col-reverse gap-5 bg-white text-gray-800 font-inter  py-16 px-4 sm:px-6 lg:px-8">
       <div className="italic relative max-w-7xl mx-auto">
-        <div className="text-center   mb-12">
+        <div className="text-center mb-12">
           <h2 className="text-purple-600 text-lg font-semibold uppercase tracking-wide">
             What we do?
           </h2>
-          <h1 className="mt-2 text-xl flex flex-col items-center sm:text-xl lg:text-6xl font-medium  text-gray-900">
+          <h1 className="mt-2 text-xl flex flex-col items-center sm:text-xl lg:text-6xl font-medium  text-white">
             Innovative Solutions for <br className="hidden " />
             <RotatingText
               texts={['Business Success & Growth', 'Digital Excellence', 'Future-Proof Your Business']}

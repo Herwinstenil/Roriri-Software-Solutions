@@ -30,7 +30,7 @@ const Landing = () => {
         </div>
       </div>
 
-      <div className='flex flex-col-reverse italic md:flex-row justify-evenly gap-10 bg-gray-50'>
+      <div className='flex flex-col-reverse italic md:flex-row justify-evenly gap-10 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900'>
         <div className="relative hidden lg:block   left-0 w-[300px] h-[300px] sm:w-[250px] sm:h-[250px] md:w-[600px] md:h-[600px] flex items-center justify-center">
           <img
             src="hero1.897db1b8.png"
@@ -54,7 +54,7 @@ const Landing = () => {
         </div>
 
         <div className='flex flex-col mt-10 justify-center p-5 z-10'>
-          <h1 className='text-6xl italic'>Innovation at the Core of</h1>
+          <h1 className='text-6xl italic text-white'>Innovation at the Core of</h1>
           <TextType className='text-[#f8acff] z-50 italic'
             text={["Every Solution.", "Evaluate Your Business", "Paving A Way To Success"]}
             typingSpeed={75}
@@ -66,7 +66,7 @@ const Landing = () => {
             <SplitText
               text="Partner with us to enhance your business through our diverse services and discover the transformative power of our
    innovative products and trial solutions."
-              className="text-lg text-gray-500 font-semibold md:mr-28 italic"
+              className="text-lg text-gray-300 font-semibold md:mr-28 italic"
               delay={50}
               duration={0.3}
               ease="power3.out"
@@ -110,8 +110,8 @@ const Landing = () => {
           </div>
 
           <div className='mt-10'>
-            <button className="cursor-target flex from-purple-500 px-3 py-2 bg-gradient-to-r text-white rounded-lg to-blue-500 hover:from-purple-600 // Keep this hover:to-blue-600 " 
-            onClick={() => navigate('/appointment')}>Book a free Consulting</button>
+            <button className="cursor-target flex from-purple-500 px-3 py-2 bg-gradient-to-r text-white rounded-lg to-blue-500 hover:from-purple-600 // Keep this hover:to-blue-600 "
+              onClick={() => navigate('/appointment')}>Book a free Consulting</button>
           </div>
         </div>
 

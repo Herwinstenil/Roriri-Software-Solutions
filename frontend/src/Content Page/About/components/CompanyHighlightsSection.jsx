@@ -74,7 +74,7 @@ const CompanyHighlightsSection = () => {
 
   return (
     <Motion.section
-      className='py-20 px-4 bg-white italic'
+      className='py-20 px-4 bg-white italic bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 '
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}

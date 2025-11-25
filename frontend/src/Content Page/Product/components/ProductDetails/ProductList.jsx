@@ -13,10 +13,10 @@ const ProductsList = () => {
   };
 
   return (
-    <div className="min-h-screen italic bg-gray-50 font-inter text-center text-gray-900">
+    <div className="min-h-screen italic bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900  bg-gray-50 font-inter text-center text-gray-900">
       <header className=" py-12 px-4">
         <h1 className="text-4xl sm:text-5xl font-medium mb-4 text-purple-500">Our Products</h1>
-        <div className="text-2xl sm:text-3xl md:text-6xl font-semibold text-gray-800 flex flex-wrap justify-center items-center gap-2">
+        <div className="text-2xl sm:text-3xl md:text-6xl font-semibold text-gray-500 flex flex-wrap justify-center items-center gap-2">
           <span>Exploring Excellence in</span>
           <TextType
             text={[' every creation', ' every solution']}
