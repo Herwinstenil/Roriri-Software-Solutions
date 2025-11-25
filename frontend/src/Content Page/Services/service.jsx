@@ -10,19 +10,19 @@ const ServiceAccordionItem = ({ title, description, initiallyOpen = false }) => 
   const [isOpen, setIsOpen] = useState(initiallyOpen);
 
   return (
-    <div className="border-b border-gray-200 py-4">
+    <div className="border-b border-gray-600 py-4">
       <button
-        className="flex justify-between items-center w-full text-left text-lg font-semibold text-gray-800 hover:text-blue-600 transition-colors duration-200"
+        className="flex justify-between items-center w-full text-left text-lg font-semibold text-white hover:text-blue-400 transition-colors duration-200"
         onClick={() => setIsOpen(!isOpen)}
       >
         <span className="flex items-center">
-          <ExternalLink size={20} className="mr-2 text-gray-500" />
+          <ExternalLink size={20} className="mr-2 text-gray-400" />
           {title}
         </span>
-        {isOpen ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+        {isOpen ? <ChevronUp size={20} className="text-gray-400" /> : <ChevronDown size={20} className="text-gray-400" />}
       </button>
       {isOpen && (
-        <p className="mt-2 text-gray-600 pl-7">
+        <p className="mt-2 text-gray-300 pl-7">
           {description}
         </p>
       )}
@@ -122,29 +122,30 @@ const ServicesPage = () => {
   };
 
   return (
-    <div className="min-h-screen italic  bg-white text-gray-800">
-      <section className="bg-white py-12 sm:py-16 lg:py-20">
-        <div className="flex flex-col md:flex-row items-center justify-center gap-8 ">
+    <div className="min-h-screen italic bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white">
+      {/* Hero Section */}
+      <section className="py-12 sm:py-16 lg:py-20">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-8">
           <div>
-            <div className="flex flex-col gap-5 mb-3 ">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium text-gray-900 leading-tight max-w-2xl">
+            <div className="flex flex-col gap-5 mb-3">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium text-white leading-tight max-w-2xl">
                 Our Services
               </h1>
-              <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-xl leading-relaxed">
+              <p className="text-base sm:text-lg lg:text-xl text-gray-300 max-w-xl leading-relaxed">
                 Leave us a little info, and we'll be in touch.
               </p>
             </div>
 
             <button
               onClick={() => navigate('/contact')}
-              className="inline-block bg-gradient-to-r from-purple-700 to-indigo-700 text-white px-4 sm:px-6 py-3 sm:py-3 rounded-lg hover:bg-gray-800 transition duration-300 text-base sm:text-lg font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+              className="inline-block bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-4 sm:px-6 py-3 sm:py-3 rounded-lg hover:from-purple-700 hover:to-indigo-700 transition duration-300 text-base sm:text-lg font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
             >
               Contact Us
             </button>
           </div>
 
           <DotLottieReact
-            className=" sm:w-80 sm:h-60 lg:w-96 lg:h-64 xl:w-[28rem] xl:h-80"
+            className="sm:w-80 sm:h-60 lg:w-96 lg:h-64 xl:w-[28rem] xl:h-80"
             src={team1}
             loop
             autoplay
@@ -152,16 +153,16 @@ const ServicesPage = () => {
         </div>
       </section>
 
+      {/* Services Sections */}
       {servicesData.map((service, index) => (
         <motion.section
           key={service.id}
-          className={`py-16 px-4 sm:px-6 lg:px-8 ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}`}
+          className="py-16 px-4 sm:px-6 lg:px-8"
           variants={sectionVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
         >
-
           <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <motion.div className={`flex justify-center ${index % 2 === 0 ? '' : 'order-1 lg:order-2'}`} variants={imageVariants}>
               <img
@@ -173,11 +174,11 @@ const ServicesPage = () => {
             </motion.div>
 
             <motion.div className={`p-4 ${index % 2 === 0 ? '' : 'order-2 lg:order-1'}`} variants={itemVariants}>
-              <p className="text-sm font-semibold text-gray-500 uppercase mb-2">Our Services</p>
-              <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-gray-900">
+              <p className="text-sm font-semibold text-gray-400 uppercase mb-2">Our Services</p>
+              <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-white">
                 {service.title}
               </h2>
-              <p className="text-gray-700 text-lg mb-8">
+              <p className="text-gray-300 text-lg mb-8">
                 {service.description}
               </p>
 
@@ -191,7 +192,7 @@ const ServicesPage = () => {
                   />
                 ))}
               </div>
-              <button onClick={() => navigate(service.path)} className="mt-8 bg-purple-700 text-white px-6 py-3 rounded-lg hover:bg-purple-800 transition duration-300 text-base font-medium">
+              <button onClick={() => navigate(service.path)} className="mt-8 bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition duration-300 text-base font-medium">
                 Know more
               </button>
             </motion.div>
@@ -199,13 +200,14 @@ const ServicesPage = () => {
         </motion.section>
       ))}
 
-      <section className="bg-gray-900 italic  text-white py-16 px-4 sm:px-6 lg:px-8 text-center">
+      {/* CTA Section */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 text-center">
         <div className="max-w-4xl mx-auto">
           <p className="text-sm font-semibold text-gray-400 uppercase mb-2">Let's Collaborate</p>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-medium leading-tight mb-6">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-medium leading-tight mb-6 text-white">
             Send us an email.
           </h2>
-          <p className="text-lg sm:text-xl text-gray-500 mb-8">
+          <p className="text-lg sm:text-xl text-gray-400 mb-8">
             We're a team of creatives who are excited about unique ideas and
             help digital and fin-tech companies to create amazing identity.
           </p>
