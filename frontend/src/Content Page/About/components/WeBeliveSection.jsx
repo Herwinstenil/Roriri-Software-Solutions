@@ -3,7 +3,7 @@ import { video2 } from '../../../assets/office/office'
 
 const WeBelieveInSection = () => {
   return (
-    <div className="italic min-h-screen bg-gray-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8" id='about'>
+    <div className="italic min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 bg-gray-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8" id='about'>
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         <div className="flex flex-col justify-center text-center md:text-left p-4 relative">
           <div className="absolute top-0 left-0 w-3 h-3 bg-red-400 rounded-full"></div>
@@ -11,11 +11,11 @@ const WeBelieveInSection = () => {
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-medium leading-tight mb-6 text-blue-800">
             We Believe in
           </h1>
-          <p className="text-lg sm:text-xl text-gray-700 mb-4 max-w-prose">
+          <p className="text-lg sm:text-xl text-gray-400 mb-4 max-w-prose">
             At Roriri Soft tech, our core belief revolves around harnessing the transformative power of
             software to redefine and elevate business landscapes...
           </p>
-          <p className="text-gray-600 text-base sm:text-lg max-w-prose">
+          <p className="text-gray-400 text-base sm:text-lg max-w-prose">
             With a proven track record spanning three years in TirunelVeli.
           </p>
         </div>

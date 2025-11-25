@@ -44,7 +44,7 @@ const About = () => {
 
   return (
     <>
-      <section className=" italic  bg-cover bg-center " >
+      <section className=" italic  bg-cover bg-center bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900  " >
         <div className=" inset-0  bg-opacity-60 flex items-center mt-3 md:mt-0 justify-center ">
           <img src={banner} alt="" />
           <Motion.div
@@ -144,10 +144,10 @@ const About = () => {
             >
               {solutions.map((solution, index) => (
                 <Motion.div key={index} variants={itemVariants} className="mb-8 p-3 rounded-lg">
-                  <h2 className="text-4xl md:text-5xl font-medium  mb-6 leading-tight">
+                  <h2 className="text-4xl md:text-5xl font-medium  mb-6 leading-tight text-white">
                     <p>A tale of tech brilliance and growth</p>
                   </h2>
-                  <p className="text-lg md:text-xl text-gray-500 leading-relaxed">
+                  <p className="text-lg md:text-xl text-gray-400 leading-relaxed">
                     {solution.description}
                   </p>
                 </Motion.div>
@@ -172,7 +172,7 @@ const About = () => {
       </section>
 
       <Motion.section
-        className="relative bg-white py-16 md:py-24 overflow-hidden rounded-b-lg shadow-lg"
+        className="relative bg-white py-16 md:py-24 overflow-hidden rounded-b-lg shadow-lg bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 "
         initial="hidden"
         animate="visible"
         variants={sectionVariants}
@@ -180,7 +180,7 @@ const About = () => {
         <div className="container mx-auto px-4 flex flex-col items-center justify-center text-center max-w-screen-xl">
           <p className="text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-indigo-600 mb-4 rounded-lg">We are</p>
           <Motion.h1
-            className="text-4xl md:text-6xl font-medium leading-tight mb-8 text-gray-900 rounded-lg"
+            className="text-4xl md:text-6xl font-medium leading-tight mb-8 text-white rounded-lg"
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -241,11 +241,11 @@ const About = () => {
       </Motion.section>
 
       <Motion.section
-        className="py-16 md:py-24 bg-gray-100 rounded-lg shadow-md mx-auto my-12 max-w-screen-xl px-4"
+        className="py-16 md:py-24 bg-gray-100 rounded-lg shadow-md mx-auto my-12 max-w-screen-xl px-4 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 "
         variants={sectionVariants}
       >
         <div className="container mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-medium text-gray-900 mb-12 leading-tight rounded-lg">Our Culture</h2>
+          <h2 className="text-3xl md:text-4xl font-medium text-white mb-12 leading-tight rounded-lg">Our Culture</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             <Motion.div
               className="bg-white p-6 rounded-xl shadow-lg text-left"
