@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { facebook, instagram, linkedin, youtube } from '../../../assets/icons/icon';
-import { MailCheck, CircleUserRound, MapPin, Loader2, Send } from "lucide-react";
+import { Loader2, Send } from "lucide-react";
 
 const InternshipRegistrationForm = () => {
   const [formData, setFormData] = useState({
@@ -16,6 +16,7 @@ const InternshipRegistrationForm = () => {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
+  const [focusedField, setFocusedField] = useState(null);
 
   const validateForm = () => {
     const newErrors = {};
@@ -28,16 +29,16 @@ const InternshipRegistrationForm = () => {
       newErrors.email = 'Invalid email address';
     }
     if (!formData.program.trim()) {
-      newErrors.program = 'program is required';
+      newErrors.program = 'Program is required';
     }
     if (!formData.qualification.trim()) {
-      newErrors.qualification = 'qualification is required';
+      newErrors.qualification = 'Qualification is required';
     }
     if (!formData.college.trim()) {
-      newErrors.college = 'college is required';
+      newErrors.college = 'College is required';
     }
     if (!formData.year.trim()) {
-      newErrors.year = 'year is required';
+      newErrors.year = 'Year is required';
     }
     if (!formData.message.trim()) {
       newErrors.message = 'Message is required';
@@ -91,15 +92,15 @@ const InternshipRegistrationForm = () => {
       }
     } catch (error) {
       console.error('Error:', error);
-      const subject = encodeURIComponent(formData.subject);
+      const subject = "Internship Registration";
       const body = encodeURIComponent(
         `Name: ${formData.name}\n` +
         `Email: ${formData.email}\n` +
-        `Phone: ${formData.phone || 'Not provided'}\n\n` +
-        `Program ${formData.program}\n` +
-        `Qualification ${formData.qualification}\n` +
-        `College ${formData.college}\n` +
-        `Year ${formData.year}\n` +
+        `Phone: ${formData.phone || 'Not provided'}\n` +
+        `Program: ${formData.program}\n` +
+        `Qualification: ${formData.qualification}\n` +
+        `College: ${formData.college}\n` +
+        `Year: ${formData.year}\n` +
         `Message:\n${formData.message}`
       );
       window.open(`mailto:roririsoftpvtltd@gmail.com?subject=${subject}&body=${body}`, '_blank');
@@ -111,218 +112,296 @@ const InternshipRegistrationForm = () => {
   };
 
   return (
-    <div className="italic min-h-screen  flex items-center lg:p-10 p-5 justify-center font-sans mb-5" id='contact'>
-      <div className=" w-full flex flex-col lg:flex-row  rounded-xl  overflow-hidden lg:p-5">
-        <div className="lg:w-1/2 p-8 sm:p-12 flex flex-col justify-center ">
+    <div className="italic min-h-screen flex items-center lg:p-10 p-5 justify-center font-sans mb-5" id='contact'>
+      <div className="w-full flex flex-col lg:flex-row rounded-xl overflow-hidden lg:p-5">
+        <div className="lg:w-1/2 p-8 sm:p-12 flex flex-col justify-center">
           <h2 className="text-green-600 text-lg font-semibold mb-2">Contact Us</h2>
           <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 leading-tight mb-6">
             Get in touch with us <br />today
           </h1>
           <p className="text-gray-600 text-lg">
-            Reach out to explore endless possibilities with Ronri Software Solutions!
+            Reach out to explore endless possibilities with Roriri Software Solutions!
           </p>
-          <h3 className="text-xl font-semibold text-gray-900 mt-10 mb-4 rounded-lg">Follow Us:</h3>
+          <h3 className="text-xl font-semibold text-gray-900 mt-10 mb-4">Follow Us:</h3>
           <div className="flex justify-center lg:justify-start space-x-4">
             <a href="https://www.facebook.com/RoririSoftwareSolutionsPvtLtd/" target="_blank" rel="noopener noreferrer" className="h-12 w-12 p-1 rounded-full text-white hover:scale-110 transition-transform duration-200">
-              <img src={facebook} />
+              <img src={facebook} alt="Facebook" />
             </a>
             <a href="https://www.instagram.com/roriri_it_park/" target="_blank" rel="noopener noreferrer" className="h-12 w-12 p-1 rounded-full text-white hover:scale-110 transition-transform duration-200">
-              <img src={instagram} />
+              <img src={instagram} alt="Instagram" />
             </a>
             <a href="https://www.linkedin.com/company/roriri-software-solutions-pvt-ltd/" target="_blank" rel="noopener noreferrer" className="h-12 w-12 p-1 rounded-full text-white hover:scale-110 transition-transform duration-200">
-              <img src={linkedin} />
+              <img src={linkedin} alt="LinkedIn" />
             </a>
             <a href="https://www.youtube.com/@Roriri_soft" target="_blank" rel="noopener noreferrer" className="h-12 w-12 p-1 rounded-full text-white hover:scale-110 transition-transform duration-200">
-              <img src={youtube} />
+              <img src={youtube} alt="YouTube" />
             </a>
           </div>
         </div>
 
-        <div className="bg-green-100 rounded-3xl shadow-xl p-8">
-          <h2 className="text-2xl font-bold text-gray-800 mb-6">Send Message</h2>
-          {submitStatus === 'success' && (
-            <div className="mb-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded-xl">
-              ✅ Message sent successfully! I'll get back to you soon.
-            </div>
-          )}
-          {submitStatus === 'error' && (
-            <div className="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded-xl">
-              ❌ Failed to send message. Please try again or contact me directly.
-            </div>
-          )}
-          <div className="space-y-6">
-
-            <div>
-              <label className="block text-sm  font-medium text-gray-700 mb-2">
-                Full Name
-              </label>
-              <input
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                placeholder="Enter your name"
-                disabled={isSubmitting}
-                className={`w-full bg-white px-4 py-3 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors disabled:opacity-50 ${errors.name ? 'border-red-500' : 'border-gray-300'
-                  }`}
-              />
-              {errors.name && (
-                <p className="mt-1 text-sm text-red-500">{errors.name}</p>
-              )}
+        <div className="lg:w-1/2 flex items-center justify-center p-8">
+          <div className="flex flex-col bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 relative overflow-hidden rounded-2xl w-full max-w-2xl">
+            {/* Animated background elements */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+              <div className="absolute top-20 left-20 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
+              <div className="absolute top-40 right-20 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse" style={{ animationDelay: '1s' }}></div>
+              <div className="absolute -bottom-20 left-1/2 w-80 h-80 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse" style={{ animationDelay: '2s' }}></div>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Phone Number
-                </label>
-                <input
-                  type="number"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  placeholder="Enter your pnone number"
-                  disabled={isSubmitting}
-                  className={`w-full bg-white  px-4 py-3 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors disabled:opacity-50 ${errors.phone ? 'border-red-500' : 'border-gray-300'
-                    }`}
-                />
-                {errors.phone && (
-                  <p className="mt-1 text-sm text-red-500">{errors.phone}</p>
-                )}
-              </div>
+            <div className="flex-grow pt-8 pb-8 relative z-10">
+              <div className="container mx-auto px-6">
+                <div className="max-w-2xl mx-auto">
+                  <div className="bg-gray-800 bg-opacity-80 backdrop-blur-lg rounded-2xl p-8 shadow-2xl border border-gray-700 transform transition-all duration-500 hover:shadow-purple-500/20">
+                    <div className="text-center mb-8">
+                      <div className="inline-block mb-4 p-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full">
+                        <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                        </svg>
+                      </div>
+                      <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent mb-4">
+                        Internship Registration
+                      </h1>
+                      <p className="text-gray-400 text-lg">
+                        Apply for internship with our experts
+                      </p>
+                    </div>
 
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Email Address
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  placeholder="Enter your email"
-                  disabled={isSubmitting}
-                  className={`w-full bg-white  px-4 py-3 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors disabled:opacity-50 ${errors.email ? 'border-red-500' : 'border-gray-300'
-                    }`}
-                />
-                {errors.email && (
-                  <p className="mt-1 text-sm text-red-500">{errors.email}</p>
-                )}
-              </div>
+                    {submitStatus === 'success' && (
+                      <div className="mb-6 p-4 bg-gradient-to-r from-green-500 to-emerald-500 rounded-lg">
+                        <div className="flex items-center justify-center space-x-2">
+                          <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                          </svg>
+                          <span className="text-white font-semibold">Application submitted successfully!</span>
+                        </div>
+                      </div>
+                    )}
 
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Program
-                </label>
-                <input
-                  type="text"
-                  name="program"
-                  value={formData.program}
-                  onChange={handleChange}
-                  placeholder="Enter your program"
-                  disabled={isSubmitting}
-                  className={`bg-white  px-4 py-3 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors disabled:opacity-50 ${errors.subject ? 'border-red-500' : 'border-gray-300'
-                    }`}
-                />
-                {errors.program && (
-                  <p className="mt-1 text-sm text-red-500">{errors.program}</p>
-                )}
-              </div>
+                    <div className="space-y-6">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                          <label htmlFor="name" className="block text-sm font-semibold text-gray-300 mb-3 flex items-center">
+                            <svg className="w-5 h-5 mr-2 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                            </svg>
+                            Full Name
+                          </label>
+                          <div className="relative group">
+                            <input
+                              type="text"
+                              id="name"
+                              name="name"
+                              value={formData.name}
+                              onChange={handleChange}
+                              onFocus={() => setFocusedField('name')}
+                              onBlur={() => setFocusedField(null)}
+                              required
+                              className="w-full px-5 py-4 bg-gray-700/50 border-2 border-gray-600 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-green-500 transition-all duration-300 backdrop-blur-sm"
+                              placeholder="Enter your full name"
+                            />
+                          </div>
+                          {errors.name && <p className="mt-1 text-sm text-red-400">{errors.name}</p>}
+                        </div>
 
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Qualification
-                </label>
-                <input
-                  type="text"
-                  name="qualification"
-                  value={formData.qualification}
-                  onChange={handleChange}
-                  placeholder="Enter your qualification"
-                  disabled={isSubmitting}
-                  className={`bg-white  px-4 py-3 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors disabled:opacity-50 ${errors.subject ? 'border-red-500' : 'border-gray-300'
-                    }`}
-                />
-                {errors.qualification && (
-                  <p className="mt-1 text-sm text-red-500">{errors.qualification}</p>
-                )}
-              </div>
+                        <div>
+                          <label htmlFor="email" className="block text-sm font-semibold text-gray-300 mb-3 flex items-center">
+                            <svg className="w-5 h-5 mr-2 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                            Email Address
+                          </label>
+                          <div className="relative group">
+                            <input
+                              type="email"
+                              id="email"
+                              name="email"
+                              value={formData.email}
+                              onChange={handleChange}
+                              onFocus={() => setFocusedField('email')}
+                              onBlur={() => setFocusedField(null)}
+                              required
+                              className="w-full px-5 py-4 bg-gray-700/50 border-2 border-gray-600 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 transition-all duration-300 backdrop-blur-sm"
+                              placeholder="your@email.com"
+                            />
+                          </div>
+                          {errors.email && <p className="mt-1 text-sm text-red-400">{errors.email}</p>}
+                        </div>
+                      </div>
 
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  College Name
-                </label>
-                <input
-                  type="text"
-                  name="college"
-                  value={formData.college}
-                  onChange={handleChange}
-                  placeholder="Enter your College Name"
-                  disabled={isSubmitting}
-                  className={`bg-white  px-4 py-3 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors disabled:opacity-50 ${errors.subject ? 'border-red-500' : 'border-gray-300'
-                    }`}
-                />
-                {errors.college && (
-                  <p className="mt-1 text-sm text-red-500">{errors.college}</p>
-                )}
-              </div>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                          <label htmlFor="phone" className="block text-sm font-semibold text-gray-300 mb-3 flex items-center">
+                            <svg className="w-5 h-5 mr-2 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                            </svg>
+                            Phone Number
+                          </label>
+                          <div className="relative group">
+                            <input
+                              type="tel"
+                              id="phone"
+                              name="phone"
+                              value={formData.phone}
+                              onChange={handleChange}
+                              onFocus={() => setFocusedField('phone')}
+                              onBlur={() => setFocusedField(null)}
+                              className="w-full px-5 py-4 bg-gray-700/50 border-2 border-gray-600 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-red-500 transition-all duration-300 backdrop-blur-sm"
+                              placeholder="Enter your phone number"
+                            />
+                          </div>
+                        </div>
 
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Year
-                </label>
-                <input
-                  type="number"
-                  name="year"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  placeholder="Enter your year"
-                  disabled={isSubmitting}
-                  className={`bg-white  px-4 py-3 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors disabled:opacity-50 ${errors.subject ? 'border-red-500' : 'border-gray-300'
-                    }`}
-                />
-                {errors.year && (
-                  <p className="mt-1 text-sm text-red-500">{errors.year}</p>
-                )}
+                        <div>
+                          <label htmlFor="program" className="block text-sm font-semibold text-gray-300 mb-3 flex items-center">
+                            <svg className="w-5 h-5 mr-2 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                            </svg>
+                            Program
+                          </label>
+                          <div className="relative group">
+                            <input
+                              type="text"
+                              id="program"
+                              name="program"
+                              value={formData.program}
+                              onChange={handleChange}
+                              onFocus={() => setFocusedField('program')}
+                              onBlur={() => setFocusedField(null)}
+                              required
+                              className="w-full px-5 py-4 bg-gray-700/50 border-2 border-gray-600 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 transition-all duration-300 backdrop-blur-sm"
+                              placeholder="Enter your program"
+                            />
+                          </div>
+                          {errors.program && <p className="mt-1 text-sm text-red-400">{errors.program}</p>}
+                        </div>
+                      </div>
+
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                          <label htmlFor="qualification" className="block text-sm font-semibold text-gray-300 mb-3 flex items-center">
+                            <svg className="w-5 h-5 mr-2 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5z" />
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5z" />
+                            </svg>
+                            Qualification
+                          </label>
+                          <div className="relative group">
+                            <input
+                              type="text"
+                              id="qualification"
+                              name="qualification"
+                              value={formData.qualification}
+                              onChange={handleChange}
+                              onFocus={() => setFocusedField('qualification')}
+                              onBlur={() => setFocusedField(null)}
+                              required
+                              className="w-full px-5 py-4 bg-gray-700/50 border-2 border-gray-600 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 transition-all duration-300 backdrop-blur-sm"
+                              placeholder="Enter your qualification"
+                            />
+                          </div>
+                          {errors.qualification && <p className="mt-1 text-sm text-red-400">{errors.qualification}</p>}
+                        </div>
+
+                        <div>
+                          <label htmlFor="college" className="block text-sm font-semibold text-gray-300 mb-3 flex items-center">
+                            <svg className="w-5 h-5 mr-2 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                            </svg>
+                            College
+                          </label>
+                          <div className="relative group">
+                            <input
+                              type="text"
+                              id="college"
+                              name="college"
+                              value={formData.college}
+                              onChange={handleChange}
+                              onFocus={() => setFocusedField('college')}
+                              onBlur={() => setFocusedField(null)}
+                              required
+                              className="w-full px-5 py-4 bg-gray-700/50 border-2 border-gray-600 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-yellow-500 transition-all duration-300 backdrop-blur-sm"
+                              placeholder="Enter your college"
+                            />
+                          </div>
+                          {errors.college && <p className="mt-1 text-sm text-red-400">{errors.college}</p>}
+                        </div>
+                      </div>
+
+                      <div>
+                        <label htmlFor="year" className="block text-sm font-semibold text-gray-300 mb-3 flex items-center">
+                          <svg className="w-5 h-5 mr-2 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                          </svg>
+                          Year
+                        </label>
+                        <div className="relative group">
+                          <input
+                            type="text"
+                            id="year"
+                            name="year"
+                            value={formData.year}
+                            onChange={handleChange}
+                            onFocus={() => setFocusedField('year')}
+                            onBlur={() => setFocusedField(null)}
+                            required
+                            className="w-full px-5 py-4 bg-gray-700/50 border-2 border-gray-600 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-pink-500 transition-all duration-300 backdrop-blur-sm"
+                            placeholder="Enter your academic year"
+                          />
+                        </div>
+                        {errors.year && <p className="mt-1 text-sm text-red-400">{errors.year}</p>}
+                      </div>
+
+                      <div>
+                        <label htmlFor="message" className="block text-sm font-semibold text-gray-300 mb-3 flex items-center">
+                          <svg className="w-5 h-5 mr-2 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                          </svg>
+                          Message
+                        </label>
+                        <div className="relative group">
+                          <textarea
+                            id="message"
+                            name="message"
+                            value={formData.message}
+                            onChange={handleChange}
+                            onFocus={() => setFocusedField('message')}
+                            onBlur={() => setFocusedField(null)}
+                            rows="4"
+                            required
+                            className="w-full px-5 py-4 bg-gray-700/50 border-2 border-gray-600 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-orange-500 transition-all duration-300 resize-none backdrop-blur-sm"
+                            placeholder="Tell us about your interests and goals..."
+                          ></textarea>
+                        </div>
+                        {errors.message && <p className="mt-1 text-sm text-red-400">{errors.message}</p>}
+                      </div>
+
+                      <div className="text-center">
+                        <button
+                          onClick={handleSubmit}
+                          disabled={isSubmitting}
+                          className="group relative w-full px-8 py-4 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 hover:from-blue-700 hover:via-purple-700 hover:to-pink-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-gray-800 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none overflow-hidden"
+                        >
+                          <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-blue-400 to-pink-400 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
+                          <span className="relative flex items-center justify-center space-x-2">
+                            {isSubmitting ? (
+                              <>
+                                <Loader2 size={20} className="animate-spin" />
+                                <span>Processing...</span>
+                              </>
+                            ) : (
+                              <>
+                                <Send size={20} />
+                                <span>Book Appointment</span>
+                              </>
+                            )}
+                          </span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Your Message
-              </label>
-              <textarea
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                placeholder="Write your message here..."
-                rows="5"
-                disabled={isSubmitting}
-                className={`w-full bg-white px-4 py-3 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors resize-vertical disabled:opacity-50 ${errors.message ? 'border-red-500' : 'border-gray-300'
-                  }`}
-              />
-              {errors.message && (
-                <p className="mt-1 text-sm text-red-500">{errors.message}</p>
-              )}
-            </div>
-
-            <button
-              onClick={handleSubmit}
-              disabled={isSubmitting}
-              className="w-full bg-green-600 text-white font-semibold py-3 px-6 rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              {isSubmitting ? (
-                <>
-                  <Loader2 size={20} className="animate-spin" />
-                  <span>Sending...</span>
-                </>
-              ) : (
-                <>
-                  <Send size={20} />
-                  <span>Register Now</span>
-                </>
-              )}
-            </button>
           </div>
         </div>
       </div>
@@ -330,4 +409,4 @@ const InternshipRegistrationForm = () => {
   );
 };
 
-export default InternshipRegistrationForm;
+export default InternshipRegistrationForm
