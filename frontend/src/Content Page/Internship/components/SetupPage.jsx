@@ -55,7 +55,7 @@ const WhatSetsUsApartPage = () => {
   };
 
   return (
-    <div className="italic min-h-screen bg-white flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8">
+    <div className="italic min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8">
       <Motion.div
         className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center"
         initial="hidden"
@@ -68,10 +68,10 @@ const WhatSetsUsApartPage = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
         >
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-normal leading-tight mb-6 text-gray-800">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-normal leading-tight mb-6 text-white">
             What Sets Us <span className="text-green-600">Apart</span> ?
           </h1>
-          <p className="text-lg sm:text-xl text-gray-700 mb-8 max-w-prose">
+          <p className="text-lg sm:text-xl text-gray-400 mb-8 max-w-prose">
             Our 1-week Foundational Program equips internship students with key skills and
             confidence to thrive in real-world projects.
           </p>

@@ -117,7 +117,7 @@ const InternshipProgramsPage = () => {
 
   return (
     <div className="italic  flex flex-col items-center py-12 px-4 sm:px-6 lg:px-8 mt-10 mb-5">
-      <h1 className="text-4xl sm:text-5xl lg:text-6xl font-normal leading-tight mb-12 text-gray-800 text-center">
+      <h1 className="text-4xl sm:text-5xl lg:text-6xl font-normal leading-tight mb-12 text-white text-center">
         Our <span className="text-green-600">Internship</span> Programs
       </h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl w-full">
