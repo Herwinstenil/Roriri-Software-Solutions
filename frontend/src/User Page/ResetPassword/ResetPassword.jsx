@@ -1,24 +1,47 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../../Context/AuthContext';
 
-const Login = () => {
-    const [email, setEmail] = useState('');
+const ResetPassword = () => {
     const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
-    const { login } = useAuth();
+    const [successMessage, setSuccessMessage] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('Login attempt:', { email, password });
-        if (email.trim() && password.trim()) {
-            setErrorMessage('');
-            login();
-            navigate('/');
-        } else {
-            setErrorMessage('Please enter both email and password to login.');
+        setErrorMessage('');
+        setSuccessMessage('');
+        setIsLoading(true);
+
+        if (!password.trim() || !confirmPassword.trim()) {
+            setErrorMessage('Please fill in both password fields.');
+            setIsLoading(false);
+            return;
         }
+
+        if (password !== confirmPassword) {
+            setErrorMessage('Passwords do not match.');
+            setIsLoading(false);
+            return;
+        }
+
+        if (password.length < 6) {
+            setErrorMessage('Password must be at least 6 characters long.');
+            setIsLoading(false);
+            return;
+        }
+
+        // Simulate API call
+        setTimeout(() => {
+            setSuccessMessage('Password reset successfully!');
+            setIsLoading(false);
+            // Navigate to login page after 2 seconds
+            setTimeout(() => {
+                navigate('/login');
+            }, 2000);
+        }, 1500);
     };
 
     return (
@@ -175,6 +198,7 @@ const Login = () => {
                 .stagger-4 { animation-delay: 0.4s; }
                 .stagger-5 { animation-delay: 0.5s; }
                 .stagger-6 { animation-delay: 0.6s; }
+                .stagger-7 { animation-delay: 0.7s; }
             `}</style>
 
             <div className="max-w-6xl w-full bg-gray-800/80 backdrop-blur-xl rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row fade-in border border-gray-700/50">
@@ -222,21 +246,21 @@ const Login = () => {
                             </div>
                         </div>
                         <h1 className="text-5xl font-bold text-white mb-4 slide-in-left stagger-1 drop-shadow-2xl">
-                            Welcome back to{' '}
+                            Reset Your{' '}
                             <span className="bg-gradient-to-r from-yellow-300 via-orange-400 to-pink-400 bg-clip-text text-transparent animate-pulse">
-                                Roriri
+                                Password
                             </span>
                         </h1>
                         <p className="text-xl text-white/90 mb-8 slide-in-left stagger-2 font-light drop-shadow-lg">
-                            Login to access your appointments
+                            Enter your new password below to complete the reset process.
                         </p>
 
                         {/* Features List */}
                         <div className="space-y-4">
                             {[
-                                'Manage your bookings',
-                                'View upcoming appointments',
-                                'Secure and reliable'
+                                'Choose a strong password',
+                                'Confirm your new password',
+                                'Login with your new credentials'
                             ].map((feature, index) => (
                                 <div
                                     key={index}
@@ -264,43 +288,20 @@ const Login = () => {
                 <div className="md:w-1/2 p-8 md:p-12 flex flex-col justify-center bg-gradient-to-br from-gray-800 to-gray-900 slide-in-right">
                     <div className="text-center mb-10 bounce-in stagger-3">
                         <h2 className="text-4xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-3">
-                            Login
+                            New Password
                         </h2>
-                        <p className="text-gray-400">Access your Roriri account</p>
+                        <p className="text-gray-400">Create a strong password for your account</p>
                         {errorMessage && <p className="text-red-400 mt-2">{errorMessage}</p>}
+                        {successMessage && <p className="text-green-400 mt-2">{successMessage}</p>}
                     </div>
 
-                    <div className="space-y-6">
+                    <form onSubmit={handleSubmit} className="space-y-6">
                         <div className="bounce-in stagger-4">
-                            <label htmlFor="email" className="block text-sm font-semibold text-gray-300 mb-3 flex items-center">
-                                <svg className="w-5 h-5 mr-2 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                                        d="M3 8.5v7A2.5 2.5 0 0 0 5.5 18h13A2.5 2.5 0 0 0 21 15.5v-7A2.5 2.5 0 0 0 18.5 6h-13A2.5 2.5 0 0 0 3 8.5z" />
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                                        d="M21 8.5l-9 6-9-6" />
-                                </svg>
-                                Email Address
-                            </label>
-                            <div className="relative group">
-                                <input
-                                    type="email"
-                                    id="email"
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                    className="w-full px-5 py-4 bg-gray-700/50 border-2 border-gray-600 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 input-glow transition-all duration-300 backdrop-blur-sm"
-                                    placeholder="your@email.com"
-                                    required
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl opacity-0 group-hover:opacity-10 transition-opacity duration-300 pointer-events-none"></div>
-                            </div>
-                        </div>
-
-                        <div className="bounce-in stagger-5">
                             <label htmlFor="password" className="block text-sm font-semibold text-gray-300 mb-3 flex items-center">
                                 <svg className="w-5 h-5 mr-2 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                                 </svg>
-                                Password
+                                New Password
                             </label>
                             <div className="relative group">
                                 <input
@@ -316,40 +317,60 @@ const Login = () => {
                             </div>
                         </div>
 
+                        <div className="bounce-in stagger-5">
+                            <label htmlFor="confirmPassword" className="block text-sm font-semibold text-gray-300 mb-3 flex items-center">
+                                <svg className="w-5 h-5 mr-2 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                Confirm Password
+                            </label>
+                            <div className="relative group">
+                                <input
+                                    type="password"
+                                    id="confirmPassword"
+                                    value={confirmPassword}
+                                    onChange={(e) => setConfirmPassword(e.target.value)}
+                                    className="w-full px-5 py-4 bg-gray-700/50 border-2 border-gray-600 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-pink-500 input-glow transition-all duration-300 backdrop-blur-sm"
+                                    placeholder="••••••••"
+                                    required
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-r from-pink-500 to-red-500 rounded-xl opacity-0 group-hover:opacity-10 transition-opacity duration-300 pointer-events-none"></div>
+                            </div>
+                        </div>
+
                         <button
-                            onClick={handleSubmit}
-                            className="w-full bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white font-bold py-4 px-6 rounded-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105 button-hover relative overflow-hidden group bounce-in stagger-6 gradient-animate"
+                            type="submit"
+                            disabled={isLoading}
+                            className="w-full bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white font-bold py-4 px-6 rounded-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105 button-hover relative overflow-hidden group bounce-in stagger-6 gradient-animate disabled:opacity-50 disabled:cursor-not-allowed"
                         >
                             <span className="relative z-10 flex items-center justify-center">
-                                <span>Login to Roriri</span>
-                                <svg className="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                                </svg>
+                                {isLoading ? (
+                                    <>
+                                        <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                        </svg>
+                                        Resetting Password...
+                                    </>
+                                ) : (
+                                    <>
+                                        <span>Reset Password</span>
+                                        <svg className="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                                        </svg>
+                                    </>
+                                )}
                             </span>
                         </button>
-                    </div>
+                    </form>
 
-                    <div className="text-center mt-8 bounce-in stagger-6">
-                        <a href="/forgot-password" className="text-blue-400 hover:text-blue-300 font-semibold transition-all duration-300 hover:underline decoration-2 underline-offset-4 inline-flex items-center group">
-                            Forgot Your Password?
-                            <svg className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    <div className="text-center mt-8 bounce-in stagger-7">
+                        <a href="/login" className="text-blue-400 hover:text-blue-300 font-semibold transition-all duration-300 hover:underline decoration-2 underline-offset-4 inline-flex items-center group">
+                            <svg className="w-4 h-4 mr-1 group-hover:-translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                             </svg>
+                            Back to Login
                         </a>
-                    </div>
-
-                    {/* Terms and Conditions */}
-                    <div className="text-center mt-6 fade-in stagger-6">
-                        <p className="text-xs text-gray-500 leading-relaxed">
-                            By logging in, you agree to our{' '}
-                            <a href="/terms-condition" className="text-blue-400 hover:text-blue-300 transition-colors duration-300 font-medium hover:underline">
-                                Terms
-                            </a>{' '}
-                            and{' '}
-                            <a href="/privacy-policy" className="text-blue-400 hover:text-blue-300 transition-colors duration-300 font-medium hover:underline">
-                                Privacy Policy
-                            </a>
-                        </p>
                     </div>
                 </div>
             </div>
@@ -357,4 +378,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default ResetPassword;

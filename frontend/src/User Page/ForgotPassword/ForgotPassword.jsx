@@ -1,24 +1,34 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../../Context/AuthContext';
 
-const Login = () => {
+const ForgotPassword = () => {
     const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
-    const { login } = useAuth();
+    const [successMessage, setSuccessMessage] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('Login attempt:', { email, password });
-        if (email.trim() && password.trim()) {
-            setErrorMessage('');
-            login();
-            navigate('/');
-        } else {
-            setErrorMessage('Please enter both email and password to login.');
+        setErrorMessage('');
+        setSuccessMessage('');
+        setIsLoading(true);
+
+        if (!email.trim()) {
+            setErrorMessage('Please enter your email address.');
+            setIsLoading(false);
+            return;
         }
+
+        // Simulate API call
+        setTimeout(() => {
+            setSuccessMessage('Password reset email sent! Check your inbox.');
+            setIsLoading(false);
+            // Navigate to reset password page after 2 seconds
+            setTimeout(() => {
+                navigate('/reset-password');
+            }, 2000);
+        }, 1500);
     };
 
     return (
@@ -222,21 +232,21 @@ const Login = () => {
                             </div>
                         </div>
                         <h1 className="text-5xl font-bold text-white mb-4 slide-in-left stagger-1 drop-shadow-2xl">
-                            Welcome back to{' '}
+                            Forgot Your{' '}
                             <span className="bg-gradient-to-r from-yellow-300 via-orange-400 to-pink-400 bg-clip-text text-transparent animate-pulse">
-                                Roriri
+                                Password?
                             </span>
                         </h1>
                         <p className="text-xl text-white/90 mb-8 slide-in-left stagger-2 font-light drop-shadow-lg">
-                            Login to access your appointments
+                            No worries! Enter your email and we'll send you reset instructions.
                         </p>
 
                         {/* Features List */}
                         <div className="space-y-4">
                             {[
-                                'Manage your bookings',
-                                'View upcoming appointments',
-                                'Secure and reliable'
+                                'Secure password reset',
+                                'Check your email inbox',
+                                'Reset in minutes'
                             ].map((feature, index) => (
                                 <div
                                     key={index}
@@ -264,13 +274,14 @@ const Login = () => {
                 <div className="md:w-1/2 p-8 md:p-12 flex flex-col justify-center bg-gradient-to-br from-gray-800 to-gray-900 slide-in-right">
                     <div className="text-center mb-10 bounce-in stagger-3">
                         <h2 className="text-4xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-3">
-                            Login
+                            Reset Password
                         </h2>
-                        <p className="text-gray-400">Access your Roriri account</p>
+                        <p className="text-gray-400">Enter your email to receive reset instructions</p>
                         {errorMessage && <p className="text-red-400 mt-2">{errorMessage}</p>}
+                        {successMessage && <p className="text-green-400 mt-2">{successMessage}</p>}
                     </div>
 
-                    <div className="space-y-6">
+                    <form onSubmit={handleSubmit} className="space-y-6">
                         <div className="bounce-in stagger-4">
                             <label htmlFor="email" className="block text-sm font-semibold text-gray-300 mb-3 flex items-center">
                                 <svg className="w-5 h-5 mr-2 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -295,61 +306,39 @@ const Login = () => {
                             </div>
                         </div>
 
-                        <div className="bounce-in stagger-5">
-                            <label htmlFor="password" className="block text-sm font-semibold text-gray-300 mb-3 flex items-center">
-                                <svg className="w-5 h-5 mr-2 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                                </svg>
-                                Password
-                            </label>
-                            <div className="relative group">
-                                <input
-                                    type="password"
-                                    id="password"
-                                    value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
-                                    className="w-full px-5 py-4 bg-gray-700/50 border-2 border-gray-600 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 input-glow transition-all duration-300 backdrop-blur-sm"
-                                    placeholder="••••••••"
-                                    required
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl opacity-0 group-hover:opacity-10 transition-opacity duration-300 pointer-events-none"></div>
-                            </div>
-                        </div>
-
                         <button
-                            onClick={handleSubmit}
-                            className="w-full bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white font-bold py-4 px-6 rounded-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105 button-hover relative overflow-hidden group bounce-in stagger-6 gradient-animate"
+                            type="submit"
+                            disabled={isLoading}
+                            className="w-full bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white font-bold py-4 px-6 rounded-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105 button-hover relative overflow-hidden group bounce-in stagger-5 gradient-animate disabled:opacity-50 disabled:cursor-not-allowed"
                         >
                             <span className="relative z-10 flex items-center justify-center">
-                                <span>Login to Roriri</span>
-                                <svg className="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                                </svg>
+                                {isLoading ? (
+                                    <>
+                                        <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                        </svg>
+                                        Sending Reset Email...
+                                    </>
+                                ) : (
+                                    <>
+                                        <span>Send Reset Email</span>
+                                        <svg className="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                                        </svg>
+                                    </>
+                                )}
                             </span>
                         </button>
-                    </div>
+                    </form>
 
                     <div className="text-center mt-8 bounce-in stagger-6">
-                        <a href="/forgot-password" className="text-blue-400 hover:text-blue-300 font-semibold transition-all duration-300 hover:underline decoration-2 underline-offset-4 inline-flex items-center group">
-                            Forgot Your Password?
-                            <svg className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        <a href="/login" className="text-blue-400 hover:text-blue-300 font-semibold transition-all duration-300 hover:underline decoration-2 underline-offset-4 inline-flex items-center group">
+                            <svg className="w-4 h-4 mr-1 group-hover:-translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                             </svg>
+                            Back to Login
                         </a>
-                    </div>
-
-                    {/* Terms and Conditions */}
-                    <div className="text-center mt-6 fade-in stagger-6">
-                        <p className="text-xs text-gray-500 leading-relaxed">
-                            By logging in, you agree to our{' '}
-                            <a href="/terms-condition" className="text-blue-400 hover:text-blue-300 transition-colors duration-300 font-medium hover:underline">
-                                Terms
-                            </a>{' '}
-                            and{' '}
-                            <a href="/privacy-policy" className="text-blue-400 hover:text-blue-300 transition-colors duration-300 font-medium hover:underline">
-                                Privacy Policy
-                            </a>
-                        </p>
                     </div>
                 </div>
             </div>
@@ -357,4 +346,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default ForgotPassword;

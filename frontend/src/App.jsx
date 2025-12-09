@@ -6,6 +6,8 @@ import Footer from './components/Footer/Footer'
 import Landing from './Content Page/Landing/Landing'
 import Signin from './User Page/signin/Signin'
 import Login from './User Page/Login/Login'
+import ForgotPassword from './User Page/ForgotPassword/ForgotPassword'
+import ResetPassword from './User Page/ResetPassword/ResetPassword'
 import About from './Content Page/About/About'
 import AppointmentBooking from './Content Page/Appointments/Appointment Booking'
 import Internship from './Content Page/Internship/Internship'
@@ -31,7 +33,7 @@ function AppContent() {
   const location = useLocation()
 
   // pages that should hide navbar + footer
-  const hideLayout = ["/signin", "/login", "/appointment"].includes(location.pathname)
+  const hideLayout = ["/signin", "/login", "/forgot-password", "/reset-password", "/appointment"].includes(location.pathname)
 
   return (
     <>
@@ -42,6 +44,8 @@ function AppContent() {
           {/* Auth pages */}
           <Route path="/signin" element={<Signin />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/appointment" element={<AppointmentBooking />} />
         </Routes>
       ) : (
