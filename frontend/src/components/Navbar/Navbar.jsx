@@ -285,23 +285,32 @@ const Navbar = () => {
                                 {navItems.map((item, index) => (
                                     <Motion.li key={index} variants={listItemVariants}>
                                         <div className="border-b border-gray-700/50 last:border-b-0">
-                                            <div
-                                                onClick={() => item.submenu ? toggleSubMenu(index) : (setIsMobileMenuOpen(false), setActivePath(item.path))}
-                                                className={`
-                                                    flex justify-between items-center text-gray-300 font-medium cursor-pointer py-3 px-3 sm:py-4 sm:px-4 rounded-lg hover:bg-gray-800/50 transition-all duration-200 text-sm sm:text-base
-                                                    ${activePath === item.path ? 'text-white bg-gray-800/80' : ''}
-                                                `}
-                                            >
-                                                <div className="flex items-center gap-3">
+                                            <div className="flex justify-between items-center">
+                                                <Link
+                                                    to={item.path}
+                                                    onClick={() => {
+                                                        setIsMobileMenuOpen(false);
+                                                        setActivePath(item.path);
+                                                    }}
+                                                    className={`
+                                                        flex items-center gap-3 text-gray-300 font-medium cursor-pointer py-3 px-3 sm:py-4 sm:px-4 rounded-lg hover:bg-gray-800/50 transition-all duration-200 text-sm sm:text-base flex-1
+                                                        ${activePath === item.path ? 'text-white bg-gray-800/80' : ''}
+                                                    `}
+                                                >
                                                     <item.icon className="w-4 h-4 sm:w-5 sm:h-5" />
                                                     <span>{item.title}</span>
-                                                </div>
+                                                </Link>
                                                 {item.submenu?.length > 0 && (
-                                                    <ChevronDown
-                                                        size={18}
-                                                        className={`w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300 ${openSubMenuIndex === index ? "rotate-180 text-blue-400" : ""
-                                                            }`}
-                                                    />
+                                                    <button
+                                                        onClick={() => toggleSubMenu(index)}
+                                                        className="p-2 text-gray-300 hover:text-white transition-colors duration-200"
+                                                    >
+                                                        <ChevronDown
+                                                            size={18}
+                                                            className={`w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300 ${openSubMenuIndex === index ? "rotate-180 text-blue-400" : ""
+                                                                }`}
+                                                        />
+                                                    </button>
                                                 )}
                                             </div>
 
