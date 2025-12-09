@@ -80,31 +80,29 @@ const Landing = () => {
 
           <div className="flex flex-col sm:flex-row z-10  items-center gap-4 lg:gap-6 mt-10">
             {
-              [{ count: '100', name: 'Projects' }, { count: '60', name: 'Employees' }, { count: '7', name: 'Years' }].map((item, index) => (
-                <>
-                  <Motion.div key={index}
-                    className="bg-white cursor-target shadow-lg rounded-2xl p-4 w-[200px] sm:w-[160px] md:w-[180px] flex flex-col items-center justify-center transition-transform hover:scale-[1.05] hover:shadow-xl border border-gray-100 dark:border-zinc-700"
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, ease: "easeOut" }}
-                    whileHover={{ scale: 1.05 }}
-                  >
-                    <div className="text-gray-800 text-3xl sm:text-4xl font-bold flex items-baseline ">
-                      <CountUp
-                        from={0}
-                        to={item.count}
-                        duration={2}
-                        separator=","
-                        enableScrollSpy
-                        scrollSpyDelay={200}
-                      />
-                      <span>+</span>
-                    </div>
-                    <p className="text-gray-600 text-sm sm:text-base mt-1">
-                      {item.name}
-                    </p>
-                  </Motion.div>
-                </>
+              [{ count: '100', name: 'Projects' }, { count: '60', name: 'Employees' }, { count: '7', name: 'Years' }].map((item) => (
+                <Motion.div key={item.name}
+                  className="bg-white cursor-target shadow-lg rounded-2xl p-4 w-[200px] sm:w-[160px] md:w-[180px] flex flex-col items-center justify-center transition-transform hover:scale-[1.05] hover:shadow-xl border border-gray-100 dark:border-zinc-700"
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
+                  whileHover={{ scale: 1.05 }}
+                >
+                  <div className="text-gray-800 text-3xl sm:text-4xl font-bold flex items-baseline ">
+                    <CountUp
+                      from={0}
+                      to={item.count}
+                      duration={2}
+                      separator=","
+                      enableScrollSpy
+                      scrollSpyDelay={200}
+                    />
+                    <span>+</span>
+                  </div>
+                  <p className="text-gray-600 text-sm sm:text-base mt-1">
+                    {item.name}
+                  </p>
+                </Motion.div>
               ))
             }
           </div>
